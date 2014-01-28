@@ -156,7 +156,7 @@ tmp.getOptions() = PeakFileOptions();
 TEST_EQUAL(tmp.loadExperiment(OPENMS_GET_TEST_DATA_PATH("MzMLFile_1.mzML"), exp), true)
 TEST_EQUAL(exp.size(), 4)
 TEST_STRING_EQUAL(exp.getSourceFiles()[0].getChecksum(), "1bba4248ffd9231a39d431e10512e34ac5917f50")
-TEST_EQUAL(exp.getSourceFiles()[0].getChecksumType(), SourceFile::SHA1)  
+TEST_EQUAL(exp.getSourceFiles()[0].getChecksumType(), SourceFile::SHA1)
 
 tmp.getOptions() = PeakFileOptions();
 TEST_EQUAL(tmp.loadExperiment(OPENMS_GET_TEST_DATA_PATH("DTA2DFile_test_1.dta2d"), exp), true)
@@ -204,7 +204,7 @@ a.getOptions().addMSLevel(1);
 TEST_EQUAL(a.getOptions().hasMSLevels(), true);
 END_SECTION
 
-START_SECTION((template <class FeatureType> bool loadFeatures(const String &filename, FeatureMap<FeatureType>&map, FileTypes::Type force_type = FileTypes::UNKNOWN)))
+START_SECTION((template <class FeatureType> bool loadFeatures(const String &filename, FeatureMap& map, FileTypes::Type force_type = FileTypes::UNKNOWN)))
 FileHandler tmp;
 FeatureMap map;
 TEST_EQUAL(tmp.loadFeatures("test.bla", map), false)

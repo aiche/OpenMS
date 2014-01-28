@@ -143,7 +143,7 @@ protected:
     }
 
     // calculations
-    FeatureFinderAlgorithmIsotopeWavelet<Peak1D, Feature> iso_ff;
+    FeatureFinderAlgorithmIsotopeWavelet<Peak1D> iso_ff;
     Param ff_param(iso_ff.getParameters());
     ff_param.setValue("max_charge", getIntOption_("max_charge"));
     ff_param.setValue("intensity_threshold", getDoubleOption_("intensity_threshold"));

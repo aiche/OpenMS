@@ -76,7 +76,7 @@ namespace OpenMS
 				return this->map_;
 			}
 
-			const FeatureMap<Feature>* getFeatures()
+			const FeatureMap* getFeatures()
 			{
 				return this->features_;
 			}
@@ -97,7 +97,7 @@ FFA<Peak1D,Feature>* ptr = 0;
 FFA<Peak1D,Feature>* nullPointer = 0;
 
 MSExperiment<Peak1D>* map_nullPointer = 0;
-FeatureMap<Feature>*  featureMap_nullPointer = 0;
+FeatureMap*  featureMap_nullPointer = 0;
 FeatureFinder*        ff_nullPointer = 0;
 
 START_SECTION((FeatureFinderAlgorithm()))
@@ -130,7 +130,7 @@ START_SECTION((void setData(const MapType& map, FeatureMapType& features, Featur
   TEST_EQUAL(ffa.getFF(),ff_nullPointer)
 
 	MSExperiment<Peak1D> map;
-	FeatureMap<Feature> features;
+	FeatureMap features;
 	FeatureFinder ff;
 	ffa.setData(map, features, ff);
 
@@ -141,7 +141,7 @@ END_SECTION
 
 START_SECTION((virtual void setSeeds(const FeatureMapType& seeds)))
 	FFA<Peak1D,Feature> ffa;
-	FeatureMap<Feature> seeds;
+	FeatureMap seeds;
 	seeds.resize(4);
 	TEST_EXCEPTION(Exception::IllegalArgument,ffa.setSeeds(seeds))
 END_SECTION

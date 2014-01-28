@@ -1,32 +1,32 @@
 // --------------------------------------------------------------------------
-//                   OpenMS -- Open-Source Mass Spectrometry               
+//                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
 // ETH Zurich, and Freie Universitaet Berlin 2002-2013.
-// 
+//
 // This software is released under a three-clause BSD license:
 //  * Redistributions of source code must retain the above copyright
 //    notice, this list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright
 //    notice, this list of conditions and the following disclaimer in the
 //    documentation and/or other materials provided with the distribution.
-//  * Neither the name of any author or any participating institution 
-//    may be used to endorse or promote products derived from this software 
+//  * Neither the name of any author or any participating institution
+//    may be used to endorse or promote products derived from this software
 //    without specific prior written permission.
-// For a full list of authors, refer to the file AUTHORS. 
+// For a full list of authors, refer to the file AUTHORS.
 // --------------------------------------------------------------------------
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING 
-// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
-// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING
+// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
+//
 // --------------------------------------------------------------------------
 // $Maintainer: Clemens Groepl $
 // $Authors: $
@@ -63,9 +63,9 @@ enum
 
 ModelFitterType* ptr = 0;
 ModelFitterType* nullPointer = 0;
-START_SECTION((ModelFitter(const MSExperiment<PeakType>* map, FeatureMap<FeatureType>* features, FeatureFinder* ff)))
+START_SECTION((ModelFitter(const MSExperiment<PeakType>* map, FeatureMap* features, FeatureFinder* ff)))
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 	ptr = new ModelFitterType(&input,&features,&ff);
   TEST_EQUAL(ptr->getName(), "ModelFitter")
@@ -85,7 +85,7 @@ END_SECTION
 
 START_SECTION([EXTRA](static const String getName()))
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 	ModelFitterType model_fitter(&input,&features,&ff);
 	TEST_EQUAL(model_fitter.getName(),"ModelFitter");
@@ -95,10 +95,10 @@ END_SECTION
 START_SECTION(([EXTRA]void ModelFitter::setParameters(const Param& param)))
 {
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 	ModelFitterType * model_fitter = new ModelFitterType(&input,&features,&ff);
-	
+
 	Param p1;
 
 	// change default settings
@@ -121,7 +121,7 @@ START_SECTION(([EXTRA]void ModelFitter::setParameters(const Param& param)))
 	TEST_EQUAL(p2.getValue("max_iteration"),DataValue(500))
 	TEST_EQUAL(p2.getValue("deltaAbsError"),DataValue(0.0001))
 	TEST_EQUAL(p2.getValue("deltaRelError"),DataValue(0.0001))
-	
+
 	TEST_EQUAL(p2.getValue("min_num_peaks:final"),DataValue(5))
 	TEST_EQUAL(p2.getValue("min_num_peaks:extended"),DataValue(10))
 	TEST_EQUAL(p2.getValue("quality:type"),DataValue("Correlation"))
@@ -141,7 +141,7 @@ START_SECTION(Feature fit(const ChargedIndexSet& index_set))
 	// Test BiGauss Fitting (mz/rt)
 
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 
 	const double default_precision = 0.1;
@@ -171,10 +171,10 @@ START_SECTION(Feature fit(const ChargedIndexSet& index_set))
 		20.20830161f, 1.65879841f, 6.652431187f, 19.59411554f, 42.38668296f, 67.34288093f,
 		78.58007608f, 67.34288093f, 42.38668296f, 19.59411554f, 6.652431187f, 1.65879841f};
 
-	
+
 	Peak2D p;
 	std::vector<Peak2D> peak_array;
-	for (Size mz=0; mz<mz_num; mz++) 
+	for (Size mz=0; mz<mz_num; mz++)
 	{
 		for (Size rt=0; rt<rt_num; rt++)
 		{
@@ -184,14 +184,14 @@ START_SECTION(Feature fit(const ChargedIndexSet& index_set))
 			peak_array.push_back(p);
 		}
 	}
-	
+
 	std::sort(peak_array.begin(),peak_array.end(),Peak2D::PositionLess());
-		
+
 	input.set2DData(peak_array);
 	input.updateRanges(-1);
-	
+
 	ModelFitterType model_fitter(&input,&features,&ff);
-	
+
 	Param param = model_fitter.getParameters();
 	param.setValue("intensity_cutoff_factor",0.0f);
   param.setValue("mz:model_type:first",0);
@@ -199,7 +199,7 @@ START_SECTION(Feature fit(const ChargedIndexSet& index_set))
 	model_fitter.setParameters(param);
 	ChargedIndexSet  set;
 
-	for (Size mz=0; mz<mz_num; mz++) 
+	for (Size mz=0; mz<mz_num; mz++)
 	{
 		for (Size rt=0; rt<rt_num; rt++)
 		{
@@ -255,7 +255,7 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 		338.9, 339, 339.1, 339.2, 339.3, 339.4,	339.5, 339.6, 339.7, 339.8, 339.9,
 		340, 340.1, 340.2, 340.3, 340.4 };
 	const UInt mz_num = sizeof(mzs) / sizeof(*mzs); // currently 25
-	
+
 	double rts[] = { 1261.6, 1261.8, 1262, 1262.2, 1262.4, 1262.6, 1262.8, 1263};
 	const UInt rt_num = sizeof(rts) / sizeof(*rts); // currently 8
 
@@ -279,12 +279,12 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	std::sort(peak_array.begin(),peak_array.end(),Peak2D::PositionLess());
 
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 
 	input.set2DData(peak_array);
 	input.updateRanges(-1);
-	
+
 	ModelFitterType model_fitter(&input,&features,&ff);
 
 	Param param = model_fitter.getParameters();
@@ -300,10 +300,10 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 
 	model_fitter.setParameters(param);
 	ChargedIndexSet  set;
-	
-	for (Size i=0; i<input.size(); ++i) 
+
+	for (Size i=0; i<input.size(); ++i)
 	{
-		for (Size j=0; j<input[i].size(); ++j) 
+		for (Size j=0; j<input[i].size(); ++j)
 		{
 			set.insert(std::make_pair(i,j));
 		}
@@ -311,7 +311,7 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	Feature feature = model_fitter.fit(set);
 
 	TOLERANCE_ABSOLUTE(2.0);
-		
+
 	TEST_REAL_SIMILAR(feature.getMZ(), mean[MZ]);
 	TEST_REAL_SIMILAR(feature.getRT(), mean[RT]);
 	TEST_REAL_SIMILAR(feature.getIntensity(), 252787);
@@ -322,7 +322,7 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 													(feature.getModelDescription().createModel());
 
 	// std::cout << model->getParameters() << std::endl;
-	
+
 	BaseModel<1>* rt_model = model->getModel(RT);
 	TOLERANCE_ABSOLUTE(mean[RT]*0.01)		// Mean can differ by 1%
 	TEST_REAL_SIMILAR(rt_model->getParameters().getValue("statistics:mean"),mean[RT]);
@@ -360,21 +360,21 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	TOLERANCE_ABSOLUTE(default_precision)
 
 	double mzs[] = {675, 675.5, 676, 676.5, 677, 677.5, 678};
-	const UInt mz_num = sizeof(mzs) / sizeof(*mzs); // currently 7 
+	const UInt mz_num = sizeof(mzs) / sizeof(*mzs); // currently 7
 	STATUS(mz_num);
 
 	double rts[] = { 1260, 1260.5, 1261, 1261.5, 1262, 1262.5, 1263, 1263.5, 1264, 1264.5, 1265};
-	const UInt rt_num = sizeof(rts) / sizeof(*rts); // currently 11 
+	const UInt rt_num = sizeof(rts) / sizeof(*rts); // currently 11
 	STATUS(rt_num);
 
 	// Samples of Gaussian distribution N(mean,stdev) with scaling factor 20000
 	double mean[2];	mean[MZ] = 676.5; mean[RT] = 1262.5;
 	double stdev[2]; stdev[MZ] = 0.5; stdev[RT] = 0.9;
 
-	double intens[] = {4.95329, 9.80589, 19.4003, 36.7884, 62.005, 77.2534, 62.0497, 36.7776, 19.3924, 9.80986, 4.95027, 60.9693, 120.699, 238.795, 452.823, 763.211, 950.901, 763.761, 452.69, 238.699, 120.748, 60.9322, 274.564, 543.548, 1075.37, 2039.21, 3436.98, 4282.21, 3439.46, 2038.61, 1074.94, 543.767, 274.397, 453.538, 897.857, 1776.35, 3368.46, 5677.37, 7073.55, 5681.46, 3367.46, 1775.63, 898.219, 453.262, 274.566, 543.55, 1075.38, 2039.22, 3437, 4282.23, 3439.48, 2038.62, 1074.94, 543.77, 274.398, 60.9465, 120.654, 238.706, 452.654, 762.926, 950.545, 763.476, 452.52, 238.61, 120.703, 60.9094, 4.95376, 9.80683, 19.4021, 36.7919, 62.011, 77.2608, 62.0557, 36.7811, 19.3943, 9.81079, 4.95074};	
+	double intens[] = {4.95329, 9.80589, 19.4003, 36.7884, 62.005, 77.2534, 62.0497, 36.7776, 19.3924, 9.80986, 4.95027, 60.9693, 120.699, 238.795, 452.823, 763.211, 950.901, 763.761, 452.69, 238.699, 120.748, 60.9322, 274.564, 543.548, 1075.37, 2039.21, 3436.98, 4282.21, 3439.46, 2038.61, 1074.94, 543.767, 274.397, 453.538, 897.857, 1776.35, 3368.46, 5677.37, 7073.55, 5681.46, 3367.46, 1775.63, 898.219, 453.262, 274.566, 543.55, 1075.38, 2039.22, 3437, 4282.23, 3439.48, 2038.62, 1074.94, 543.77, 274.398, 60.9465, 120.654, 238.706, 452.654, 762.926, 950.545, 763.476, 452.52, 238.61, 120.703, 60.9094, 4.95376, 9.80683, 19.4021, 36.7919, 62.011, 77.2608, 62.0557, 36.7811, 19.3943, 9.81079, 4.95074};
 
 	STATUS(sizeof(intens)/sizeof(*intens));
-	
+
 	Peak2D p;
 	std::vector<Peak2D> peak_array;
 	for (Size rt=0; rt<rt_num; rt++) for (Size mz=0; mz<mz_num; mz++)
@@ -387,15 +387,15 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	std::sort(peak_array.begin(),peak_array.end(),Peak2D::PositionLess());
 
 	MSExperiment<PeakType> input;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 
 	input.set2DData(peak_array);
 	input.updateRanges(-1);
-	
+
 	// need to run ff so that flags are initialized
 	ff.run("none",input,features,Param());
-	
+
 	ModelFitterType model_fitter(&input,&features,&ff);
 
 	Param param = model_fitter.getParameters();
@@ -407,10 +407,10 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	param.setValue("intensity_cutoff_factor",0.0f);
 	model_fitter.setParameters(param);
 	ChargedIndexSet  set;
-	
-	for (Size i=0; i<input.size(); ++i) 
+
+	for (Size i=0; i<input.size(); ++i)
 	{
-		for (Size j=0; j<input[i].size(); ++j) 
+		for (Size j=0; j<input[i].size(); ++j)
 		{
 			set.insert(std::make_pair(i,j));
 		}
@@ -424,7 +424,7 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	TEST_EQUAL(feature.getCharge(), 0);
 	TOLERANCE_ABSOLUTE(0.01)
 	TEST_REAL_SIMILAR(feature.getOverallQuality(), 0.99);
-		
+
 	ProductModel<2>* model = dynamic_cast< ProductModel<2>* > (feature.getModelDescription().createModel());
 
 	BaseModel<1>* mz_model = model->getModel(MZ);
@@ -438,7 +438,7 @@ START_SECTION(([EXTRA]Feature fit(const ChargedIndexSet& index_set) throw (Unabl
 	TOLERANCE_ABSOLUTE(stdev[RT]*stdev[RT])
 	TEST_REAL_SIMILAR(rt_model->getParameters().getValue("statistics:variance"),stdev[RT]*stdev[RT]);
 	TOLERANCE_ABSOLUTE(default_precision)
-	
+
 	// test predicted intensities
 	DPosition<2> pos;
 	for (Size mz=0; mz<mz_num; mz++) for (Size rt=0; rt<rt_num; rt++)
@@ -472,7 +472,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	double max_ = 750;
 
 	// iterate symmetry from 1.3 to 8.3, i.e. fronted, symmetric and tailed peaks
-	while (symmetry_ < 8.4) 
+	while (symmetry_ < 8.4)
 	{
 		// set model parameter
 		tmp.setValue("bounding_box:min", min_);
@@ -501,7 +501,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 		// set traits
 		std::sort(peak_array.begin(),peak_array.end(),Peak2D::PositionLess());
 		MSExperiment<PeakType> input;
-		FeatureMap<FeatureType> features;
+		FeatureMap features;
 		FeatureFinder ff;
 
 		input.set2DData(peak_array);
@@ -515,8 +515,8 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 		ChargedIndexSet  set;
 
 		// construct indexSet
-		for (Size i=0; i<input.size(); ++i) 
-			for (Size j=0; j<input[i].size(); ++j) 
+		for (Size i=0; i<input.size(); ++i)
+			for (Size j=0; j<input[i].size(); ++j)
 				set.insert(std::make_pair(i,j));
 
 		// compute start parameter
@@ -525,7 +525,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 		model_fitter.optimize();
 
 		// test
-		TEST_REAL_SIMILAR(model_fitter.getSymmetry(), symmetry_); 
+		TEST_REAL_SIMILAR(model_fitter.getSymmetry(), symmetry_);
 		TEST_REAL_SIMILAR(model_fitter.getHeight(), height_);
 		TEST_REAL_SIMILAR(model_fitter.getWidth(), width_);
 		TEST_REAL_SIMILAR(model_fitter.getRT(), retention_);
@@ -563,11 +563,11 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	Peak2D p2;
 	std::vector<Peak2D> peak_array2;
 
-	// noise value		
+	// noise value
 	float noise = 10;
 
 	//String fname2 = "samples2.dta2d";
-	//ofstream file2(fname2.c_str()); 	
+	//ofstream file2(fname2.c_str());
 	for (Size i=0; i<dpa2.size(); ++i)
 	{
 
@@ -591,7 +591,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	// set traits
 	std::sort(peak_array2.begin(),peak_array2.end(),Peak2D::PositionLess());
 	MSExperiment<PeakType> input2;
-	FeatureMap<FeatureType> features;
+	FeatureMap features;
 	FeatureFinder ff;
 
 	input2.set2DData(peak_array2);
@@ -605,8 +605,8 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	ChargedIndexSet  set2;
 
 	// construct indexSet
-	for (Size i=0; i<input2.size(); ++i) 
-		for (Size j=0; j<input2[i].size(); ++j) 
+	for (Size i=0; i<input2.size(); ++i)
+		for (Size j=0; j<input2[i].size(); ++j)
 			set2.insert(std::make_pair(i,j));
 
 	// compute start parameter
@@ -615,7 +615,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	fitter2.optimize();
 	// test
 	TOLERANCE_ABSOLUTE(0.5)
-		TEST_REAL_SIMILAR(fitter2.getSymmetry(), 1.3); 
+		TEST_REAL_SIMILAR(fitter2.getSymmetry(), 1.3);
 	TEST_REAL_SIMILAR(fitter2.getWidth(), 2);
 	TEST_REAL_SIMILAR(fitter2.getRT(), 700);
 	TEST_EQUAL(fitter2.getGSLStatus(), "success");
@@ -628,7 +628,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	// *******************************************************
 	// *** check parameter optimization at LogNormal model ***
 	// *******************************************************
-	LogNormalModel logm1;	
+	LogNormalModel logm1;
 	logm1.setInterpolationStep(0.1);
 
 	tmp.setValue("bounding_box:min", 1.0);
@@ -649,7 +649,7 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	std::vector<Peak2D> peak_array3;
 
 	//String fname3 = "samples3.dta2d";
-	//ofstream file3(fname3.c_str()); 
+	//ofstream file3(fname3.c_str());
 	// save samples
 	for (Size i=0; i<dpa3.size(); ++i) {
 		//file3 << dpa3[i].getPosition()[0] << "	" << (dpa3[i].getPosition()[1]) << "\n";
@@ -673,8 +673,8 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 
 	// construct indexSet
 	ChargedIndexSet set3;
-	for (Size i=0; i<exp3.size(); ++i) 
-		for (Size j=0; j<exp3[i].size(); ++j) 
+	for (Size i=0; i<exp3.size(); ++i)
+		for (Size j=0; j<exp3[i].size(); ++j)
 			set3.insert(std::make_pair(i,j));
 
 	// compute start parameter
@@ -695,9 +695,8 @@ START_SECTION(([EXTRA]void ExtendedModelFitter::optimize()))
 	dpa3.clear();
 	peak_array3.clear();
 
-
 END_SECTION
-#endif 
+#endif
 
 
 /////////////////////////////////////////////////////////////

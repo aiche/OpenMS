@@ -114,7 +114,7 @@ protected:
 
   Param getSubsectionDefaults_(const String & /*section*/) const
   {
-    return FeatureFinder().getParameters(FeatureFinderAlgorithmMRM<Peak1D, Feature>::getProductName());
+    return FeatureFinder().getParameters(FeatureFinderAlgorithmMRM<Peak1D>::getProductName());
   }
 
   ExitCodes main_(int, const char **)
@@ -150,7 +150,7 @@ protected:
     FeatureMap features;
 
     // Apply the feature finder
-    ff.run(FeatureFinderAlgorithmMRM<Peak1D, Feature>::getProductName(), exp, features, feafi_param, seeds);
+    ff.run(FeatureFinderAlgorithmMRM<Peak1D>::getProductName(), exp, features, feafi_param, seeds);
     features.applyMemberFunction(&UniqueIdInterface::setUniqueId);
 
     // DEBUG

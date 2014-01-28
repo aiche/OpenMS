@@ -69,24 +69,24 @@ namespace OpenMS
 
       @ingroup FeatureFinder
   */
-  template <class PeakType, class FeatureType>
+  template <class PeakType>
   class FeatureFinderAlgorithmMRM :
-    public FeatureFinderAlgorithm<PeakType, FeatureType>,
+    public FeatureFinderAlgorithm<PeakType>,
     public FeatureFinderDefs
   {
 public:
     ///@name Type definitions
     //@{
-    typedef typename FeatureFinderAlgorithm<PeakType, FeatureType>::MapType MapType;
+    typedef typename FeatureFinderAlgorithm<PeakType>::MapType MapType;
     typedef typename MapType::SpectrumType SpectrumType;
     typedef typename SpectrumType::FloatDataArrays FloatDataArrays;
     //@}
 
-    using FeatureFinderAlgorithm<PeakType, FeatureType>::param_;
-    using FeatureFinderAlgorithm<PeakType, FeatureType>::features_;
-    using FeatureFinderAlgorithm<PeakType, FeatureType>::ff_;
-    using FeatureFinderAlgorithm<PeakType, FeatureType>::defaults_;
-    using FeatureFinderAlgorithm<PeakType, FeatureType>::map_;
+    using FeatureFinderAlgorithm<PeakType>::param_;
+    using FeatureFinderAlgorithm<PeakType>::features_;
+    using FeatureFinderAlgorithm<PeakType>::ff_;
+    using FeatureFinderAlgorithm<PeakType>::defaults_;
+    using FeatureFinderAlgorithm<PeakType>::map_;
 
 public:
 
@@ -99,7 +99,7 @@ public:
 
     /// default constructor
     FeatureFinderAlgorithmMRM() :
-      FeatureFinderAlgorithm<PeakType, FeatureType>()
+      FeatureFinderAlgorithm<PeakType>()
     {
       defaults_.setValue("min_rt_distance", 10.0, "Minimal distance of MRM features in seconds.");
       defaults_.setMinFloat("min_rt_distance", 0.0);
@@ -443,7 +443,7 @@ public:
       }
     }
 
-    static FeatureFinderAlgorithm<PeakType, FeatureType> * create()
+    static FeatureFinderAlgorithm<PeakType> * create()
     {
       return new FeatureFinderAlgorithmMRM();
     }

@@ -56,14 +56,14 @@ namespace OpenMS
   */
   template <class PeakType, class FeatureType>
   class FeatureFinderAlgorithmSimplest :
-    public FeatureFinderAlgorithm<PeakType, FeatureType>,
+    public FeatureFinderAlgorithm<PeakType>,
     public FeatureFinderDefs
   {
 
 public:
     /// default constructor
     FeatureFinderAlgorithmSimplest() :
-      FeatureFinderAlgorithm<PeakType, FeatureType>()
+      FeatureFinderAlgorithm<PeakType>()
     {
       this->defaults_ = getDefaultParameters();
       this->check_defaults_ =  false;
@@ -73,15 +73,15 @@ public:
     {
       Param tmp;
 
-      SimpleSeeder<PeakType, FeatureType> seeder(this->map_, this->features_, this->ff_);
+      SimpleSeeder<PeakType> seeder(this->map_, this->features_, this->ff_);
       tmp.insert("seeder:", seeder.getParameters());
       tmp.setSectionDescription("seeder", "Settings for the seeder (Determines potential feature regions)");
 
-      SimpleExtender<PeakType, FeatureType> extender(this->map_, this->features_, this->ff_);
+      SimpleExtender<PeakType> extender(this->map_, this->features_, this->ff_);
       tmp.insert("extender:", extender.getParameters());
       tmp.setSectionDescription("extender", "Settings for the extender (Collects all peaks belonging to a feature)");
 
-      ModelFitter<PeakType, FeatureType> fitter(this->map_, this->features_, this->ff_);
+      ModelFitter<PeakType> fitter(this->map_, this->features_, this->ff_);
       tmp.insert("fitter:", fitter.getParameters());
       tmp.setSectionDescription("fitter", "Settings for the modefitter (Fits a model to the data determinging the probapility that they represent a feature.)");
 
@@ -93,13 +93,13 @@ public:
 #ifdef DEBUG_FEATUREFINDER
       UInt seed_nr = 0;
 #endif
-      SimpleSeeder<PeakType, FeatureType> seeder(this->map_, this->features_, this->ff_);
+      SimpleSeeder<PeakType> seeder(this->map_, this->features_, this->ff_);
       seeder.setParameters(this->getParameters().copy("seeder:", true));
 
-      SimpleExtender<PeakType, FeatureType> extender(this->map_, this->features_, this->ff_);
+      SimpleExtender<PeakType> extender(this->map_, this->features_, this->ff_);
       extender.setParameters(this->getParameters().copy("extender:", true));
 
-      ModelFitter<PeakType, FeatureType> fitter(this->map_, this->features_, this->ff_);
+      ModelFitter<PeakType> fitter(this->map_, this->features_, this->ff_);
       Param params;
       params.setDefaults(this->getParameters().copy("fitter:", true));
       params.setValue("fit_algorithm", "simplest");
@@ -228,7 +228,7 @@ public:
       }
     }         // run
 
-    static FeatureFinderAlgorithm<PeakType, FeatureType> * create()
+    static FeatureFinderAlgorithm<PeakType> * create()
     {
       return new FeatureFinderAlgorithmSimplest();
     }

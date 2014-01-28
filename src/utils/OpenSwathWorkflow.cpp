@@ -398,7 +398,7 @@ namespace OpenMS
             // write features to output if so desired
             if (!out.empty())
             {
-              for (FeatureMap<Feature>::iterator feature_it = featureFile.begin();
+              for (FeatureMap::iterator feature_it = featureFile.begin();
                    feature_it != featureFile.end(); ++feature_it)
               {
                 out_featureFile.push_back(*feature_it);
@@ -631,7 +631,7 @@ namespace OpenMS
         OpenSwath::LightTargetedExperiment& transition_exp,
         const Param& feature_finder_param,
         TransformationDescription trafo, const double rt_extraction_window,
-        FeatureMap<Feature>& output, OpenSwathTSVWriter & tsv_writer)
+        FeatureMap& output, OpenSwathTSVWriter & tsv_writer)
     {
       typedef OpenSwath::LightTransition TransitionType;
       // a transition group holds the MSSpectra with the Chromatogram peaks from above
@@ -830,7 +830,7 @@ namespace OpenMS
   {
 
   public:
-    
+
     /**
      * @brief Annotate a Swath map using a Swath window file specifying the individual windows
      *

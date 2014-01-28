@@ -284,7 +284,7 @@ protected:
 #pragma omp critical (featureFinder)
 #endif
         {
-          for (FeatureMap<Feature>::iterator feature_it = featureFile.begin();
+          for (FeatureMap::iterator feature_it = featureFile.begin();
                feature_it != featureFile.end(); feature_it++)
           {
             out_featureFile.push_back(*feature_it);

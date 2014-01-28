@@ -1,32 +1,32 @@
 // --------------------------------------------------------------------------
-//                   OpenMS -- Open-Source Mass Spectrometry               
+//                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
 // ETH Zurich, and Freie Universitaet Berlin 2002-2013.
-// 
+//
 // This software is released under a three-clause BSD license:
 //  * Redistributions of source code must retain the above copyright
 //    notice, this list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright
 //    notice, this list of conditions and the following disclaimer in the
 //    documentation and/or other materials provided with the distribution.
-//  * Neither the name of any author or any participating institution 
-//    may be used to endorse or promote products derived from this software 
+//  * Neither the name of any author or any participating institution
+//    may be used to endorse or promote products derived from this software
 //    without specific prior written permission.
-// For a full list of authors, refer to the file AUTHORS. 
+// For a full list of authors, refer to the file AUTHORS.
 // --------------------------------------------------------------------------
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING 
-// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
-// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING
+// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
+//
 // --------------------------------------------------------------------------
 // $Maintainer: Hannes Roest $
 // $Authors: Hannes Roest $
@@ -53,7 +53,7 @@ using namespace OpenMS;
 /// @cond TOPPCLASSES
 
 class TOPPOpenSwathRewriteToFeatureXML
-  : public TOPPBase, 
+  : public TOPPBase,
     public ProgressLogger
 {
  public:
@@ -69,7 +69,7 @@ class TOPPOpenSwathRewriteToFeatureXML
   {
     registerInputFile_("csv","<file>","","mProphet tsv output file: \"all_peakgroups.xls\"", false);
     setValidFormats_("csv", ListUtils::create<String>("csv"));
-    
+
     registerInputFile_("featureXML","<file>","","input featureXML file");
     setValidFormats_("featureXML", ListUtils::create<String>("featureXML"));
 
@@ -79,9 +79,9 @@ class TOPPOpenSwathRewriteToFeatureXML
     registerDoubleOption_("FDR_cutoff", "<double>", -1, "FDR cutoff (e.g. to remove all features with a an m_score above 0.05 use 0.05 here)", false);
   }
 
-  void applyFDRcutoff(FeatureMap<Feature> & feature_map, double cutoff, String fdr_name)
+  void applyFDRcutoff(FeatureMap & feature_map, double cutoff, String fdr_name)
   {
-    FeatureMap<Feature> out_feature_map = feature_map;
+    FeatureMap out_feature_map = feature_map;
     out_feature_map.clear(false);
     for (Size i = 0; i < feature_map.size(); i++)
     {
@@ -93,14 +93,14 @@ class TOPPOpenSwathRewriteToFeatureXML
     feature_map = out_feature_map;
   }
 
-  void processInput(const char * filename, FeatureMap<Feature> & feature_map)
+  void processInput(const char * filename, FeatureMap & feature_map)
   {
-    FeatureMap<Feature> out_feature_map = feature_map;
+    FeatureMap out_feature_map = feature_map;
     std::map<String, int> added_already;
     out_feature_map.clear(false);
 
     std::map<String, Feature*> feature_map_ref;
-    //for (FeatureMap<Feature>::iterator feature = feature_map.begin(); feature != feature_map.end(); feature++)
+    //for (FeatureMap::iterator feature = feature_map.begin(); feature != feature_map.end(); feature++)
     for (Size i = 0; i < feature_map.size(); i++)
     {
       feature_map_ref[feature_map[i].getUniqueId()] = &feature_map[i];
@@ -125,8 +125,8 @@ class TOPPOpenSwathRewriteToFeatureXML
       }
     }
 
-    if (header_dict_inv.find("id") == header_dict_inv.end() || 
-        header_dict_inv.find("m_score") == header_dict_inv.end() || 
+    if (header_dict_inv.find("id") == header_dict_inv.end() ||
+        header_dict_inv.find("m_score") == header_dict_inv.end() ||
         header_dict_inv.find("d_score") == header_dict_inv.end() )
     {
       throw Exception::IllegalArgument(__FILE__, __LINE__, __PRETTY_FUNCTION__, "Error: The tsv file is expected to have at least the following headers: id, m_score, d_score. " );
@@ -148,7 +148,7 @@ class TOPPOpenSwathRewriteToFeatureXML
       }
 
       String id = current_row[header_dict_inv["id"]];
-      id = id.substitute("f_", ""); 
+      id = id.substitute("f_", "");
       try
       {
         m_score = ((String)current_row[header_dict_inv["m_score"]]).toDouble();
@@ -190,7 +190,7 @@ class TOPPOpenSwathRewriteToFeatureXML
   String out = getStringOption_("out");
   double fdr_cutoff = getDoubleOption_("FDR_cutoff");
 
-  FeatureMap<Feature> feature_map;
+  FeatureMap feature_map;
   FeatureXMLFile().load(feature_file, feature_map);
 
   if (csv.size() > 0)

@@ -76,9 +76,9 @@ namespace OpenMS
 
   @ingroup FeatureFinder
   */
-  template <class PeakType, class FeatureType>
+  template <class PeakType>
   class ModelFitter :
-    public FeaFiModule<PeakType, FeatureType>,
+    public FeaFiModule<PeakType>,
     public FeatureFinderDefs
   {
 public:
@@ -94,7 +94,7 @@ public:
     /// Isotope charge
     typedef Feature::ChargeType ChargeType;
     /// FeaFiModule
-    typedef FeaFiModule<PeakType, FeatureType> Base;
+    typedef FeaFiModule<PeakType> Base;
     /// Raw data container type using for the temporary storage of the input data
     typedef std::vector<PeakType> RawDataArrayType;
 
@@ -105,7 +105,7 @@ public:
     };
 
     /// Constructor
-    ModelFitter(const MSExperiment<PeakType> * map, FeatureMap<FeatureType> * features, FeatureFinder * ff) :
+    ModelFitter(const MSExperiment<PeakType> * map, FeatureMap * features, FeatureFinder * ff) :
       Base(map, features, ff),
       model2D_(),
       mz_stat_(),
@@ -271,7 +271,7 @@ public:
       quality_rt_ = fitRT_(model_rt);
       model2D_.setModel(RT, model_rt);          // Set model in 2D-model
 
-      FeatureMap<Feature> feature_collection;
+      FeatureMap feature_collection;
 
       for (ChargeType charge = first_mz_model_; charge <= last_mz_model_; ++charge)
       {

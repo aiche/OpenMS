@@ -539,22 +539,7 @@ protected:
   };
 
   /// Print content of a feature map to a stream.
-  std::ostream & operator<<(std::ostream & os, const FeatureMap & map)
-  {
-    os << "# -- DFEATUREMAP BEGIN --" << "\n";
-    os << "# POS \tINTENS\tOVALLQ\tCHARGE\tUniqueID" << "\n";
-    for (FeatureMap::const_iterator iter = map.begin(); iter != map.end(); ++iter)
-    {
-      os << iter->getPosition() << '\t'
-      << iter->getIntensity() << '\t'
-      << iter->getOverallQuality() << '\t'
-      << iter->getCharge() << '\t'
-      << iter->getUniqueId() << "\n";
-    }
-    os << "# -- DFEATUREMAP END --" << std::endl;
-    return os;
-  }
-
+  OPENMS_DLLAPI std::ostream & operator<<(std::ostream & os, const FeatureMap & map);
 
 } // namespace OpenMS
 
