@@ -63,7 +63,7 @@ START_SECTION((virtual ~FeatureFinder()))
 	delete ptr;
 END_SECTION
 
-START_SECTION((template <class PeakType, class FeatureType> void run(const String &algorithm_name, MSExperiment< PeakType > const &input_map, FeatureMap &features, const Param &param, const FeatureMap& seeds)))
+START_SECTION((template <class PeakType> void run(const String &algorithm_name, MSExperiment< PeakType > const &input_map, FeatureMap &features, const Param &param, const FeatureMap& seeds)))
 	FeatureFinder ff;
 	FeatureMap features;
 
