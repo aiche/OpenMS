@@ -61,7 +61,7 @@ using namespace std;
 
 typedef Peak1D PeakType;
 typedef Feature FeatureType;
-typedef SimpleExtender<PeakType,FeatureType> ExtenderType;
+typedef SimpleExtender<PeakType> ExtenderType;
 typedef FeatureFinderDefs::ChargedIndexSet ChargedIndexSet;
 
 {

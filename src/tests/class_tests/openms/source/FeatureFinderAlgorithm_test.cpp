@@ -51,7 +51,7 @@ namespace OpenMS
 	{
 		public:
 			FFA()
-				: FeatureFinderAlgorithm<PeakType,FeatureType>()
+				: FeatureFinderAlgorithm<PeakType>()
 			{
 			}
 
@@ -114,7 +114,7 @@ START_SECTION([EXTRA] FeatureFinderAlgorithmPicked() - with RichPeak1D)
 END_SECTION
 
 START_SECTION((virtual void run()=0))
-	FFA<Peak1D,Feature> ffa;
+	FFA<Peak1D> ffa;
 	ffa.run();
 END_SECTION
 

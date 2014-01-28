@@ -52,7 +52,7 @@ START_TEST(ModelFitter, "$Id$")
 
 typedef Peak1D PeakType;
 typedef Feature FeatureType;
-typedef ModelFitter<PeakType,FeatureType> ModelFitterType;
+typedef ModelFitter<PeakType> ModelFitterType;
 typedef FeatureFinderDefs::ChargedIndexSet ChargedIndexSet;
 
 enum
