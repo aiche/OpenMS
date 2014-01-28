@@ -131,7 +131,7 @@ protected:
     //-------------------------------------------------------------
     // pick
     //-------------------------------------------------------------
-    FeatureMap<> output;
+    FeatureMap output;
 
     FeatureFinder ff;
     Param param = getParam_().copy("algorithm:", true);

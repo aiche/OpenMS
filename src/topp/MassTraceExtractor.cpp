@@ -170,7 +170,7 @@ protected:
     // make sure that the spectra are sorted by m/z
     ms_peakmap.sortSpectra(true);
     
-    FeatureMap<> ms_feat_map;
+    FeatureMap ms_feat_map;
     vector<MassTrace> m_traces;
 
     //-------------------------------------------------------------

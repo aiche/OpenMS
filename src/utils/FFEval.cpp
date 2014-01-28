@@ -100,7 +100,7 @@ protected:
   }
 
   /// Counts the number of features with meta value @p name equal to @p value
-  UInt count(const FeatureMap<> & map, const String & name, const String & value = "")
+  UInt count(const FeatureMap & map, const String & name, const String & value = "")
   {
     UInt count = 0;
     for (Size i = 0; i < map.size(); ++i)
@@ -138,12 +138,12 @@ protected:
   ExitCodes main_(int, const char **)
   {
     //load data
-    FeatureMap<> features_in, features_truth;
+    FeatureMap features_in, features_truth;
     FeatureXMLFile().load(getStringOption_("in"), features_in);
     features_in.sortByPosition();
     FeatureXMLFile().load(getStringOption_("truth"), features_truth);
     features_truth.sortByPosition();
-    FeatureMap<> abort_reasons;
+    FeatureMap abort_reasons;
     if (getStringOption_("abort_reasons") != "")
     {
       FeatureXMLFile().load(getStringOption_("abort_reasons"), abort_reasons);

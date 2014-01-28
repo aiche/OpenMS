@@ -136,7 +136,7 @@ protected:
     fh.loadExperiment(in, exp, in_type, log_type_);
     exp.sortSpectra();
 
-    FeatureMap<> feature_map;
+    FeatureMap feature_map;
     if (feature_in != "")
     {
       FeatureXMLFile().load(feature_in, feature_map);
@@ -225,7 +225,7 @@ protected:
         }
         new_exp.addSpectrum(zoom_spec);
         new_exp.updateRanges();
-        FeatureMap<> features, seeds;
+        FeatureMap features, seeds;
         ff.run("isotope_wavelet", new_exp, features, ff_param, seeds);
         if (features.empty())
         {

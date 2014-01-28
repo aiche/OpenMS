@@ -202,7 +202,7 @@ protected:
 
     typedef MSExperimentType::SpectrumType SpectrumType;
 
-    typedef FeatureMap<> FeatureMapType;
+    typedef FeatureMap FeatureMapType;
 
     FeatureMapType fm;
     ConsensusMap cm;

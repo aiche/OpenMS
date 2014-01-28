@@ -95,7 +95,7 @@ START_SECTION((virtual void run()))
   mzdata_file.load(SUPERHIRN_GET_TEST_DATA_PATH("FeatureFinderAlgorithmSH_input.mzData"),input);
 
   input.updateRanges(1);
-  FeatureMap<> output;
+  FeatureMap output;
 
   //parameters
   Param param;

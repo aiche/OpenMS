@@ -85,7 +85,7 @@ namespace OpenMS
     size_only_ = true;
     file_ = filename;
 
-    FeatureMap<> map_dummy;
+    FeatureMap map_dummy;
     map_ = &map_dummy;
 
     parse_(filename, this);

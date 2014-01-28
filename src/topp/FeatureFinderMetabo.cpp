@@ -246,7 +246,7 @@ protected:
     ffm_param.remove("noise_threshold_int");
     ffm_param.remove("chrom_peak_snr");
 
-    FeatureMap<> ms_feat_map;
+    FeatureMap ms_feat_map;
     ffmet.setParameters(ffm_param);
     ffmet.run(m_traces_final, ms_feat_map);
 

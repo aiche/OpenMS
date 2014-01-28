@@ -76,13 +76,13 @@ namespace OpenMS
 
       @ingroup FeatureFinder
   */
-  template <class PeakType, class FeatureType>
+  template <class PeakType>
   class SimpleExtender :
-    public FeaFiModule<PeakType, FeatureType>,
+    public FeaFiModule<PeakType>,
     public FeatureFinderDefs
   {
 public:
-    typedef FeaFiModule<PeakType, FeatureType> Base;
+    typedef FeaFiModule<PeakType> Base;
 
     /// Intensity of a data point
     typedef typename Base::IntensityType IntensityType;
@@ -92,7 +92,7 @@ public:
     typedef double ProbabilityType;
 
     /// Constructor
-    SimpleExtender(const MSExperiment<PeakType> * map, FeatureMap<FeatureType> * features, FeatureFinder * ff) :
+    SimpleExtender(const MSExperiment<PeakType> * map, FeatureMap * features, FeatureFinder * ff) :
       Base(map, features, ff),
       last_pos_extracted_()
     {

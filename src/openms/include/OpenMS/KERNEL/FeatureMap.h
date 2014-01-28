@@ -485,7 +485,7 @@ public:
 
       <b>Example:</b>  The following will print the number of features with invalid unique ids (plus 1 if the container has an invalid UID as well):
       @code
-      FeatureMap<> fm;
+      FeatureMap fm;
       (...)
       std::cout << fm.applyMemberFunction(&UniqueIdInterface::hasInvalidUniqueId) << std::endl;
       @endcode

@@ -632,7 +632,7 @@ public:
         if (debug_)
         {
           //seeds
-          FeatureMap<> seed_map;
+          FeatureMap seed_map;
           seed_map.reserve(seeds.size());
           for (Size i = 0; i < seeds.size(); ++i)
           {
@@ -1037,7 +1037,7 @@ public:
       }
       LOG_INFO << "Removed " << removed << " overlapping features." << std::endl;
       //finally remove features with intensity 0
-      FeatureMap<> tmp;
+      FeatureMap tmp;
       tmp.reserve(features_->size());
       for (Size i = 0; i < features_->size(); ++i)
       {
@@ -1062,7 +1062,7 @@ public:
       if (debug_)
       {
         //store map of abort reasons for failed seeds
-        FeatureMap<> abort_map;
+        FeatureMap abort_map;
         abort_map.reserve(abort_reasons_.size());
         Size counter = 0;
         for (typename std::map<Seed, String>::iterator it2 = abort_reasons_.begin(); it2 != abort_reasons_.end(); ++it2, ++counter)

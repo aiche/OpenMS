@@ -55,11 +55,11 @@ namespace OpenMS
 
     The following code demonstrates the use of this class:
     @code
-FeatureMap<> map;
+FeatureMap map;
 map.resize(10); //...fill map with data
 
 //Create pointer vector to the map
-ConstRefVector<FeatureMap<> > ref_vector(map);
+ConstRefVector<FeatureMap > ref_vector(map);
 //Sort the pointer vector without changing the original data
 ref_vector.sortByIntensity();
     @endcode

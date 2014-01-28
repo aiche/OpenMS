@@ -185,7 +185,7 @@ public:
     MSQuantifications();
 
     /// Detailed Constructor
-    MSQuantifications(FeatureMap<> fm, ExperimentalSettings& es, std::vector<DataProcessing>& dps, std::vector<std::vector<std::pair<String, double> > > labels = (std::vector<std::vector<std::pair<String, double> > >()));
+    MSQuantifications(FeatureMap fm, ExperimentalSettings& es, std::vector<DataProcessing>& dps, std::vector<std::vector<std::pair<String, double> > > labels = (std::vector<std::vector<std::pair<String, double> > >()));
 
     /// Destructor
     ~MSQuantifications();

@@ -187,7 +187,7 @@ protected:
     exp.updateRanges();
 
     //load seeds
-    FeatureMap<> seeds;
+    FeatureMap seeds;
     if (getStringOption_("seeds") != "")
     {
       FeatureXMLFile().load(getStringOption_("seeds"), seeds);
@@ -198,7 +198,7 @@ protected:
     ff.setLogType(log_type_);
 
     // A map for the resulting features
-    FeatureMap<> features;
+    FeatureMap features;
 
     // get parameters specific for the feature finder
     Param feafi_param = getParam_().copy("algorithm:", true);
@@ -211,7 +211,7 @@ protected:
     // DEBUG
     if (debug_level_ > 10)
     {
-      FeatureMap<>::Iterator it;
+      FeatureMap::Iterator it;
       for (it = features.begin(); it != features.end(); ++it)
       {
         if (!it->isMetaEmpty())
@@ -242,7 +242,7 @@ protected:
     // unless debugging is turned on.
     if (debug_level_ < 5)
     {
-      FeatureMap<>::Iterator it;
+      FeatureMap::Iterator it;
       for (it = features.begin(); it != features.end(); ++it)
       {
         it->getConvexHull().expandToBoundingBox();

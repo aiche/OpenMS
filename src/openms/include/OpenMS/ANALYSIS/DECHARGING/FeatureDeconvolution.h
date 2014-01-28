@@ -62,7 +62,7 @@ public:
 
     enum CHARGEMODE {QFROMFEATURE = 1, QHEURISTIC, QALL};
 
-    typedef FeatureMap<> FeatureMapType;
+    typedef FeatureMap FeatureMapType;
     typedef Feature FeatureType;
     typedef DPosition<2> ClusterPointType;
     typedef FeatureMapType::FeatureType::CoordinateType CoordinateType;

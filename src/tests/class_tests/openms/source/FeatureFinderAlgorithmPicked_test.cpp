@@ -91,7 +91,7 @@ START_SECTION((virtual void run()))
 	mzdata_file.getOptions().addMSLevel(1);
 	mzdata_file.load(OPENMS_GET_TEST_DATA_PATH("FeatureFinderAlgorithmPicked.mzData"),input);
 	input.updateRanges(1);
-	FeatureMap<> output;
+	FeatureMap output;
 	
 	//parameters
 	Param param;

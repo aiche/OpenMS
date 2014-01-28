@@ -195,7 +195,7 @@ protected:
 
     // Create the output map, load the input TraML file and the chromatograms
     boost::shared_ptr<MapType> exp (new MapType());
-    FeatureMap<> out_featureFile;
+    FeatureMap out_featureFile;
     OpenSwath::LightTargetedExperiment transition_exp;
 
     std::cout << "Loading TraML file" << std::endl;
@@ -243,7 +243,7 @@ protected:
       MRMFeatureFinderScoring featureFinder;
       MzMLFile swath_file;
       boost::shared_ptr<MapType> swath_map (new MapType());
-      FeatureMap<> featureFile;
+      FeatureMap featureFile;
       cout << "Loading file " << file_list[i] << endl;
 
 ////#ifndef _OPENMP

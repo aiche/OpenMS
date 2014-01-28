@@ -373,7 +373,7 @@ protected:
   }
 
 
-  void fitElutionModels_(FeatureMap<>& features, bool asymmetric=true)
+  void fitElutionModels_(FeatureMap& features, bool asymmetric=true)
   {
     // assumptions:
     // - all features have subordinates (for the mass traces/transitions)
@@ -409,7 +409,7 @@ protected:
 
     // store model parameters to find outliers later:
     double width_limit = getDoubleOption_("model_check:width");
-    double asym_limit = (asymmetric ? 
+    double asym_limit = (asymmetric ?
                              getDoubleOption_("model_check:asymmetry") : 0.0);
     // store values redundantly - once aligned with the features in the map,
     // once only for successful models:
@@ -429,7 +429,7 @@ protected:
     // collect peaks that constitute mass traces:
     LOG_DEBUG << "Fitting elution models to features:" << endl;
     Size index = 0;
-    for (FeatureMap<>::Iterator feat_it = features.begin();
+    for (FeatureMap::Iterator feat_it = features.begin();
          feat_it != features.end(); ++feat_it, ++index)
     {
       LOG_DEBUG << String(feat_it->getMetaValue("PeptideRef")) << endl;
@@ -492,7 +492,7 @@ protected:
       }
       catch (Exception::UnableToFit& except)
       {
-        LOG_ERROR << "Error fitting model to feature '" 
+        LOG_ERROR << "Error fitting model to feature '"
                   << feat_it->getUniqueId() << "': " << except.getName()
                   << " - " << except.getMessage() << endl;
         fit_success = false;
@@ -525,15 +525,15 @@ protected:
       {
         mre = 0.0;
         double total_weights = 0.0;
-        double rt_start = max(fitter->getLowerRTBound(), 
+        double rt_start = max(fitter->getLowerRTBound(),
                                   traces[0].peaks[0].first);
-        double rt_end = min(fitter->getUpperRTBound(), 
+        double rt_end = min(fitter->getUpperRTBound(),
                                 traces[0].peaks.rbegin()->first);
 
         for (FeatureFinderAlgorithmPickedHelperStructs::MassTraces<Peak1D>::
                iterator tr_it = traces.begin(); tr_it != traces.end(); ++tr_it)
         {
-          for (vector<pair<double, const Peak1D*> >::iterator p_it = 
+          for (vector<pair<double, const Peak1D*> >::iterator p_it =
                  tr_it->peaks.begin(); p_it != tr_it->peaks.end(); ++p_it)
           {
             double rt = p_it->first;
@@ -691,8 +691,8 @@ protected:
         if (impute)
         { // apply log-transform to weight down high outliers:
           double raw_intensity = feat_it->getIntensity();
-          LOG_DEBUG << "Successful model: x = " << raw_intensity << ", y = " 
-                    << area << "; log(x) = " << log(raw_intensity) 
+          LOG_DEBUG << "Successful model: x = " << raw_intensity << ", y = "
+                    << area << "; log(x) = " << log(raw_intensity)
                     << ", log(y) = " << log(area) << endl;
           quant_values.push_back(make_pair(log(raw_intensity), log(area)));
         }
@@ -700,7 +700,7 @@ protected:
         model_successes++;
       }
     }
-    LOG_INFO << "Model fitting: " << model_successes << " successes, " 
+    LOG_INFO << "Model fitting: " << model_successes << " successes, "
              << model_failures << " failures" << endl;
 
     if (impute)
@@ -708,9 +708,9 @@ protected:
       TransformationModelLinear lm(quant_values, Param());
       double slope, intercept;
       lm.getParameters(slope, intercept);
-      LOG_DEBUG << "LM slope: " << slope << ", intercept: " << intercept 
+      LOG_DEBUG << "LM slope: " << slope << ", intercept: " << intercept
                 << endl;
-      for (vector<FeatureMap<>::Iterator>::iterator it = failed_models.begin();
+      for (vector<FeatureMap::Iterator>::iterator it = failed_models.begin();
            it != failed_models.end(); ++it)
       {
         double area = exp(lm.evaluate(log((*it)->getIntensity())));
@@ -912,7 +912,7 @@ protected:
     // find chromatographic peaks
     //-------------------------------------------------------------
     LOG_INFO << "Finding chromatographic peaks..." << endl;
-    FeatureMap<> features;
+    FeatureMap features;
     MRMFeatureFinderScoring mrm_finder;
     Param params = mrm_finder.getParameters();
     params.setValue("stop_report_after_feature", -1); // 1);
@@ -939,7 +939,7 @@ protected:
     // fill in missing feature data
     //-------------------------------------------------------------
     LOG_INFO << "Adapting feature data..." << endl;
-    for (FeatureMap<>::Iterator feat_it = features.begin();
+    for (FeatureMap::Iterator feat_it = features.begin();
          feat_it != features.end(); ++feat_it)
     {
       feat_it->setMZ(feat_it->getMetaValue("PrecursorMZ"));

@@ -70,7 +70,7 @@ namespace OpenMS
       @brief Abstract base class for FeatureFinder algorithms
 
   */
-  template <class PeakType, class FeatureType>
+  template <class PeakType>
   class FeatureFinderAlgorithm :
     public DefaultParamHandler
   {
@@ -82,7 +82,7 @@ public:
     /// Intensity type of peaks
     typedef typename MapType::IntensityType IntensityType;
     /// Output feature type
-    typedef FeatureMap<FeatureType> FeatureMapType;
+    typedef FeatureMap FeatureMapType;
 
     /// default constructor
     FeatureFinderAlgorithm() :

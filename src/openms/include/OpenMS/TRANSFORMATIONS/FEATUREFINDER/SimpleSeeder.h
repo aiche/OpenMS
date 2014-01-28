@@ -59,17 +59,17 @@ namespace OpenMS
 
       @ingroup FeatureFinder
   */
-  template <class PeakType, class FeatureType>
+  template <class PeakType>
   class SimpleSeeder :
-    public FeaFiModule<PeakType, FeatureType>,
+    public FeaFiModule<PeakType>,
     public FeatureFinderDefs
   {
 public:
-    typedef FeaFiModule<PeakType, FeatureType> Base;
+    typedef FeaFiModule<PeakType> Base;
     typedef MSExperiment<PeakType> MapType;
 
     /// Constructor
-    SimpleSeeder(const MSExperiment<PeakType> * map, FeatureMap<FeatureType> * features, FeatureFinder * ff) :
+    SimpleSeeder(const MSExperiment<PeakType> * map, FeatureMap * features, FeatureFinder * ff) :
       Base(map, features, ff),
       initialized_(false)
     {
@@ -126,8 +126,8 @@ protected:
     void initialize_()
     {
       // determine minimum intensity and signal-to-noise parameter for last seed
-      typename FeatureType::IntensityType noise_threshold  = this->param_.getValue("min_intensity");
-      typename FeatureType::IntensityType sn  = this->param_.getValue("signal_to_noise");
+      typename Feature::IntensityType noise_threshold  = this->param_.getValue("min_intensity");
+      typename Feature::IntensityType sn  = this->param_.getValue("signal_to_noise");
 
 #ifdef DEBUG_FEATUREFINDER
       std::cout << "Intensity threshold: " << noise_threshold << std::endl;

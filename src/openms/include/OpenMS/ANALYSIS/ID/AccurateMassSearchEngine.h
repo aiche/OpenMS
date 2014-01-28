@@ -178,7 +178,7 @@ public:
     void queryByConsensusFeature(const ConsensusFeature& cfeat, const Size& cf_index, const Size& number_of_maps, std::vector<AccurateMassSearchResult>& results);
 
     /// main method of AccurateMassSearchEngine
-    void run(const FeatureMap<>&, MzTab&);
+    void run(const FeatureMap&, MzTab&);
     void run(const ConsensusMap&, MzTab&);
 
     /// the internal ion-mode used depending on annotation of input data if "ion_mode" was set to 'auto'

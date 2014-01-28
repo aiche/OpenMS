@@ -156,7 +156,7 @@ protected:
 
         if (filetype == FileTypes::FEATUREXML)
         {
-            FeatureMap<> ms_feat_map;
+            FeatureMap ms_feat_map;
 
             FeatureXMLFile().load(in, ms_feat_map);
 

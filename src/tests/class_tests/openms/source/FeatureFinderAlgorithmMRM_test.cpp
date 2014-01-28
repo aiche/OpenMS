@@ -75,13 +75,13 @@ START_SECTION((virtual void run()))
 	PeakMap exp;
 	MzMLFile().load(OPENMS_GET_TEST_DATA_PATH("FeatureFinderAlgorithmMRM_input.mzML"), exp);
 
-	FeatureMap<> features, seeds;
+	FeatureMap features, seeds;
 	Param ff_param(ptr->getParameters());
 	ff.run("mrm", exp, features, ff_param, seeds);
 
 	TEST_EQUAL(exp.getChromatograms().size(), 3)
 
-	FeatureMap<> new_features;
+	FeatureMap new_features;
 	for (Size i = 0; i != features.size(); ++i)
 	{
 		if (features[i].getQuality(0) > 0.99)

@@ -313,7 +313,7 @@ namespace OpenMS
     tf.store(filename);
   }
 
-  void EDTAFile::store(const String & filename, const FeatureMap<> & map) const
+  void EDTAFile::store(const String & filename, const FeatureMap & map) const
   {
     TextFile tf;
     tf.push_back("RT\tm/z\tintensity\tcharge");

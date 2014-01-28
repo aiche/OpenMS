@@ -177,8 +177,7 @@ public:
 
         @exception Exception::MissingInformation is thrown if the MetaInfoInterface of @p ids does not contain "MZ" and "RT"
     */
-    template <typename FeatureType>
-    void annotate(FeatureMap<FeatureType> & map, const std::vector<PeptideIdentification> & ids, const std::vector<ProteinIdentification> & protein_ids, bool use_centroid_rt = false, bool use_centroid_mz = false)
+    void annotate(FeatureMap & map, const std::vector<PeptideIdentification> & ids, const std::vector<ProteinIdentification> & protein_ids, bool use_centroid_rt = false, bool use_centroid_mz = false)
     {
       // std::cout << "Starting annotation..." << std::endl;
       checkHits_(ids);
@@ -190,7 +189,7 @@ public:
       // if not, use the centroid and the given tolerances
       if (!(use_centroid_rt && use_centroid_mz))
       {
-        for (typename FeatureMap<FeatureType>::Iterator f_it = map.begin(); f_it != map.end(); ++f_it)
+        for (FeatureMap::Iterator f_it = map.begin(); f_it != map.end(); ++f_it)
         {
           if (f_it->getConvexHulls().empty())
           {
@@ -216,7 +215,7 @@ public:
                  max_rt = -std::numeric_limits<double>::max();
       // std::cout << "Precomputing bounding boxes..." << std::endl;
       boxes.reserve(map.size());
-      for (typename FeatureMap<FeatureType>::Iterator f_it = map.begin();
+      for (FeatureMap::Iterator f_it = map.begin();
            f_it != map.end(); ++f_it)
       {
         DBoundingBox<2> box;

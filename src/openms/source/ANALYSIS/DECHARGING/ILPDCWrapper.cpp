@@ -62,7 +62,7 @@ namespace OpenMS
   {
   }
 
-  double ILPDCWrapper::compute(const FeatureMap<> fm, PairsType& pairs, Size verbose_level) const
+  double ILPDCWrapper::compute(const FeatureMap fm, PairsType& pairs, Size verbose_level) const
   {
     if (fm.empty())
     {
@@ -226,7 +226,7 @@ namespace OpenMS
     f_set[rota_l].insert(v);
   }
 
-  double ILPDCWrapper::computeSlice_(const FeatureMap<> fm,
+  double ILPDCWrapper::computeSlice_(const FeatureMap fm,
                                      PairsType& pairs,
                                      const PairsIndex margin_left,
                                      const PairsIndex margin_right,
@@ -328,11 +328,11 @@ namespace OpenMS
 
   // old version, slower, as ILP has different layout (i.e, the same as described in paper)
 
-  double ILPDCWrapper::computeSliceOld_(const FeatureMap<> fm,
-                                            PairsType& pairs,
-                                            const PairsIndex margin_left,
-                                            const PairsIndex margin_right,
-                                            const Size verbose_level) const
+  double ILPDCWrapper::computeSliceOld_(const FeatureMap fm,
+                                        PairsType& pairs,
+                                        const PairsIndex margin_left,
+                                        const PairsIndex margin_right,
+                                        const Size verbose_level) const
   {
     LPWrapper build;
     //build.setSolver(LPWrapper::SOLVER_GLPK);
@@ -516,7 +516,7 @@ namespace OpenMS
     return opt_value;
   } // !compute_slice
 
-  double ILPDCWrapper::getLogScore_(const PairsType::value_type& pair, const FeatureMap<>& fm) const
+  double ILPDCWrapper::getLogScore_(const PairsType::value_type& pair, const FeatureMap& fm) const
   {
     double score;
     String e;

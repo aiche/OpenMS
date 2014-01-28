@@ -146,14 +146,14 @@ protected:
     exp.updateRanges();
 
     //no seeds supported
-    FeatureMap<> seeds;
+    FeatureMap seeds;
 
     //setup of FeatureFinder
     FeatureFinder ff;
     ff.setLogType(log_type_);
 
     // A map for the resulting features
-    FeatureMap<> features;
+    FeatureMap features;
 
     // get parameters specific for the feature finder
     Param feafi_param = getParam_().copy("algorithm:", true);
@@ -166,7 +166,7 @@ protected:
     // DEBUG
     if (debug_level_ > 10)
     {
-      FeatureMap<>::Iterator it;
+      FeatureMap::Iterator it;
       for (it = features.begin(); it != features.end(); ++it)
       {
         if (!it->isMetaEmpty())

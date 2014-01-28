@@ -820,7 +820,7 @@ void FeatureFindingMetabo::findLocalFeatures_(std::vector<MassTrace*>& candidate
 
 } // end of findLocalFeatures_(...)
 
-void FeatureFindingMetabo::run(std::vector<MassTrace>& input_mtraces, FeatureMap<>& output_featmap)
+void FeatureFindingMetabo::run(std::vector<MassTrace>& input_mtraces, FeatureMap& output_featmap)
 {
     // mass traces must be sorted by their centroid MZ
     std::sort(input_mtraces.begin(), input_mtraces.end(), CmpMassTraceByMZ());

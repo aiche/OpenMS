@@ -78,7 +78,7 @@ namespace OpenMS
   class OPENMS_DLLAPI SampleChannels : public std::vector<SampleProteins> { }; 
 
   /// Sim FeatureMap
-  typedef FeatureMap<> FeatureMapSim;
+  typedef FeatureMap FeatureMapSim;
 
   /// Sim FeatureMap Vector
   typedef std::vector<FeatureMapSim> FeatureMapSimVector;

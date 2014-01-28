@@ -160,7 +160,7 @@ START_SECTION(void extend(const ChargedIndexSet &seed_region, ChargedIndexSet& r
 
 	input.updateRanges();
 
-  ff.run("none", input, features, Param(), FeatureMap<>());
+  ff.run("none", input, features, Param(), FeatureMap());
 
 	// first two points are already in some other feature region
 	// => check if points included in other features are ignored
@@ -293,7 +293,7 @@ START_SECTION(([EXTRA] Extension on real-world data))
 
 	input.updateRanges();
 
-  ff.run("none", input, features, Param(), FeatureMap<>());
+  ff.run("none", input, features, Param(), FeatureMap());
 
 	ChargedIndexSet  set;
 	// SimpleExtender starts at maximum point
@@ -340,7 +340,7 @@ START_SECTION(([EXTRA] Extension on picked data))
 
 	input.updateRanges();
 
-  ff.run("none", input, features, Param(), FeatureMap<>());
+  ff.run("none", input, features, Param(), FeatureMap());
 
 	ChargedIndexSet  set;
 	// SimpleExtender starts at maximum point
