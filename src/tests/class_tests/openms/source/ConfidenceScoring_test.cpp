@@ -38,6 +38,8 @@
 ///////////////////////////
 
 #include <OpenMS/ANALYSIS/OPENSWATH/ConfidenceScoring.h>
+#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/KERNEL/Feature.h>
 
 ///////////////////////////
 
