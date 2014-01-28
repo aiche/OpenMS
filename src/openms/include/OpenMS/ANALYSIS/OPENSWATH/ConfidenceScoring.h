@@ -55,13 +55,13 @@
 namespace OpenMS
 {
 
-class OPENMS_DLLAPI ConfidenceScoring :
+  class OPENMS_DLLAPI ConfidenceScoring :
     public ProgressLogger
-{
+  {
 public:
 
     /// Constructor
-    explicit ConfidenceScoring(bool test_mode_=false) :
+    explicit ConfidenceScoring(bool test_mode_ = false) :
       generator_(), rand_gen_(generator_, boost::uniform_int<>())
     {
       if (!test_mode_) rand_gen_.engine().seed(time(0)); // seed with current time
@@ -72,7 +72,7 @@ public:
 protected:
 
     /// Mapping: Q3 m/z <-> transition intensity (maybe not unique!)
-    typedef boost::bimap<double, boost::bimaps::multiset_of<double> > 
+    typedef boost::bimap<double, boost::bimaps::multiset_of<double> >
     BimapType;
 
     /// Binomial GLM
@@ -84,10 +84,11 @@ protected:
 
       double operator()(double diff_rt, double dist_int)
       {
-        double lm = intercept + rt_coef * diff_rt * diff_rt + 
+        double lm = intercept + rt_coef * diff_rt * diff_rt +
           int_coef * dist_int;
         return 1.0 / (1.0 + exp(-lm));
       }
+
     } glm_;
 
     /// Helper for RT normalization (range 0-100)
@@ -95,11 +96,12 @@ protected:
     {
       double min_rt;
       double max_rt;
-      
+
       double operator()(double rt)
       {
         return (rt - min_rt) / (max_rt - min_rt) * 100;
       }
+
     } rt_norm_;
 
     TargetedExperiment library_; // assay library
@@ -138,7 +140,7 @@ protected:
     /// Score the assay @p assay against feature data (@p feature_rt,
     /// @p feature_intensities), optionally using only the specified transitions
     /// (@p transition_ids)
-    double scoreAssay_(const TargetedExperiment::Peptide& assay, 
+    double scoreAssay_(const TargetedExperiment::Peptide& assay,
                            double feature_rt, DoubleList& feature_intensities,
                            const std::set<String>& transition_ids = std::set<String>());
 
@@ -147,27 +149,16 @@ protected:
 
 public:
 
-    void initialize(TargetedExperiment library, Size n_decoys, Size n_transitions, TransformationDescription rt_trafo)
-    {
-      library_ = TargetedExperiment(library); 
-      n_decoys_ = n_decoys;
-      n_transitions_ = n_transitions;
-      rt_trafo_ = rt_trafo;
-    }
+    void initialize(TargetedExperiment library, Size n_decoys, Size n_transitions, TransformationDescription rt_trafo);
 
-    void initializeGlm(double intercept, double rt_coef, double int_coef)
-    {
-      glm_.intercept = intercept;
-      glm_.rt_coef = rt_coef;
-      glm_.int_coef = int_coef;
-    }
+    void initializeGlm(double intercept, double rt_coef, double int_coef);
 
     /**
       @brief Score a feature map -> make sure the class is properly initialized
 
       both functions initializeGlm and initialize need to be called first.
 
-      The input to the program is 
+      The input to the program is
       - a transition library which contains peptides with corresponding assays.
       - a feature map where each feature corresponds to an assay (mapped with
         MetaValue "PeptideRef") and each feature has as many subordinates as the
@@ -186,7 +177,7 @@ public:
       }
       if (n_assays - 1 < n_decoys_)
       {
-        LOG_WARN << "Warning: Parameter 'decoys' (" << n_decoys_ 
+        LOG_WARN << "Warning: Parameter 'decoys' (" << n_decoys_
                  << ") is higher than the number of unrelated assays in the "
                  << "library (" << n_assays - 1 << "). "
                  << "Using all unrelated assays as decoys." << std::endl;
@@ -207,7 +198,7 @@ public:
       LOG_DEBUG << "Determining retention time range..." << std::endl;
       rt_norm_.min_rt = std::numeric_limits<double>::infinity();
       rt_norm_.max_rt = -std::numeric_limits<double>::infinity();
-      for (std::vector<TargetedExperiment::Peptide>::const_iterator it = 
+      for (std::vector<TargetedExperiment::Peptide>::const_iterator it =
              library_.getPeptides().begin(); it != library_.getPeptides().end();
            ++it)
       {
@@ -221,10 +212,10 @@ public:
       LOG_DEBUG << "Scoring features..." << std::endl;
       startProgress(0, features.size(), "scoring features");
 
-      for (FeatureMap::Iterator feat_it = features.begin(); 
+      for (FeatureMap::Iterator feat_it = features.begin();
            feat_it != features.end(); ++feat_it)
       {
-        LOG_DEBUG << "Feature " << feat_it - features.begin() + 1 
+        LOG_DEBUG << "Feature " << feat_it - features.begin() + 1
                   << " (ID '" << feat_it->getUniqueId() << "')"<< std::endl;
         scoreFeature_(*feat_it);
         setProgress(feat_it - features.begin());

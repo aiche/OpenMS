@@ -39,6 +39,7 @@
 #include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/CONCEPT/LogStream.h>
 #include <OpenMS/KERNEL/Feature.h>
+#include <OpenMS/KERNEL/FeatureMap.h>
 #include <OpenMS/FORMAT/TextFile.h>
 
 #include <fstream>
@@ -47,17 +48,17 @@
 namespace OpenMS
 {
   /**
-      @brief File adapter for MsInspect files.
+    @brief File adapter for MsInspect files.
 
-  Lines with "#" are comments and are ignored.
+    Lines with "#" are comments and are ignored.
 
-  The first non-comment line is the header and contains the column names:<br>
-  scan	time	mz	accurateMZ	mass	intensity	charge	chargeStates	kl	background	median	peaks	scanFirst	scanLast	scanCount	totalIntensity	sumSquaresDist	description
+    The first non-comment line is the header and contains the column names:<br>
+    scan	time	mz	accurateMZ	mass	intensity	charge	chargeStates	kl	background	median	peaks	scanFirst	scanLast	scanCount	totalIntensity	sumSquaresDist	description
 
-  Every subsequent line is a feature.
+    Every subsequent line is a feature.
 
-  @ingroup FileIO
-*/
+    @ingroup FileIO
+  */
   class OPENMS_DLLAPI MsInspectFile
   {
 public:
@@ -67,15 +68,15 @@ public:
     virtual ~MsInspectFile();
 
     /**
-              @brief Loads a MsInspect file into a featureXML.
+      @brief Loads a MsInspect file into a featureXML.
 
-              The content of the file is stored in @p features.
+      The content of the file is stored in @p features.
 
-              @exception Exception::FileNotFound is thrown if the file could not be opened
-              @exception Exception::ParseError is thrown if an error occurs during parsing
+      @exception Exception::FileNotFound is thrown if the file could not be opened
+      @exception Exception::ParseError is thrown if an error occurs during parsing
     */
     template <typename FeatureMapType>
-    void load(const String & filename, FeatureMapType & feature_map)
+    void load(const String& filename, FeatureMapType& feature_map)
     {
       // load input
       TextFile input(filename);
@@ -162,10 +163,10 @@ public:
 
       NOT IMPLEMENTED
 
-              @exception Exception::UnableToCreateFile is thrown if the file could not be created
+      @exception Exception::UnableToCreateFile is thrown if the file could not be created
     */
     template <typename SpectrumType>
-    void store(const String & filename, const SpectrumType & spectrum) const
+    void store(const String& filename, const SpectrumType& spectrum) const
     {
       std::cerr << "Store() for MsInspectFile not implemented. Filename was: " << filename << ", spec of size " << spectrum.size() << "\n";
       throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);

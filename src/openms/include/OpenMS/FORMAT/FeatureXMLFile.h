@@ -35,7 +35,9 @@
 #ifndef OPENMS_FORMAT_FEATUREXMLFILE_H
 #define OPENMS_FORMAT_FEATUREXMLFILE_H
 
-#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/DATASTRUCTURES/ConvexHull2D.h>
+#include <OpenMS/DATASTRUCTURES/Param.h>
+
 #include <OpenMS/FORMAT/OPTIONS/FeatureFileOptions.h>
 #include <OpenMS/FORMAT/XMLFile.h>
 #include <OpenMS/FORMAT/HANDLERS/XMLHandler.h>
@@ -45,17 +47,21 @@
 
 namespace OpenMS
 {
+
+  class Feature;
+  class FeatureMap;
+
   /**
-  @brief This class provides Input/Output functionality for feature maps
+    @brief This class provides Input/Output functionality for feature maps
 
-      A documented schema for this format can be found at http://open-ms.sourceforge.net/schemas/.
+    A documented schema for this format can be found at http://open-ms.sourceforge.net/schemas/.
 
-  @todo Take care that unique ids are assigned properly by TOPP tools before calling FeatureXMLFile::store().  There will be a message on LOG_INFO but we will make no attempt to fix the problem in this class.  (all developers)
+    @todo Take care that unique ids are assigned properly by TOPP tools before calling FeatureXMLFile::store(). There will be a message on LOG_INFO but we will make no attempt to fix the problem in this class.  (all developers)
 
-  @note This format will eventually be replaced by the HUPO-PSI AnalysisXML (mzIdentML and mzQuantML) formats!
+    @note This format will eventually be replaced by the HUPO-PSI AnalysisXML (mzIdentML and mzQuantML) formats!
 
-  @ingroup FileIO
-*/
+    @ingroup FileIO
+  */
   class OPENMS_DLLAPI FeatureXMLFile :
     protected Internal::XMLHandler,
     public Internal::XMLFile,
@@ -73,30 +79,30 @@ public:
     //@}
 
     /**
-        @brief loads the file with name @p filename into @p map and calls updateRanges().
+      @brief loads the file with name @p filename into @p map and calls updateRanges().
 
-        @exception Exception::FileNotFound is thrown if the file could not be opened
-        @exception Exception::ParseError is thrown if an error occurs during parsing
+      @exception Exception::FileNotFound is thrown if the file could not be opened
+      @exception Exception::ParseError is thrown if an error occurs during parsing
     */
-    void load(const String & filename, FeatureMap & feature_map);
+    void load(const String& filename, FeatureMap& feature_map);
 
-    Size loadSize(const String & filename);
+    Size loadSize(const String& filename);
 
     /**
-        @brief stores the map @p feature_map in file with name @p filename.
+      @brief stores the map @p feature_map in file with name @p filename.
 
-        @exception Exception::UnableToCreateFile is thrown if the file could not be created
+      @exception Exception::UnableToCreateFile is thrown if the file could not be created
     */
-    void store(const String & filename, const FeatureMap & feature_map);
+    void store(const String& filename, const FeatureMap& feature_map);
 
     /// Mutable access to the options for loading/storing
-    FeatureFileOptions & getOptions();
+    FeatureFileOptions& getOptions();
 
     /// Non-mutable access to the options for loading/storing
-    const FeatureFileOptions & getOptions() const;
+    const FeatureFileOptions& getOptions() const;
 
     /// setter for options for loading/storing
-    void setOptions(const FeatureFileOptions &);
+    void setOptions(const FeatureFileOptions&);
 
 protected:
 
@@ -104,25 +110,25 @@ protected:
     void resetMembers_();
 
     // Docu in base class
-    virtual void endElement(const XMLCh * const /*uri*/, const XMLCh * const /*local_name*/, const XMLCh * const qname);
+    virtual void endElement(const XMLCh* const /*uri*/, const XMLCh* const /*local_name*/, const XMLCh* const qname);
 
     // Docu in base class
-    virtual void startElement(const XMLCh * const /*uri*/, const XMLCh * const /*local_name*/, const XMLCh * const qname, const xercesc::Attributes & attributes);
+    virtual void startElement(const XMLCh* const /*uri*/, const XMLCh* const /*local_name*/, const XMLCh* const qname, const xercesc::Attributes& attributes);
 
     // Docu in base class
-    virtual void characters(const XMLCh * const chars, const XMLSize_t length);
+    virtual void characters(const XMLCh* const chars, const XMLSize_t length);
 
     /// Writes a feature to a stream
-    void writeFeature_(const String & filename, std::ostream & os, const Feature & feat, const String & identifier_prefix, UInt64 identifier, UInt indentation_level);
+    void writeFeature_(const String& filename, std::ostream& os, const Feature& feat, const String& identifier_prefix, UInt64 identifier, UInt indentation_level);
 
     /// Writes a peptide identification to a stream (for assigned/unassigned peptide identifications)
-    void writePeptideIdentification_(const String & filename, std::ostream & os, const PeptideIdentification & id, const String & tag_name, UInt indentation_level);
+    void writePeptideIdentification_(const String& filename, std::ostream& os, const PeptideIdentification& id, const String& tag_name, UInt indentation_level);
 
 
     /**
-        @brief update the pointer to the current feature
+      @brief update the pointer to the current feature
 
-        @param create If true, a new (empty) Feature is added at the appropriate subordinate_feature_level_
+      @param create If true, a new (empty) Feature is added at the appropriate subordinate_feature_level_
     */
     void updateCurrentFeature_(bool create);
 
@@ -132,9 +138,9 @@ protected:
     Int disable_parsing_;
 
     /// points to the last open &lt;feature&gt; tag (possibly a subordinate feature)
-    Feature * current_feature_;
+    Feature* current_feature_;
     /// Feature map pointer for reading
-    FeatureMap * map_;
+    FeatureMap* map_;
     /// Options that can be set
     FeatureFileOptions options_;
     /// only parse until "count" tag is reached (used in loadSize())
@@ -160,7 +166,7 @@ protected:
     Int subordinate_feature_level_;
 
     /// Pointer to last read object as a MetaInfoInterface, or null.
-    MetaInfoInterface * last_meta_;
+    MetaInfoInterface* last_meta_;
 
     /// Temporary protein ProteinIdentification
     ProteinIdentification prot_id_;

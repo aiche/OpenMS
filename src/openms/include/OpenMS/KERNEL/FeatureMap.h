@@ -58,40 +58,21 @@ namespace OpenMS
   {
     std::vector<Size> states; //< count each state, indexing by BaseFeature::AnnotationState
 
-    AnnotationStatistics()
-      : states(BaseFeature::SIZE_OF_ANNOTATIONSTATE, 0) // initialize all with 0
-    {
-    }
+    AnnotationStatistics();
 
-    AnnotationStatistics(const AnnotationStatistics& rhs)
-      : states(rhs.states)
-    {
-    }
+    AnnotationStatistics(const AnnotationStatistics& rhs);
 
-    AnnotationStatistics& operator=(const AnnotationStatistics& rhs)
-    {
-      if (this == &rhs) return *this;
+    AnnotationStatistics& operator=(const AnnotationStatistics& rhs);
 
-      states = rhs.states;
-      return *this;
-    }
+    bool operator==(const AnnotationStatistics& rhs) const;
 
-    bool operator==(const AnnotationStatistics& rhs) const
-    {
-      return states == rhs.states;
-    }
-
-    AnnotationStatistics& operator+=(BaseFeature::AnnotationState state)
-    {
-      ++states[(Size)state];
-      return *this;
-    }
+    AnnotationStatistics& operator+=(BaseFeature::AnnotationState state);
 
   };
 
 
   /// Print content of an AnnotationStatistics object to a stream
-  OPENMS_DLLAPI std::ostream & operator<<(std::ostream & os, const AnnotationStatistics& ann);
+  OPENMS_DLLAPI std::ostream& operator<<(std::ostream& os, const AnnotationStatistics& ann);
 
   /**
     @brief A container for features.
@@ -107,7 +88,7 @@ namespace OpenMS
 
     @ingroup Kernel
   */
-  class FeatureMap :
+  class OPENMS_DLLAPI FeatureMap :
     private std::vector<Feature>,
     public RangeManager<2>,
     public DocumentIdentifier,
@@ -125,26 +106,26 @@ public:
     using typename privvec::iterator;
     using typename privvec::const_iterator;
     using typename privvec::size_type;
-    using typename privvec::pointer;          // ConstRefVector
-    using typename privvec::reference;        // ConstRefVector
-    using typename privvec::const_reference;  // ConstRefVector
-    using typename privvec::difference_type;  // ConstRefVector
+    using typename privvec::pointer; // ConstRefVector
+    using typename privvec::reference; // ConstRefVector
+    using typename privvec::const_reference; // ConstRefVector
+    using typename privvec::difference_type; // ConstRefVector
 
     // functions
     using privvec::begin;
     using privvec::end;
 
     using privvec::size;
-    using privvec::resize;  // ConsensusMap, FeatureXMLFile
+    using privvec::resize; // ConsensusMap, FeatureXMLFile
     using privvec::empty;
     using privvec::reserve;
     using privvec::operator[];
-    using privvec::at;    // UniqueIdIndexer
-    using privvec::back;  // FeatureXMLFile
+    using privvec::at; // UniqueIdIndexer
+    using privvec::back; // FeatureXMLFile
 
     using privvec::push_back;
-    using privvec::pop_back;  // FeatureXMLFile
-    using privvec::erase;     // source/VISUAL/Spectrum2DCanvas.cpp 2871, FeatureMap_test 599
+    using privvec::pop_back; // FeatureXMLFile
+    using privvec::erase; // source/VISUAL/Spectrum2DCanvas.C 2871, FeatureMap_test 599
 
     //@{
     typedef Feature FeatureType;
@@ -154,8 +135,8 @@ public:
     typedef typename Base::const_iterator ConstIterator;
     typedef typename Base::reverse_iterator ReverseIterator;
     typedef typename Base::const_reverse_iterator ConstReverseIterator;
-    typedef FeatureType & Reference;
-    typedef const FeatureType & ConstReference;
+    typedef FeatureType& Reference;
+    typedef const FeatureType& ConstReference;
     //@}
 
     /**
@@ -164,79 +145,30 @@ public:
     //@{
 
     /// Default constructor
-    FeatureMap() :
-      Base(),
-      RangeManagerType(),
-      DocumentIdentifier(),
-      UniqueIdInterface(),
-      UniqueIdIndexer<FeatureMap>(),
-      protein_identifications_(),
-      unassigned_peptide_identifications_(),
-      data_processing_()
-    {}
+    FeatureMap();
 
     /// Copy constructor
-    FeatureMap(const FeatureMap & source) :
-      Base(source),
-      RangeManagerType(source),
-      DocumentIdentifier(source),
-      UniqueIdInterface(source),
-      UniqueIdIndexer<FeatureMap>(source),
-      protein_identifications_(source.protein_identifications_),
-      unassigned_peptide_identifications_(source.unassigned_peptide_identifications_),
-      data_processing_(source.data_processing_)
-    {}
+    FeatureMap(const FeatureMap& source);
 
     /// Destructor
-    virtual ~FeatureMap()
-    {}
+    virtual ~FeatureMap();
     //@}
 
     /// Assignment operator
-    FeatureMap & operator=(const FeatureMap & rhs)
-    {
-      if (&rhs == this) return *this;
-
-      Base::operator=(rhs);
-      RangeManagerType::operator=(rhs);
-      DocumentIdentifier::operator=(rhs);
-      UniqueIdInterface::operator=(rhs);
-      protein_identifications_ = rhs.protein_identifications_;
-      unassigned_peptide_identifications_ = rhs.unassigned_peptide_identifications_;
-      data_processing_ = rhs.data_processing_;
-
-      return *this;
-    }
+    FeatureMap& operator=(const FeatureMap& rhs);
 
     /// Equality operator
-    bool operator==(const FeatureMap & rhs) const
-    {
-      return std::operator==(*this, rhs) &&
-             RangeManagerType::operator==(rhs) &&
-             DocumentIdentifier::operator==(rhs) &&
-             UniqueIdInterface::operator==(rhs) &&
-             protein_identifications_ == rhs.protein_identifications_ &&
-             unassigned_peptide_identifications_ == rhs.unassigned_peptide_identifications_ &&
-             data_processing_ == rhs.data_processing_;
-    }
+    bool operator==(const FeatureMap& rhs) const;
 
     /// Equality operator
-    bool operator!=(const FeatureMap & rhs) const
-    {
-      return !(operator==(rhs));
-    }
+    bool operator!=(const FeatureMap& rhs) const;
 
     /**
       @brief Joins two feature maps.
 
       Features are merged into one container (see operator+= for details).
     */
-    FeatureMap operator+(const FeatureMap & rhs) const
-    {
-      FeatureMap tmp(*this);
-      tmp += rhs;
-      return tmp;
-    }
+    FeatureMap operator+(const FeatureMap& rhs) const;
 
     /**
       @brief Add one feature map to another.
@@ -250,42 +182,7 @@ public:
 
       @param rhs The feature to add to this one.
     */
-    FeatureMap & operator+=(const FeatureMap & rhs)
-    {
-      FeatureMap empty_map;
-      // reset these:
-      RangeManagerType::operator=(empty_map);
-
-      if (!this->getIdentifier().empty() || !rhs.getIdentifier().empty()) LOG_INFO << "DocumentIdentifiers are lost during merge of FeatureMaps\n";
-      DocumentIdentifier::operator=(empty_map);
-
-      UniqueIdInterface::operator=(empty_map);
-
-      // merge these:
-      protein_identifications_.insert(protein_identifications_.end(), rhs.protein_identifications_.begin(), rhs.protein_identifications_.end());
-      unassigned_peptide_identifications_.insert(unassigned_peptide_identifications_.end(), rhs.unassigned_peptide_identifications_.begin(), rhs.unassigned_peptide_identifications_.end());
-      data_processing_.insert(data_processing_.end(), rhs.data_processing_.begin(), rhs.data_processing_.end());
-
-      // append features:
-      this->insert(this->end(), rhs.begin(), rhs.end());
-
-      // todo: check for double entries
-      // features, unassignedpeptides, proteins...
-
-      // consistency
-      try
-      {
-        UniqueIdIndexer<FeatureMap>::updateUniqueIdToIndex();
-      }
-      catch (Exception::Postcondition /*&e*/) // assign new UID's for conflicting entries
-      {
-        Size replaced_uids =  UniqueIdIndexer<FeatureMap>::resolveUniqueIdConflicts();
-        LOG_INFO << "Replaced " << replaced_uids << " invalid uniqueID's\n";
-      }
-
-      return *this;
-    }
-
+    FeatureMap& operator+=(const FeatureMap& rhs);
     /**
       @name Sorting.
       These simplified sorting methods are supported in addition to
@@ -293,191 +190,63 @@ public:
     */
     //@{
     /// Sorts the peaks according to ascending intensity.
-    void sortByIntensity(bool reverse = false)
-    {
-      if (reverse)
-      {
-        std::sort(this->begin(), this->end(), reverseComparator(typename FeatureType::IntensityLess()));
-      }
-      else
-      {
-        std::sort(this->begin(), this->end(), typename FeatureType::IntensityLess());
-      }
-    }
+    void sortByIntensity(bool reverse = false);
 
     ///Sort features by position. Lexicographical comparison (first RT then m/z) is done.
-    void sortByPosition()
-    {
-      std::sort(this->begin(), this->end(), typename FeatureType::PositionLess());
-    }
+    void sortByPosition();
 
     ///Sort features by RT position.
-    void sortByRT()
-    {
-      std::sort(this->begin(), this->end(), typename FeatureType::RTLess());
-    }
+    void sortByRT();
 
     ///Sort features by m/z position.
-    void sortByMZ()
-    {
-      std::sort(this->begin(), this->end(), typename FeatureType::MZLess());
-    }
+    void sortByMZ();
 
     ///Sort features by ascending overall quality.
-    void sortByOverallQuality(bool reverse = false)
-    {
-      if (reverse)
-      {
-        std::sort(this->begin(), this->end(), reverseComparator(typename FeatureType::OverallQualityLess()));
-      }
-      else
-      {
-        std::sort(this->begin(), this->end(), typename FeatureType::OverallQualityLess());
-      }
-    }
+    void sortByOverallQuality(bool reverse = false);
 
     //@}
 
     // Docu in base class
-    void updateRanges()
-    {
-      this->clearRanges();
-      updateRanges_(this->begin(), this->end());
-
-      //enlarge the range by the convex hull points
-      for (Size i = 0; i < this->size(); ++i)
-      {
-        DBoundingBox<2> box = this->operator[](i).getConvexHull().getBoundingBox();
-        if (!box.isEmpty())
-        {
-          //update RT
-          if (box.minPosition()[Peak2D::RT] < this->pos_range_.minPosition()[Peak2D::RT])
-          {
-            this->pos_range_.setMinX(box.minPosition()[Peak2D::RT]);
-          }
-          if (box.maxPosition()[Peak2D::RT] > this->pos_range_.maxPosition()[Peak2D::RT])
-          {
-            this->pos_range_.setMaxX(box.maxPosition()[Peak2D::RT]);
-          }
-          //update m/z
-          if (box.minPosition()[Peak2D::MZ] < this->pos_range_.minPosition()[Peak2D::MZ])
-          {
-            this->pos_range_.setMinY(box.minPosition()[Peak2D::MZ]);
-          }
-          if (box.maxPosition()[Peak2D::MZ] > this->pos_range_.maxPosition()[Peak2D::MZ])
-          {
-            this->pos_range_.setMaxY(box.maxPosition()[Peak2D::MZ]);
-          }
-        }
-      }
-    }
+    void updateRanges();
 
     /// Swaps the feature content (plus its range information) of this map with the content of @p from
-    void swapFeaturesOnly(FeatureMap& from)
-    {
-      // TODO used by FeatureFinderAlgorithmPicked -- could it also use regular swap?
-      Base::swap(from);
+    void swapFeaturesOnly(FeatureMap& from);
 
-      // swap range information (otherwise its false in both maps)
-      FeatureMap tmp;
-      tmp.RangeManagerType::operator=(* this);
-      this->RangeManagerType::operator=(from);
-      from.RangeManagerType::operator=(tmp);
-    }
-
-    void swap(FeatureMap& from)
-    {
-      // swap features and ranges
-      swapFeaturesOnly(from);
-
-      // swap DocumentIdentifier
-      DocumentIdentifier::swap(from);
-
-      // swap unique id
-      UniqueIdInterface::swap(from);
-
-      // swap unique id index
-      UniqueIdIndexer<FeatureMap>::swap(from);
-
-      // swap the remaining members
-      protein_identifications_.swap(from.protein_identifications_);
-      unassigned_peptide_identifications_.swap(from.unassigned_peptide_identifications_);
-      data_processing_.swap(from.data_processing_);
-    }
+    void swap(FeatureMap& from);
 
     /// non-mutable access to the protein identifications
-    const std::vector<ProteinIdentification> & getProteinIdentifications() const
-    {
-      return protein_identifications_;
-    }
+    const std::vector<ProteinIdentification>& getProteinIdentifications() const;
 
     /// mutable access to the protein identifications
-    std::vector<ProteinIdentification> & getProteinIdentifications()
-    {
-      return protein_identifications_;
-    }
+    std::vector<ProteinIdentification>& getProteinIdentifications();
 
     /// sets the protein identifications
-    void setProteinIdentifications(const std::vector<ProteinIdentification> & protein_identifications)
-    {
-      protein_identifications_ = protein_identifications;
-    }
+    void setProteinIdentifications(const std::vector<ProteinIdentification>& protein_identifications);
 
     /// non-mutable access to the unassigned peptide identifications
-    const std::vector<PeptideIdentification> & getUnassignedPeptideIdentifications() const
-    {
-      return unassigned_peptide_identifications_;
-    }
+    const std::vector<PeptideIdentification>& getUnassignedPeptideIdentifications() const;
 
     /// mutable access to the unassigned peptide identifications
-    std::vector<PeptideIdentification> & getUnassignedPeptideIdentifications()
-    {
-      return unassigned_peptide_identifications_;
-    }
+    std::vector<PeptideIdentification>& getUnassignedPeptideIdentifications();
 
     /// sets the unassigned peptide identifications
-    void setUnassignedPeptideIdentifications(const std::vector<PeptideIdentification> & unassigned_peptide_identifications)
-    {
-      unassigned_peptide_identifications_ = unassigned_peptide_identifications;
-    }
+    void setUnassignedPeptideIdentifications(const std::vector<PeptideIdentification>& unassigned_peptide_identifications);
 
     /// returns a const reference to the description of the applied data processing
-    const std::vector<DataProcessing> & getDataProcessing() const
-    {
-      return data_processing_;
-    }
+    const std::vector<DataProcessing>& getDataProcessing() const;
 
     /// returns a mutable reference to the description of the applied data processing
-    std::vector<DataProcessing> & getDataProcessing()
-    {
-      return data_processing_;
-    }
+    std::vector<DataProcessing>& getDataProcessing();
 
     /// sets the description of the applied data processing
-    void setDataProcessing(const std::vector<DataProcessing> & processing_method)
-    {
-      data_processing_ = processing_method;
-    }
+    void setDataProcessing(const std::vector<DataProcessing>& processing_method);
 
     /**
       @brief Clears all data and meta data
 
       @param clear_meta_data If @em true, all meta data is cleared in addition to the data.
     */
-    void clear(bool clear_meta_data = true)
-    {
-      Base::clear();
-
-      if (clear_meta_data)
-      {
-        clearRanges();
-        this->DocumentIdentifier::operator=(DocumentIdentifier());             // no "clear" method
-        clearUniqueId();
-        protein_identifications_.clear();
-        unassigned_peptide_identifications_.clear();
-        data_processing_.clear();
-      }
-    }
+    void clear(bool clear_meta_data = true);
 
     /**
       @brief Applies a member function of Type to the container itself and all features (including subordinates).
@@ -491,7 +260,7 @@ public:
       @endcode
       See e.g. UniqueIdInterface for what else can be done this way.
     */
-		template <typename Type>
+    template <typename Type>
     Size applyMemberFunction(Size (Type::* member_function)())
     {
       Size assignments = 0;
@@ -504,7 +273,7 @@ public:
     }
 
     /// The "const" variant.
-		template <typename Type>
+    template <typename Type>
     Size applyMemberFunction(Size (Type::* member_function)() const) const
     {
       Size assignments = 0;
@@ -516,15 +285,7 @@ public:
       return assignments;
     }
 
-    AnnotationStatistics getAnnotationStatistics() const
-    {
-      AnnotationStatistics result;
-      for (ConstIterator iter = this->begin(); iter != this->end(); ++iter)
-      {
-        result += iter->getAnnotationState();
-      }
-      return result;
-    }
+    AnnotationStatistics getAnnotationStatistics() const;
 
 protected:
 
@@ -539,7 +300,7 @@ protected:
   };
 
   /// Print content of a feature map to a stream.
-  OPENMS_DLLAPI std::ostream & operator<<(std::ostream & os, const FeatureMap & map);
+  OPENMS_DLLAPI std::ostream& operator<<(std::ostream& os, const FeatureMap& map);
 
 } // namespace OpenMS
 

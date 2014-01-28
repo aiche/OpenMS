@@ -109,22 +109,22 @@ namespace OpenMS
 public:
 
     /// Constructor with flag for edit mode
-    MetaDataBrowser(bool editable = FALSE, QWidget * parent = 0, bool modal = FALSE);
+    MetaDataBrowser(bool editable = FALSE, QWidget* parent = 0, bool modal = FALSE);
 
     /// Adds a peak map
     template <class PeakType>
-    void add(MSExperiment<PeakType> & exp)
+    void add(MSExperiment<PeakType>& exp)
     {
-      add(static_cast<ExperimentalSettings &>(exp));
+      add(static_cast<ExperimentalSettings&>(exp));
       treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
     }
 
     /// Adds a peak spectrum
     template <class PeakType>
-    void add(MSSpectrum<PeakType> & spectrum)
+    void add(MSSpectrum<PeakType>& spectrum)
     {
       //spectrum settings
-      add(static_cast<SpectrumSettings &>(spectrum));
+      add(static_cast<SpectrumSettings&>(spectrum));
 
       //MetaInfoDescriptions
       for (Size i = 0; i < spectrum.getFloatDataArrays().size(); ++i)
@@ -140,39 +140,20 @@ public:
         add(spectrum.getStringDataArrays()[i]);
       }
 
-      add(static_cast<MetaInfoInterface &>(spectrum));
+      add(static_cast<MetaInfoInterface&>(spectrum));
 
       treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
     }
 
     /// Adds a feature map
-    void add(FeatureMap & map)
-    {
-      //identifier
-      add(static_cast<DocumentIdentifier &>(map));
-
-      //protein ids
-      for (Size i = 0; i < map.getProteinIdentifications().size(); ++i)
-      {
-        add(map.getProteinIdentifications()[i]);
-      }
-
-      //unassigned peptide ids
-      for (Size i = 0; i < map.getUnassignedPeptideIdentifications().size(); ++i)
-      {
-        add(map.getUnassignedPeptideIdentifications()[i]);
-      }
-
-      treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
-    }
-
+    void add(FeatureMap& map);
     /// Adds a feature
-    void add(Feature & feature);
+    void add(Feature& feature);
     /// Adds a consensus feature
-    void add(ConsensusFeature & feature);
+    void add(ConsensusFeature& feature);
 
     /// Adds a consensus map
-    void add(ConsensusMap & map);
+    void add(ConsensusMap& map);
 
     /**
         @brief A generic function to add data.
@@ -180,7 +161,7 @@ public:
         The meta data information of all classes that for which a visualize_ method exists can be visualized.
     */
     template <class MetaDataType>
-    void add(MetaDataType & meta_data_object)
+    void add(MetaDataType& meta_data_object)
     {
       visualize_(meta_data_object);
       treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
@@ -210,40 +191,40 @@ protected:
 
     ///@name Visualizer for the different classes
     //@{
-    void visualize_(ExperimentalSettings & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(SpectrumSettings & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(MetaInfoInterface & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Sample & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(HPLC & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Digestion & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Modification & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Tagging & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Gradient & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Software & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(ScanWindow & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(SourceFile & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(ContactPerson & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Instrument & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(IonSource & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(IonDetector & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(MassAnalyzer & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(DataProcessing & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(ProteinIdentification & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(ProteinHit & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(PeptideHit & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Acquisition & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(AcquisitionInfo & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(MetaInfoDescription & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Precursor & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(Product & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(InstrumentSettings & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(PeptideIdentification & meta, QTreeWidgetItem * parent = 0);
-    void visualize_(DocumentIdentifier & meta, QTreeWidgetItem * parent = 0);
+    void visualize_(ExperimentalSettings& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(SpectrumSettings& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(MetaInfoInterface& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Sample& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(HPLC& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Digestion& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Modification& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Tagging& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Gradient& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Software& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(ScanWindow& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(SourceFile& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(ContactPerson& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Instrument& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(IonSource& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(IonDetector& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(MassAnalyzer& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(DataProcessing& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(ProteinIdentification& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(ProteinHit& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(PeptideHit& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Acquisition& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(AcquisitionInfo& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(MetaInfoDescription& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Precursor& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(Product& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(InstrumentSettings& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(PeptideIdentification& meta, QTreeWidgetItem* parent = 0);
+    void visualize_(DocumentIdentifier& meta, QTreeWidgetItem* parent = 0);
     //@}
 
     /// Visualizes all elements of a container
     template <typename ContainerType>
-    void visualizeAll_(ContainerType & container, QTreeWidgetItem * parent)
+    void visualizeAll_(ContainerType& container, QTreeWidgetItem* parent)
     {
       for (typename ContainerType::iterator it = container.begin(); it != container.end(); ++it)
       {
@@ -252,7 +233,7 @@ protected:
     }
 
     /// Connects the Signals of all visualiser classes with Slot setStatus()
-    void connectVisualizer_(BaseVisualizerGUI * ptr);
+    void connectVisualizer_(BaseVisualizerGUI* ptr);
 
     /// Filters hits according to a score @a threshold. Takes the score orientation into account
     void filterHits_(double threshold, bool higher_better, int tree_item_id);
@@ -266,18 +247,18 @@ protected:
     bool editable_;
 
     /// A widgetstack that keeps track of all widgets.
-    QStackedWidget * ws_;
+    QStackedWidget* ws_;
     /// Save button
-    QPushButton * saveallbutton_;
+    QPushButton* saveallbutton_;
     /// Close Button
-    QPushButton * closebutton_;
+    QPushButton* closebutton_;
     /// Cancel Button
-    QPushButton * cancelbutton_;
+    QPushButton* cancelbutton_;
     /// Undo Button
-    QPushButton * undobutton_;
+    QPushButton* undobutton_;
 
     /// The tree.
-    QTreeWidget * treeview_;
+    QTreeWidget* treeview_;
   };
 }
 #endif
