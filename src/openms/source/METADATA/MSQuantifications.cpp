@@ -46,10 +46,10 @@ namespace OpenMS
   MSQuantifications::MSQuantifications() :
     ExperimentalSettings()
   {
-  }  
-  
+  }
+
   /// Detailed Constructor
-  MSQuantifications::MSQuantifications(FeatureMap<> fm, ExperimentalSettings& es, std::vector<DataProcessing>& dps, std::vector<std::vector<std::pair<String, double> > > label) :
+  MSQuantifications::MSQuantifications(FeatureMap fm, ExperimentalSettings& es, std::vector<DataProcessing>& dps, std::vector<std::vector<std::pair<String, double> > > label) :
     ExperimentalSettings()
   {
     MSQuantifications::QUANT_TYPES quant_type = MSQuantifications::LABELFREE;
@@ -58,9 +58,9 @@ namespace OpenMS
     //~ AssayList,InputFiles,SoftwareList
     //~ aus exp.
     this->registerExperiment(es,dps,label);
-    
+
     this->setDataProcessingList(fm.getDataProcessing()); //TODO add dp from experiment (i.e. mzml) ?
-    feature_maps_  = std::vector<FeatureMap<> > (1,fm);
+    feature_maps_  = std::vector<FeatureMap> (1,fm);
   }
 
   /// Copy constructor
@@ -108,7 +108,7 @@ namespace OpenMS
     std::vector<DataProcessing> list = data_processings_;
 
     //This is one way street for dataprocessing - it probably wont get mapped back after writeout and readin
-    for (std::vector<FeatureMap<> >::const_iterator fit = feature_maps_.begin(); fit != feature_maps_.end(); ++fit)
+    for (std::vector<FeatureMap>::const_iterator fit = feature_maps_.begin(); fit != feature_maps_.end(); ++fit)
     {
       list.insert(list.end(), fit->getDataProcessing().begin(), fit->getDataProcessing().end());
     }
@@ -136,7 +136,7 @@ namespace OpenMS
   //~ return ratio_calculations_;
   //~ }
 
-  const std::vector<FeatureMap<> > & MSQuantifications::getFeatureMaps() const
+  const std::vector<FeatureMap> & MSQuantifications::getFeatureMaps() const
   {
     return feature_maps_;
   }
@@ -197,7 +197,7 @@ namespace OpenMS
 
     data_processings_ = exp[0].getDataProcessing();             //TODO check if empty, overwrite MSExperiments inherited front method to work. [0] operator is ugly!
   }
-  
+
   void MSQuantifications::registerExperiment(ExperimentalSettings & es, std::vector<DataProcessing>& dps,  std::vector<std::vector<std::pair<String, double> > > label)
   {
     for (std::vector<std::vector<std::pair<String, double> > >::const_iterator lit = label.begin(); lit != label.end(); ++lit)

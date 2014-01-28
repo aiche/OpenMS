@@ -96,7 +96,7 @@ namespace OpenMS
     return size_backup;
   }
 
-  void FeatureXMLFile::load(const String & filename, FeatureMap<> & feature_map)
+  void FeatureXMLFile::load(const String & filename, FeatureMap & feature_map)
   {
     //Filename for error messages in XMLHandler
     file_ = filename;
@@ -113,7 +113,7 @@ namespace OpenMS
     // !!! Hack: set feature FWHM from meta info entries as
     // long as featureXML doesn't support a width entry.
     // See also hack in BaseFeature::setWidth().
-    for (FeatureMap<>::Iterator it = map_->begin(); it != map_->end(); ++it)
+    for (FeatureMap::Iterator it = map_->begin(); it != map_->end(); ++it)
     {
       if (it->metaValueExists("FWHM"))
       {
@@ -129,7 +129,7 @@ namespace OpenMS
     return;
   }
 
-  void FeatureXMLFile::store(const String & filename, const FeatureMap<> & feature_map)
+  void FeatureXMLFile::store(const String & filename, const FeatureMap & feature_map)
   {
     //open stream
     ofstream os(filename.c_str());

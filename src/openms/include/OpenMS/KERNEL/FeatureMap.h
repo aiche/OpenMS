@@ -107,19 +107,18 @@ namespace OpenMS
 
     @ingroup Kernel
   */
-  template <typename FeatureT = Feature>
   class FeatureMap :
-    private std::vector<FeatureT>,
+    private std::vector<Feature>,
     public RangeManager<2>,
     public DocumentIdentifier,
     public UniqueIdInterface,
-    public UniqueIdIndexer<FeatureMap<FeatureT> >
+    public UniqueIdIndexer<FeatureMap>
   {
 public:
     /**
       @name Type definitions
     */
-    typedef std::vector<FeatureT> privvec;
+    typedef std::vector<Feature> privvec;
 
     // types
     using typename privvec::value_type;
@@ -148,7 +147,7 @@ public:
     using privvec::erase;     // source/VISUAL/Spectrum2DCanvas.cpp 2871, FeatureMap_test 599
 
     //@{
-    typedef FeatureT FeatureType;
+    typedef Feature FeatureType;
     typedef RangeManager<2> RangeManagerType;
     typedef std::vector<FeatureType> Base;
     typedef typename Base::iterator Iterator;
@@ -170,7 +169,7 @@ public:
       RangeManagerType(),
       DocumentIdentifier(),
       UniqueIdInterface(),
-      UniqueIdIndexer<FeatureMap<FeatureT> >(),
+      UniqueIdIndexer<FeatureMap>(),
       protein_identifications_(),
       unassigned_peptide_identifications_(),
       data_processing_()
@@ -182,7 +181,7 @@ public:
       RangeManagerType(source),
       DocumentIdentifier(source),
       UniqueIdInterface(source),
-      UniqueIdIndexer<FeatureMap<FeatureT> >(source),
+      UniqueIdIndexer<FeatureMap>(source),
       protein_identifications_(source.protein_identifications_),
       unassigned_peptide_identifications_(source.unassigned_peptide_identifications_),
       data_processing_(source.data_processing_)
@@ -276,11 +275,11 @@ public:
       // consistency
       try
       {
-        UniqueIdIndexer<FeatureMap<FeatureT> >::updateUniqueIdToIndex();
+        UniqueIdIndexer<FeatureMap>::updateUniqueIdToIndex();
       }
       catch (Exception::Postcondition /*&e*/) // assign new UID's for conflicting entries
       {
-        Size replaced_uids =  UniqueIdIndexer<FeatureMap<FeatureT> >::resolveUniqueIdConflicts();
+        Size replaced_uids =  UniqueIdIndexer<FeatureMap>::resolveUniqueIdConflicts();
         LOG_INFO << "Replaced " << replaced_uids << " invalid uniqueID's\n";
       }
 
@@ -398,7 +397,7 @@ public:
       UniqueIdInterface::swap(from);
 
       // swap unique id index
-      UniqueIdIndexer<FeatureMap<FeatureT> >::swap(from);
+      UniqueIdIndexer<FeatureMap>::swap(from);
 
       // swap the remaining members
       protein_identifications_.swap(from.protein_identifications_);
@@ -492,7 +491,7 @@ public:
       @endcode
       See e.g. UniqueIdInterface for what else can be done this way.
     */
-    template <typename Type>
+		template <typename Type>
     Size applyMemberFunction(Size (Type::* member_function)())
     {
       Size assignments = 0;
@@ -505,7 +504,7 @@ public:
     }
 
     /// The "const" variant.
-    template <typename Type>
+		template <typename Type>
     Size applyMemberFunction(Size (Type::* member_function)() const) const
     {
       Size assignments = 0;
@@ -540,12 +539,11 @@ protected:
   };
 
   /// Print content of a feature map to a stream.
-  template <typename FeatureType>
-  std::ostream & operator<<(std::ostream & os, const FeatureMap<FeatureType> & map)
+  std::ostream & operator<<(std::ostream & os, const FeatureMap & map)
   {
     os << "# -- DFEATUREMAP BEGIN --" << "\n";
     os << "# POS \tINTENS\tOVALLQ\tCHARGE\tUniqueID" << "\n";
-    for (typename FeatureMap<FeatureType>::const_iterator iter = map.begin(); iter != map.end(); ++iter)
+    for (FeatureMap::const_iterator iter = map.begin(); iter != map.end(); ++iter)
     {
       os << iter->getPosition() << '\t'
       << iter->getIntensity() << '\t'
