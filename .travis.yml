@@ -4,7 +4,7 @@ compiler:
   - clang
 cache: apt
 before_script:
-   ./tools/lnx-cibuild.before.sh
+   ./tools/travis/lnx-cibuild.before.sh
 script:
-  ./tools/lnx-cibuild.sh
+  ./tools/travis/lnx-cibuild.sh
 
