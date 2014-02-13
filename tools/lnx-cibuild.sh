@@ -4,6 +4,11 @@
 export SOURCE_DIRECTORY=`pwd`
 mkdir _build
 
+# add search engines to PATH
+export PATH=${SOURCE_DIRECTORY}/MyriMatch:$PATH
+export PATH=${SOURCE_DIRECTORY}/OMSSA:$PATH
+export PATH=${SOURCE_DIRECTORY}/XTandem:$PATH
+
 # define the build name
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   export BUILD_NAME=$TRAVIS_PULL_REQUEST

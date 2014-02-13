@@ -25,4 +25,8 @@ sudo apt-get install -qq  boost1.54\
                           libsvm3 \
                           glpk \
                           doxygen \
-													graphviz
+                          graphviz \
+                          subversion
+
+# get the search engine executables 
+svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
