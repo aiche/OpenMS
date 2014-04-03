@@ -60,13 +60,11 @@ sudo apt-get install -qq \
                      --no-install-recommends doxygen \
                      graphviz
 
-# install pyopenms requirements
 if [ $PYOPENMS == "On" ]; then
-  sudo apt-get install -qq python-numpy python-scipy python-matplotlib python-nose python-pip cython
+  # install pyopenms requirements
+  sudo apt-get install -qq python-numpy python-nose python-pip cython
   sudo pip install autowrap
-  sudo pip install breathe
-  sudo pip install pyyaml
+else
+  # get the search engine executables
+  svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
 fi
-
-# get the search engine executables
-svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines

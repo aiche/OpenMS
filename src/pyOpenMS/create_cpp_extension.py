@@ -158,9 +158,9 @@ elif sys.platform == "darwin":
 
 else:
     print("\n")
-    print("platform ", sys.platform, "not supported yet")
+    print("Error: platform ", sys.platform, "not supported yet", file=sys.stderr)
     print("\n")
-    exit()
+    exit(1)
 
 print("copied files needed for distribution to pyopenms/")
 print("\n")
