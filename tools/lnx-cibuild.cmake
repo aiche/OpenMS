@@ -1,6 +1,6 @@
 # define build name&co for easier identification on cdassh
 set(CTEST_BUILD_NAME "travis-ci-${TRAVIS_BUILD_ID}-$ENV{TRAVIS_REPO_SLUG}-$ENV{TRAVIS_BRANCH}-$ENV{BUILD_NAME}-$ENV{CXX}")
-if($ENV{PYOPENMS})
+if($ENV{PYOPENMS} EQUAL "On")
   set(CTEST_BUILD_NAME "${CTEST_BUILD_NAME}-pyopenms")
 endif()
 set(CTEST_SITE "travis-ci-build-server")
@@ -46,7 +46,7 @@ set(CTEST_CMAKE_GENERATOR "Unix Makefiles")
 # travis-ci handles this for us
 ctest_start (Continuous)
 ctest_configure (BUILD "${CTEST_BINARY_DIRECTORY}" RETURN_VALUE _configure_ret)
-if($ENV{PYOPENMS})
+if($ENV{PYOPENMS} EQUAL "On")
   ctest_build (BUILD "${CTEST_BINARY_DIRECTORY}" NUMBER_ERRORS _build_errors)
   ctest_test (BUILD "${CTEST_BINARY_DIRECTORY}" PARALLEL_LEVEL 3)
 else()
