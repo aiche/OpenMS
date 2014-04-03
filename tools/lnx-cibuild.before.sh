@@ -61,7 +61,7 @@ sudo apt-get install -qq \
                      graphviz
 
 # install pyopenms requirements
-if [ $PYOPENMS -eq "On" ];
+if [ $PYOPENMS -eq "On" ]; then
   sudo apt-get install -qq python-numpy python-scipy python-matplotlib python-nose python-pip cython
   sudo pip install autowrap
   sudo pip install breathe
