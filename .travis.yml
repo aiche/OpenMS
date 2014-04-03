@@ -7,4 +7,10 @@ before_script:
    ./tools/lnx-cibuild.before.sh
 script:
   ./tools/lnx-cibuild.sh
-
+env:
+  - PYOPENMS=On
+  - PYOPENMS=Off
+matrix:
+  exclude:
+    - env: PYOPENMS=On
+      compiler: gcc

@@ -11,7 +11,8 @@ set(INITIAL_CACHE
 "CMAKE_FIND_ROOT_PATH=$ENV{SOURCE_DIRECTORY}/contrib\;/usr
 BOOST_USE_STATIC=Off
 CMAKE_BUILD_TYPE=Release
-ENABLE_TUTORIALS=Off"
+ENABLE_TUTORIALS=Off
+PYOPENMS=$ENV{PYOPENMS}"
 )
 
 # create cache
@@ -40,10 +41,16 @@ set(CTEST_CMAKE_GENERATOR "Unix Makefiles")
 
 # run the classical ctest suite without update
 # travis-ci handles this for us
-ctest_start     (Continuous)
+ctest_start (Continuous)
 ctest_configure (BUILD "${CTEST_BINARY_DIRECTORY}" RETURN_VALUE _configure_ret)
-ctest_build     (BUILD "${CTEST_BINARY_DIRECTORY}" NUMBER_ERRORS _build_errors)
-ctest_test      (BUILD "${CTEST_BINARY_DIRECTORY}" PARALLEL_LEVEL 3)
+if($ENV{PYOPENMS})
+  ctest_build (BUILD "${CTEST_BINARY_DIRECTORY}" NUMBER_ERRORS _build_errors)
+  ctest_test (BUILD "${CTEST_BINARY_DIRECTORY}" PARALLEL_LEVEL 3)
+else()
+  ctest_build (BUILD "${CTEST_BINARY_DIRECTORY}" NUMBER_ERRORS _build_errors)
+  ctest_test (BUILD "${CTEST_BINARY_DIRECTORY}" PARALLEL_LEVEL 3 INCLUDE "pyopenms")
+endif()
+
 ctest_submit()
 
 # indicate errors
