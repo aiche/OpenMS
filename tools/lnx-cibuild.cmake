@@ -1,5 +1,5 @@
 # define build name&co for easier identification on cdassh
-set(CTEST_BUILD_NAME "travis-ci-${TRAVIS_BUILD_ID}-$ENV{TRAVIS_REPO_SLUG}-$ENV{TRAVIS_BRANCH}-$ENV{BUILD_NAME}-$ENV{CXX}")
+set(CTEST_BUILD_NAME "travis-ci-$ENV{TRAVIS_REPO_SLUG}-$ENV{TRAVIS_BRANCH}-$ENV{BUILD_NAME}-$ENV{CXX}")
 if("$ENV{PYOPENMS}" STREQUAL "On")
   set(CTEST_BUILD_NAME "${CTEST_BUILD_NAME}-pyopenms")
 endif()
