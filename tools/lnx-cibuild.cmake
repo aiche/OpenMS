@@ -36,6 +36,11 @@ set (CTEST_CUSTOM_WARNING_EXCEPTION
     ".*qsharedpointer_impl.h:595:43.*"
     )
 
+set (CTEST_CUSTOM_ERROR_EXCEPTION
+    # Suppress QcMLFile errorString
+    "QcMLFile:.*errorString.*"
+)
+
 # try to speed up the builds so we don't get killed
 set(CTEST_BUILD_FLAGS -j4)
 

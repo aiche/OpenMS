@@ -13,4 +13,4 @@ env:
 matrix:
   exclude:
     - env: PYOPENMS=On
-      compiler: clang
+      compiler: gcc
