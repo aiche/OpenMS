@@ -64,6 +64,7 @@ if [ $PYOPENMS == "On" ]; then
   # install pyopenms requirements
   sudo apt-get install -qq python-numpy python-nose python-pip cython
   sudo pip install autowrap
+  sudo rm -r /usr/local/lib/python2.7/dist-packages/autowrap/data_files/boost
 else
   # get the search engine executables
   svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
