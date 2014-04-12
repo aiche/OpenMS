@@ -282,7 +282,7 @@ namespace OpenMS
 
   //@}
 
-  void FeatureDeconvolution::compute(const FeatureMapType & fm_in, FeatureMapType & fm_out, ConsensusMap & cons_map, ConsensusMap & cons_map_p)
+  void FeatureDeconvolution::compute(const FeatureMap & fm_in, FeatureMap & fm_out, ConsensusMap & cons_map, ConsensusMap & cons_map_p)
   {
 
     ConsensusMap cons_map_p_neg;     // tmp
@@ -306,7 +306,7 @@ namespace OpenMS
     fm_out = fm_in;
     fm_out.sortByPosition();
     fm_out.applyMemberFunction(&UniqueIdInterface::ensureUniqueId);
-    FeatureMapType fm_out_untouched = fm_out;
+    FeatureMap fm_out_untouched = fm_out;
 
 
     // search for most & least probable adduct to fix p threshold
@@ -964,7 +964,7 @@ namespace OpenMS
       if (clique_register.count(i) > 0)
         continue;
 
-      FeatureMapType::FeatureType f_single = fm_out_untouched[i];
+      Feature f_single = fm_out_untouched[i];
       f_single.setMetaValue("is_single_feature", 1);
       f_single.setMetaValue("charge", f_single.getCharge());
       fm_out[i] = f_single;       // overwrite whatever DC has done to this feature!
@@ -1146,7 +1146,7 @@ namespace OpenMS
     return;
   }
 
-  inline bool FeatureDeconvolution::intensityFilterPassed_(const Int q1, const Int q2, const Compomer & cmp, const FeatureType & f1, const FeatureType & f2)
+  inline bool FeatureDeconvolution::intensityFilterPassed_(const Int q1, const Int q2, const Compomer & cmp, const Feature & f1, const Feature & f2)
   {
     if (!enable_intensity_filter_)
       return true;

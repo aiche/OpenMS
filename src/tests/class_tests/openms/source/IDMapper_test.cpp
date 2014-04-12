@@ -173,7 +173,7 @@ END_SECTION
 
 
 
-START_SECTION((template < typename FeatureType > void annotate(FeatureMap< FeatureType > &map, const std::vector< PeptideIdentification > &ids, const std::vector< ProteinIdentification > &protein_ids, bool use_centroid_rt=false, bool use_centroid_mz=false)))
+START_SECTION((void annotate(FeatureMap &map, const std::vector< PeptideIdentification > &ids, const std::vector< ProteinIdentification > &protein_ids, bool use_centroid_rt=false, bool use_centroid_mz=false)))
 {
   //load id data
   vector<PeptideIdentification> identifications;
@@ -183,7 +183,7 @@ START_SECTION((template < typename FeatureType > void annotate(FeatureMap< Featu
 
   //--------------------------------------------------------------------------------------
   //TEST MAPPING TO CONVEX HULLS
-  FeatureMap<> fm;
+  FeatureMap fm;
   FeatureXMLFile().load(OPENMS_GET_TEST_DATA_PATH("IDMapper_2.featureXML"), fm);
 
   IDMapper mapper;
@@ -227,7 +227,7 @@ START_SECTION((template < typename FeatureType > void annotate(FeatureMap< Featu
 
   //--------------------------------------------------------------------------------------
   //TEST MAPPING TO CENTROIDS
-  FeatureMap<> fm2;
+  FeatureMap fm2;
   FeatureXMLFile().load(OPENMS_GET_TEST_DATA_PATH("IDMapper_2.featureXML"), fm2);
   p.setValue("rt_tolerance", 4.0);
   p.setValue("mz_tolerance", 1.5);
@@ -297,7 +297,7 @@ mapper.annotate(fm2,identifications,protein_identifications, true, true);
   // ******* PPM test *******
   IdXMLFile().load(OPENMS_GET_TEST_DATA_PATH("IDMapper_4.idXML"), protein_identifications, identifications);
 
-  FeatureMap<> fm_ppm;
+  FeatureMap fm_ppm;
   FeatureXMLFile().load(OPENMS_GET_TEST_DATA_PATH("IDMapper_4.featureXML"), fm_ppm);
   p.setValue("rt_tolerance", 4.0);
   p.setValue("mz_tolerance", 3.0);

@@ -462,17 +462,17 @@ int main(int argc, char ** argv)
   // More complicated cases
   //////////////////////////////////
 
-  DOCME2(FeatureFinderAlgorithmIsotopeWavelet, (FeatureFinderAlgorithmIsotopeWavelet<Peak1D, Feature>()))
-  DOCME2(FeatureFinderAlgorithmPicked, (FeatureFinderAlgorithmPicked<Peak1D, Feature>()));
+  DOCME2(FeatureFinderAlgorithmIsotopeWavelet, (FeatureFinderAlgorithmIsotopeWavelet<Peak1D>()))
+  DOCME2(FeatureFinderAlgorithmPicked, (FeatureFinderAlgorithmPicked<Peak1D>()));
   DOCME2(FeatureFinderAlgorithmSimple, (FeatureFinderAlgorithmSimple<Peak1D, Feature>()));
   DOCME2(FeatureFinderAlgorithmSimplest, (FeatureFinderAlgorithmSimplest<Peak1D, Feature>()));
-  DOCME2(FeatureFinderAlgorithmMRM, (FeatureFinderAlgorithmMRM<Peak1D, Feature>()))
-  DOCME2(ModelFitter, (ModelFitter<Peak1D, Feature>(0, 0, 0)));
+  DOCME2(FeatureFinderAlgorithmMRM, (FeatureFinderAlgorithmMRM<Peak1D>()))
+  DOCME2(ModelFitter, (ModelFitter<Peak1D>(0, 0, 0)));
   DOCME2(ProductModel, ProductModel<2>());
   DOCME2(SignalToNoiseEstimatorMeanIterative, SignalToNoiseEstimatorMeanIterative<>());
   DOCME2(SignalToNoiseEstimatorMedian, SignalToNoiseEstimatorMedian<>());
-  DOCME2(SimpleExtender, (SimpleExtender<Peak1D, Feature>(0, 0, 0)));
-  DOCME2(SimpleSeeder, (SimpleSeeder<Peak1D, Feature>(0, 0, 0)));
+  DOCME2(SimpleExtender, (SimpleExtender<Peak1D>(0, 0, 0)));
+  DOCME2(SimpleSeeder, (SimpleSeeder<Peak1D>(0, 0, 0)));
   DOCME2(Spectrum1DCanvas, Spectrum1DCanvas(Param(), 0));
   DOCME2(Spectrum2DCanvas, Spectrum2DCanvas(Param(), 0));
   DOCME2(Spectrum3DCanvas, Spectrum3DCanvas(Param(), 0));

@@ -123,7 +123,7 @@ public:
     /// Peak type
     typedef SpectrumType::PeakType PeakType;
     /// Feature type
-    typedef FeatureMapType::FeatureType FeatureType;
+    typedef Feature FeatureType;
 
     ///Type of the Points
     typedef DPosition<2> PointType;

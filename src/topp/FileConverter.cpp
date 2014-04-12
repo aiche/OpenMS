@@ -135,7 +135,7 @@ protected:
     String formats("mzData,mzXML,mzML,dta,dta2d,mgf,featureXML,consensusXML,ms2,fid,tsv,peplist,kroenik,edta");
     setValidFormats_("in", ListUtils::create<String>(formats));
     setValidStrings_("in_type", ListUtils::create<String>(formats));
-    
+
     registerStringOption_("UID_postprocessing", "<method>", "ensure", "unique id post-processing for output data.\n none keeps current ids even if invalid.\n ensure keeps current ids but reassigns invalid ones.\n reassign assigns new unique ids.", false);
     String method("none,ensure,reassign");
     setValidStrings_("UID_postprocessing", ListUtils::create<String>(method));
@@ -202,9 +202,7 @@ protected:
 
     typedef MSExperimentType::SpectrumType SpectrumType;
 
-    typedef FeatureMap FeatureMapType;
-
-    FeatureMapType fm;
+    FeatureMap fm;
     ConsensusMap cm;
 
     writeDebug_(String("Loading input file"), 1);
@@ -342,8 +340,7 @@ protected:
         writeLog_("Warning: Converting peaks to features will lead to incomplete features!");
         fm.clear();
         fm.reserve(exp.getSize());
-        typedef FeatureMapType::FeatureType FeatureType;
-        FeatureType feature;
+        Feature feature;
         feature.setQuality(0, 1); // override default
         feature.setQuality(1, 1); // override default
         feature.setOverallQuality(1); // override default

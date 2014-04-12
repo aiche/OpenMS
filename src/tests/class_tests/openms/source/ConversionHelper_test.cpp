@@ -1,32 +1,32 @@
 // --------------------------------------------------------------------------
-//                   OpenMS -- Open-Source Mass Spectrometry               
+//                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
 // ETH Zurich, and Freie Universitaet Berlin 2002-2013.
-// 
+//
 // This software is released under a three-clause BSD license:
 //  * Redistributions of source code must retain the above copyright
 //    notice, this list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright
 //    notice, this list of conditions and the following disclaimer in the
 //    documentation and/or other materials provided with the distribution.
-//  * Neither the name of any author or any participating institution 
-//    may be used to endorse or promote products derived from this software 
+//  * Neither the name of any author or any participating institution
+//    may be used to endorse or promote products derived from this software
 //    without specific prior written permission.
-// For a full list of authors, refer to the file AUTHORS. 
+// For a full list of authors, refer to the file AUTHORS.
 // --------------------------------------------------------------------------
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING 
-// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
-// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING
+// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
+//
 // --------------------------------------------------------------------------
 // $Maintainer: Erhan Kenar $
 // $Authors: $
@@ -48,10 +48,9 @@ START_TEST(ConsensusMap, "$Id$")
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 
-START_SECTION((template < typename FeatureT > static void convert(UInt64 const input_map_index, FeatureMap< FeatureT > const &input_map, ConsensusMap &output_map, Size n=-1)))
+START_SECTION((template < typename FeatureT > static void convert(UInt64 const input_map_index, FeatureMap const &input_map, ConsensusMap &output_map, Size n=-1)))
 {
-
-  FeatureMap<> fm;
+  FeatureMap fm;
   Feature f;
   for ( UInt i = 0; i < 3; ++i )
   {
@@ -74,11 +73,10 @@ START_SECTION((template < typename FeatureT > static void convert(UInt64 const i
     TEST_REAL_SIMILAR(cm[i].begin()->getMZ(),i+100.35);
   }
 
-cm.clear();
-MapConversion::convert(33,fm,cm,2);
-TEST_EQUAL(cm.size(),2);
-TEST_EQUAL(cm.getFileDescriptions()[33].size,3);
-
+  cm.clear();
+  MapConversion::convert(33,fm,cm,2);
+  TEST_EQUAL(cm.size(),2);
+  TEST_EQUAL(cm.getFileDescriptions()[33].size,3);
 }
 END_SECTION
 
@@ -127,9 +125,9 @@ END_SECTION
 ConsensusMap cm;
 MapConversion::convert(33,mse,cm,8);
 
-START_SECTION((template < typename FeatureT > static void convert(ConsensusMap const &input_map, const bool keep_uids, FeatureMap< FeatureT > &output_map)))
+START_SECTION((static void convert(ConsensusMap const &input_map, const bool keep_uids, FeatureMap &output_map)))
 {
-    FeatureMap<> out_fm;
+    FeatureMap out_fm;
     MapConversion::convert(cm, true, out_fm);
 
     TEST_EQUAL(cm.getUniqueId(), out_fm.getUniqueId());
@@ -139,7 +137,7 @@ START_SECTION((template < typename FeatureT > static void convert(ConsensusMap c
 
     for (Size i = 0; i < cm.size(); ++i)
     {
-        TEST_EQUAL(cm[i], out_fm[i]);
+      TEST_EQUAL(cm[i], out_fm[i]);
     }
 
     out_fm.clear();
@@ -148,11 +146,11 @@ START_SECTION((template < typename FeatureT > static void convert(ConsensusMap c
 
     for (Size i = 0; i < cm.size(); ++i)
     {
-        TEST_REAL_SIMILAR(cm[i].getRT(), out_fm[i].getRT());
-        TEST_REAL_SIMILAR(cm[i].getMZ(), out_fm[i].getMZ());
-        TEST_REAL_SIMILAR(cm[i].getIntensity(), out_fm[i].getIntensity());
+      TEST_REAL_SIMILAR(cm[i].getRT(), out_fm[i].getRT());
+      TEST_REAL_SIMILAR(cm[i].getMZ(), out_fm[i].getMZ());
+      TEST_REAL_SIMILAR(cm[i].getIntensity(), out_fm[i].getIntensity());
 
-        TEST_NOT_EQUAL(cm[i].getUniqueId(), out_fm[i].getUniqueId());
+      TEST_NOT_EQUAL(cm[i].getUniqueId(), out_fm[i].getUniqueId());
     }
 }
 END_SECTION

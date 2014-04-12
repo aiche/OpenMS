@@ -69,7 +69,7 @@ START_SECTION((template <class PeakType> void run(const String &algorithm_name, 
 
 	//empty map works -> nothing to do
 	MSExperiment<Peak1D> map;
-	ff.run("none", map, features, Param(), FeatureMap<Feature>());
+	ff.run("none", map, features, Param(), FeatureMap());
 
 	//no updateRanges -> exception
 	map.resize(2);

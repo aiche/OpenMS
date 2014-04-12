@@ -183,38 +183,38 @@ namespace OpenMS
   {
     if (reverse)
     {
-      std::sort(this->begin(), this->end(), reverseComparator(typename FeatureType::IntensityLess()));
+      std::sort(this->begin(), this->end(), reverseComparator(Feature::IntensityLess()));
     }
     else
     {
-      std::sort(this->begin(), this->end(), typename FeatureType::IntensityLess());
+      std::sort(this->begin(), this->end(), Feature::IntensityLess());
     }
   }
 
   void FeatureMap::sortByPosition()
   {
-    std::sort(this->begin(), this->end(), typename FeatureType::PositionLess());
+    std::sort(this->begin(), this->end(), Feature::PositionLess());
   }
 
   void FeatureMap::sortByRT()
   {
-    std::sort(this->begin(), this->end(), typename FeatureType::RTLess());
+    std::sort(this->begin(), this->end(), Feature::RTLess());
   }
 
   void FeatureMap::sortByMZ()
   {
-    std::sort(this->begin(), this->end(), typename FeatureType::MZLess());
+    std::sort(this->begin(), this->end(), Feature::MZLess());
   }
 
   void FeatureMap::sortByOverallQuality(bool reverse)
   {
     if (reverse)
     {
-      std::sort(this->begin(), this->end(), reverseComparator(typename FeatureType::OverallQualityLess()));
+      std::sort(this->begin(), this->end(), reverseComparator(Feature::OverallQualityLess()));
     }
     else
     {
-      std::sort(this->begin(), this->end(), typename FeatureType::OverallQualityLess());
+      std::sort(this->begin(), this->end(), Feature::OverallQualityLess());
     }
   }
 

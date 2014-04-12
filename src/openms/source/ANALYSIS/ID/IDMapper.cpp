@@ -337,7 +337,7 @@ namespace OpenMS
     return use_avg_mass;
   }
 
-  void IDMapper::annotate(FeatureMap & map, const std::vector<PeptideIdentification> & ids, const std::vector<ProteinIdentification> & protein_ids, bool use_centroid_rt = false, bool use_centroid_mz = false)
+  void IDMapper::annotate(FeatureMap & map, const std::vector<PeptideIdentification> & ids, const std::vector<ProteinIdentification> & protein_ids, bool use_centroid_rt, bool use_centroid_mz)
   {
     // std::cout << "Starting annotation..." << std::endl;
     checkHits_(ids);

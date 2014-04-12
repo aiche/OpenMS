@@ -38,6 +38,9 @@
 #include <OpenMS/KERNEL/Feature.h>
 #include <OpenMS/METADATA/DocumentIdentifier.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/METADATA/DataProcessing.h>
 #include <OpenMS/KERNEL/RangeManager.h>
 #include <OpenMS/KERNEL/ComparatorUtils.h>
@@ -102,14 +105,14 @@ public:
     typedef std::vector<Feature> privvec;
 
     // types
-    using typename privvec::value_type;
-    using typename privvec::iterator;
-    using typename privvec::const_iterator;
-    using typename privvec::size_type;
-    using typename privvec::pointer; // ConstRefVector
-    using typename privvec::reference; // ConstRefVector
-    using typename privvec::const_reference; // ConstRefVector
-    using typename privvec::difference_type; // ConstRefVector
+    using privvec::value_type;
+    using privvec::iterator;
+    using privvec::const_iterator;
+    using privvec::size_type;
+    using privvec::pointer; // ConstRefVector
+    using privvec::reference; // ConstRefVector
+    using privvec::const_reference; // ConstRefVector
+    using privvec::difference_type; // ConstRefVector
 
     // functions
     using privvec::begin;
@@ -128,15 +131,14 @@ public:
     using privvec::erase; // source/VISUAL/Spectrum2DCanvas.C 2871, FeatureMap_test 599
 
     //@{
-    typedef Feature FeatureType;
     typedef RangeManager<2> RangeManagerType;
-    typedef std::vector<FeatureType> Base;
-    typedef typename Base::iterator Iterator;
-    typedef typename Base::const_iterator ConstIterator;
-    typedef typename Base::reverse_iterator ReverseIterator;
-    typedef typename Base::const_reverse_iterator ConstReverseIterator;
-    typedef FeatureType& Reference;
-    typedef const FeatureType& ConstReference;
+    typedef std::vector<Feature> Base;
+    typedef Base::iterator Iterator;
+    typedef Base::const_iterator ConstIterator;
+    typedef Base::reverse_iterator ReverseIterator;
+    typedef Base::const_reverse_iterator ConstReverseIterator;
+    typedef Feature& Reference;
+    typedef const Feature& ConstReference;
     //@}
 
     /**

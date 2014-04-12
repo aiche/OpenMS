@@ -672,10 +672,10 @@ protected:
 
     // impute approximate results for failed model fits:
     TransformationModel::DataPoints quant_values;
-    vector<FeatureMap<>::Iterator> failed_models;
+    vector<FeatureMap::Iterator> failed_models;
     Size model_successes = 0, model_failures = 0;
 
-    for (FeatureMap<>::Iterator feat_it = features.begin();
+    for (FeatureMap::Iterator feat_it = features.begin();
          feat_it != features.end(); ++feat_it, ++index)
     {
       feat_it->setMetaValue("raw_intensity", feat_it->getIntensity());

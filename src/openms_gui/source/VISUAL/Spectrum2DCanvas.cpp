@@ -1949,7 +1949,7 @@ namespace OpenMS
         if (getCurrentLayer().type == LayerData::DT_FEATURE)
         {
           //add meta info
-          const FeatureMapType::FeatureType & f = selected_peak_.getFeature(*getCurrentLayer().getFeatureMap());
+          const Feature & f = selected_peak_.getFeature(*getCurrentLayer().getFeatureMap());
           std::vector<String> keys;
           f.getKeys(keys);
           for (Size m = 0; m < keys.size(); ++m)

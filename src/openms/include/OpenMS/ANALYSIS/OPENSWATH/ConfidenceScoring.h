@@ -44,13 +44,17 @@
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/variate_generator.hpp>
 
+#include <OpenMS/KERNEL/FeatureMap.h>
+
 #include <OpenMS/FORMAT/FeatureXMLFile.h>
 #include <OpenMS/FORMAT/TraMLFile.h>
 #include <OpenMS/FORMAT/TransformationXMLFile.h>
 
-#include "OpenMS/ANALYSIS/OPENSWATH/OPENSWATHALGO/ALGO/Scoring.h"
+#include <OpenMS/ANALYSIS/OPENSWATH/OPENSWATHALGO/ALGO/Scoring.h>
 #include <OpenMS/ANALYSIS/MAPMATCHING/TransformationDescription.h>
 #include <OpenMS/ANALYSIS/TARGETED/TargetedExperiment.h>
+
+#include <OpenMS/CONCEPT/LogStream.h>
 
 namespace OpenMS
 {
@@ -165,65 +169,7 @@ public:
         assay has transitions (mapped with MetaValue "native_id").
 
     */
-    void scoreMap(FeatureMap & features)
-    {
-      // are there enough assays in the library?
-      Size n_assays = library_.getPeptides().size();
-      if (n_assays < 2)
-      {
-        throw Exception::IllegalArgument(__FILE__, __LINE__, __PRETTY_FUNCTION__,
-                                         "There need to be at least 2 assays in the library for ConfidenceScoring.");
-
-      }
-      if (n_assays - 1 < n_decoys_)
-      {
-        LOG_WARN << "Warning: Parameter 'decoys' (" << n_decoys_
-                 << ") is higher than the number of unrelated assays in the "
-                 << "library (" << n_assays - 1 << "). "
-                 << "Using all unrelated assays as decoys." << std::endl;
-      }
-      if (n_assays - 1 <= n_decoys_) n_decoys_ = 0; // use all available assays
-
-      decoy_index_.resize(n_assays);
-      for (Size i = 0; i < n_assays; ++i) decoy_index_[i] = boost::numeric_cast<Int>(i);
-
-      // build mapping between assays and transitions:
-      LOG_DEBUG << "Building transition map..." << std::endl;
-      for (Size i = 0; i < library_.getTransitions().size(); ++i)
-      {
-        const String& ref = library_.getTransitions()[i].getPeptideRef();
-        transition_map_[ref].push_back(boost::numeric_cast<Int>(i));
-      }
-      // find min./max. RT in the library:
-      LOG_DEBUG << "Determining retention time range..." << std::endl;
-      rt_norm_.min_rt = std::numeric_limits<double>::infinity();
-      rt_norm_.max_rt = -std::numeric_limits<double>::infinity();
-      for (std::vector<TargetedExperiment::Peptide>::const_iterator it =
-             library_.getPeptides().begin(); it != library_.getPeptides().end();
-           ++it)
-      {
-        double current_rt = getAssayRT_(*it);
-        if (current_rt == -1.0) continue; // indicates a missing value
-        rt_norm_.min_rt = std::min(rt_norm_.min_rt, current_rt);
-        rt_norm_.max_rt = std::max(rt_norm_.max_rt, current_rt);
-      }
-
-      // log scoring progress:
-      LOG_DEBUG << "Scoring features..." << std::endl;
-      startProgress(0, features.size(), "scoring features");
-
-      for (FeatureMap::Iterator feat_it = features.begin();
-           feat_it != features.end(); ++feat_it)
-      {
-        LOG_DEBUG << "Feature " << feat_it - features.begin() + 1
-                  << " (ID '" << feat_it->getUniqueId() << "')"<< std::endl;
-        scoreFeature_(*feat_it);
-        setProgress(feat_it - features.begin());
-      }
-      endProgress();
-
-    }
-
+    void scoreMap(FeatureMap & features);
 };
 
 }

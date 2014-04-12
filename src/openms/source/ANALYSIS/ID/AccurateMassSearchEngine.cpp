@@ -484,7 +484,7 @@ namespace OpenMS
     return ion_mode_internal_;
   }
 
-  void AccurateMassSearchEngine::run(const FeatureMap<>& fmap, MzTab& mztab_out)
+  void AccurateMassSearchEngine::run(const FeatureMap& fmap, MzTab& mztab_out)
   {
     if (!is_initialized_) init_(); // parse DB
 
