@@ -17,7 +17,10 @@ ${PWD}/_searchengines/XTandem/tandem.exe test
 
 # try to execute it
 t=$(find . -name "tandem.exe")
+
+echo "Path to xtandem $t"
 $t test
+${PWD}$t test
 
 return 0
 
