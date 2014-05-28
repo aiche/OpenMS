@@ -19,9 +19,9 @@ export DISPLAY=:99.0
 sh -e /etc/init.d/xvfb start
 
 # add search engines to PATH
-export PATH=${SOURCE_DIRECTORY}/_searchengines/MyriMatch:$PATH
-export PATH=${SOURCE_DIRECTORY}/_searchengines/OMSSA:$PATH
-export PATH=${SOURCE_DIRECTORY}/_searchengines/XTandem:$PATH
+export PATH=${SOURCE_DIRECTORY}/searchengines/MyriMatch:$PATH
+export PATH=${SOURCE_DIRECTORY}/searchengines/OMSSA:$PATH
+export PATH=${SOURCE_DIRECTORY}/searchengines/XTandem:$PATH
 
 ctest -V -S tools/lnx-cibuild.cmake
 

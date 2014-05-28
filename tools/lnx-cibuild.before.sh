@@ -4,16 +4,16 @@ sudo apt-get update
 sudo apt-get install -qq subversion
 
 # get the search engine executables
-svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
+svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ searchengines
 
 # check directory content and file stat
-ls -lisa _searchengines/XTandem
+ls -lisa searchengines/XTandem
 
 # check tandem.exe
 echo $PWD
-./_searchengines/XTandem/tandem.exe test
-${SOURCE_DIRECTORY}/_searchengines/XTandem/tandem.exe test
-${PWD}/_searchengines/XTandem/tandem.exe test
+./searchengines/XTandem/tandem.exe test
+${SOURCE_DIRECTORY}/searchengines/XTandem/tandem.exe test
+${PWD}/searchengines/XTandem/tandem.exe test
 
 # try to execute it
 t=$(find . -name "tandem.exe")
