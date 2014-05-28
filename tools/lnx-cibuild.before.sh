@@ -22,6 +22,7 @@ echo "Path to xtandem $t"
 $t test
 ${PWD}$t test
 ${PWD}/$t test
+.${PWD}/$t test
 
 return 0
 
