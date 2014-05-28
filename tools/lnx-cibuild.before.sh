@@ -7,7 +7,7 @@ function build_contrib {
     # we give it another try
     echo "1st attempt to build $1 failed .. retry"
     cmake . -DBUILD_TYPE=$1 -DNUMBER_OF_JOBS=4
-  
+
     if [ $? -ne 0 ]; then
       echo "2nd attempt to build $1 failed .. abort"
       exit $?
@@ -53,12 +53,20 @@ sudo apt-get install -qq  libboost-date-time1.54-dev \
                           libsvm-dev \
                           libsvm3 \
                           glpk \
-                          subversion                             
+                          subversion
 
 # install doxygen but not latex (saves some time)
 sudo apt-get install -qq \
                      --no-install-recommends doxygen \
                      graphviz
 
-# get the search engine executables 
+# get the search engine executables
 svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
+
+# check directory content and file stat
+ls -lisa _searchengines/XTandem
+
+# check tandem.exe
+./_searchengines/XTandem/tandem.exe test
+
+return 0
