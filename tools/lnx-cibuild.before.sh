@@ -1,5 +1,20 @@
 #!/bin/bash
 
+sudo apt-get update
+sudo apt-get install -qq subversion
+
+# get the search engine executables
+svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linux/64bit/ _searchengines
+
+# check directory content and file stat
+ls -lisa _searchengines/XTandem
+
+# check tandem.exe
+echo $PWD
+./_searchengines/XTandem/tandem.exe test
+
+return 0
+
 function build_contrib {
   cmake . -DBUILD_TYPE=$1
 
@@ -67,6 +82,5 @@ svn checkout http://svn.code.sf.net/p/open-ms/code/THIRDPARTY/SEARCHENGINES/Linu
 ls -lisa _searchengines/XTandem
 
 # check tandem.exe
+echo $PWD
 ./_searchengines/XTandem/tandem.exe test
-
-return 0
