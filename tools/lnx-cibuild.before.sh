@@ -13,6 +13,7 @@ ls -lisa _searchengines/XTandem
 echo $PWD
 ./_searchengines/XTandem/tandem.exe test
 ${SOURCE_DIRECTORY}/_searchengines/XTandem/tandem.exe test
+${PWD}/_searchengines/XTandem/tandem.exe test
 export PATH=${SOURCE_DIRECTORY}/_searchengines/XTandem:$PATH
 tandem.exe
 which tandem.exe
