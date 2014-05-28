@@ -14,9 +14,10 @@ echo $PWD
 ./_searchengines/XTandem/tandem.exe test
 ${SOURCE_DIRECTORY}/_searchengines/XTandem/tandem.exe test
 ${PWD}/_searchengines/XTandem/tandem.exe test
-export PATH=${SOURCE_DIRECTORY}/_searchengines/XTandem:$PATH
-tandem.exe
-which tandem.exe
+
+# try to execute it
+t=$(find . -name "tandem.exe")
+$t test
 
 return 0
 
