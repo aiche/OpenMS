@@ -38,14 +38,16 @@
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 
 #include <iostream>
+#include <fstream>
 
 #include <QHttp>
 #include <QHttpRequestHeader>
 #include <QFile>
-#include <QTextStream>
+#include <QDir>
 #include <QTextDocument>
 
-// #define MASCOTREMOTEQUERY_DEBUG
+
+#define MASCOTREMOTEQUERY_DEBUG
 
 // Requests with more bytes then this will be buffered into a file, since
 // QByteArray cannot hold them anymore.
@@ -316,9 +318,11 @@ namespace OpenMS
 
 #ifdef MASCOTREMOTEQUERY_DEBUG
       logHeader_(header, "request");
+      /*
       cerr << ">>>> Query (begin):" << "\n"
            << querybytes.constData() << "\n"
            << "<<<< Query (end)." << endl;
+      */
 #endif
 
       if (to_ > 0)
@@ -328,27 +332,32 @@ namespace OpenMS
     else
     {
       // we need to buffer since the request is to big to be submitted directly as byte array
-      String tmp_filename = File::getTempDirectory() + File::getUniqueName();
+
+      // ensure it is a directory
+      QDir qd(File::getTempDirectory().toQString());
+      // ensure directory exists
+      if (!qd.exists()) qd.mkpath(".");
+
+      // file in the directory
+      String tmp_filename = qd.absoluteFilePath(File::getUniqueName().toQString()).toStdString();
+
       LOG_INFO << "Buffer to " << tmp_filename << std::endl;
 
       // first write content to file
-      QFile f(tmp_filename.toQString());
-      if (!f.open(QIODevice::WriteOnly | QIODevice::Text))
-        return; // TODO handle IO error
+      std::ofstream ofs;
+      ofs.open(tmp_filename.c_str(), ofstream::out);
+      ofs << "--" << boundary.toStdString() << "--\r\n";
+      ofs << "Content-Disposition: ";
+      ofs << "form-data; name=\"QUE\"\r\n";
+      ofs << "\r\n";
+      ofs << query_spectra_.substitute("\n", "\r\n").c_str();
+      ofs << "--" << boundary.toStdString() << "--\r\n";
+      ofs.close();
 
-      QTextStream out(&f);
-      out << "--" << boundary << "--\r\n";
-      out << "Content-Disposition: ";
-      out << "form-data; name=\"QUE\"\r\n";
-      out << "\r\n";
-      out << query_spectra_.substitute("\n", "\r\n").c_str();
-      out << "--" << boundary << "--\r\n";
+      QFile qf(tmp_filename.toQString());
+      LOG_INFO << "Content Length: " << qf.size() << std::endl;
+      header.setContentLength(qf.size());
 
-      LOG_INFO << "Content Length: " << f.size() << std::endl;
-      header.setContentLength(query_spectra_.size());
-
-
-      f.close();
 
       request_buffer_ = new QFile(tmp_filename.toQString());
       request_buffer_->open(QIODevice::ReadOnly);
