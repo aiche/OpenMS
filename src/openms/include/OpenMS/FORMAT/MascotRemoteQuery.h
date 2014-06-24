@@ -38,9 +38,15 @@
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 #include <QtCore/QObject>
 #include <QtCore/QString>
-#include <QtNetwork/QHttpRequestHeader>
 #include <QTimer>
 
+
+// fwd declaration
+class QFile;
+class QHttpResponseHeader;
+class QHttp;
+class QHttpHeader;
+class QString;
 
 namespace OpenMS
 {
@@ -148,7 +154,7 @@ private:
     OPENMS_DLLAPI void endRun_();
 
     /// Write HTTP header to error stream (for debugging)
-    OPENMS_DLLAPI void logHeader_(const QHttpHeader& header, 
+    OPENMS_DLLAPI void logHeader_(const QHttpHeader& header,
                                   const String& what);
     /**
       @brief Remove host name information from an url, e.g., "http://www.google.de/search" -> "search"
@@ -164,6 +170,9 @@ private:
     String error_message_;
     QTimer timeout_;
     Int to_;
+
+    // file buffer for queries to large to fit into a QByteArray
+    QFile* request_buffer_;
 
     /// Path on mascot server
     String server_path_;

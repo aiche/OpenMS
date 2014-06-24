@@ -29,17 +29,27 @@
 //
 // --------------------------------------------------------------------------
 // $Maintainer: Chris Bielow $
-// $Authors: Andreas Bertsch, Daniel Jameson, Chris Bielow $
+// $Authors: Andreas Bertsch, Daniel Jameson, Chris Bielow, Stephan Aiche $
 // --------------------------------------------------------------------------
 
 #include <OpenMS/FORMAT/MascotRemoteQuery.h>
 #include <OpenMS/CONCEPT/LogStream.h>
+#include <OpenMS/SYSTEM/File.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 
-#include <QtGui/QTextDocument>
 #include <iostream>
 
+#include <QHttp>
+#include <QHttpRequestHeader>
+#include <QFile>
+#include <QTextStream>
+#include <QTextDocument>
+
 // #define MASCOTREMOTEQUERY_DEBUG
+
+// Requests with more bytes then this will be buffered into a file, since
+// QByteArray cannot hold them anymore.
+#define MASCOTREMOTEQUERY_SWITCH_TO_BUFFER_LIMIT 2000000000
 
 using namespace std;
 
@@ -48,7 +58,8 @@ namespace OpenMS
 
   MascotRemoteQuery::MascotRemoteQuery(QObject* parent) :
     QObject(parent),
-    DefaultParamHandler("MascotRemoteQuery")
+    DefaultParamHandler("MascotRemoteQuery"),
+    request_buffer_(NULL)
   {
     http_ = new QHttp();
 
@@ -289,28 +300,65 @@ namespace OpenMS
     }
     header.setValue("Accept", "text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*");
 
-    QByteArray querybytes;
-    querybytes.append("--" + boundary + "--\n");
-    querybytes.append("Content-Disposition: ");
-    querybytes.append("form-data; name=\"QUE\"\n");
-    querybytes.append("\n");
-    querybytes.append(query_spectra_.c_str());
-    querybytes.append("--" + boundary + "--\n");
+    if (query_spectra_.size() < MASCOTREMOTEQUERY_SWITCH_TO_BUFFER_LIMIT)
+    {
+      QByteArray querybytes;
+      querybytes.append("--" + boundary + "--\n");
+      querybytes.append("Content-Disposition: ");
+      querybytes.append("form-data; name=\"QUE\"\n");
+      querybytes.append("\n");
+      querybytes.append(query_spectra_.c_str());
+      querybytes.append("--" + boundary + "--\n");
 
-    querybytes.replace("\n", "\r\n");
+      querybytes.replace("\n", "\r\n");
 
-    header.setContentLength(querybytes.length());
+      header.setContentLength(querybytes.length());
 
 #ifdef MASCOTREMOTEQUERY_DEBUG
-    logHeader_(header, "request");
-    cerr << ">>>> Query (begin):" << "\n"
-         << querybytes.constData() << "\n"
-         << "<<<< Query (end)." << endl;
+      logHeader_(header, "request");
+      cerr << ">>>> Query (begin):" << "\n"
+           << querybytes.constData() << "\n"
+           << "<<<< Query (end)." << endl;
 #endif
 
-    if (to_ > 0)
-      timeout_.start();
-    http_->request(header, querybytes);
+      if (to_ > 0)
+        timeout_.start();
+      http_->request(header, querybytes);
+    }
+    else
+    {
+      // we need to buffer since the request is to big to be submitted directly as byte array
+      String tmp_filename = File::getTempDirectory() + File::getUniqueName();
+      LOG_INFO << "Buffer to " << tmp_filename << std::endl;
+
+      // first write content to file
+      QFile f(tmp_filename.toQString());
+      if (!f.open(QIODevice::WriteOnly | QIODevice::Text))
+        return; // TODO handle IO error
+
+      QTextStream out(&f);
+      out << "--" << boundary << "--\r\n";
+      out << "Content-Disposition: ";
+      out << "form-data; name=\"QUE\"\r\n";
+      out << "\r\n";
+      out << query_spectra_.substitute("\n", "\r\n").c_str();
+      out << "--" << boundary << "--\r\n";
+
+      LOG_INFO << "Content Length: " << f.size() << std::endl;
+      header.setContentLength(query_spectra_.size());
+
+
+      f.close();
+
+      request_buffer_ = new QFile(tmp_filename.toQString());
+      request_buffer_->open(QIODevice::ReadOnly);
+      //if (!request_buffer_->open(QIODevice::ReadOnly | QIODevice::Text))
+      //  return; // TODO handle IO error
+
+      if (to_ > 0)
+        timeout_.start();
+      http_->request(header, request_buffer_);
+    }
   }
 
   void MascotRemoteQuery::httpRequestFinished(int requestId, bool error)
@@ -323,6 +371,17 @@ namespace OpenMS
     cerr << "Request Finished Id: " << requestId << "\n";
     cerr << "Error: " << error << "(" << http_->errorString().toStdString() << ")" << "\n";
 #endif
+
+    // clear request_buffer_ file if it was used
+    if (request_buffer_ != NULL)
+    {
+      if (!request_buffer_->remove())
+      {
+        LOG_WARN << "Failed to remove buffer file: " << request_buffer_->fileName().toStdString() << std::endl;
+      }
+      delete request_buffer_;
+      request_buffer_ = NULL;
+    }
 
   }
 
@@ -497,9 +556,9 @@ namespace OpenMS
     QByteArray new_bytes = http_->readAll();
 #ifdef MASCOTREMOTEQUERY_DEBUG
     cerr << "Response of query: " << "\n";
-    QTextDocument doc;
-    doc.setHtml(new_bytes.constData());
-    cerr << doc.toPlainText().toStdString() << "\n";
+    QTextDocument debug_doc;
+    debug_doc.setHtml(new_bytes.constData());
+    cerr << debug_doc.toPlainText().toStdString() << "\n";
 #endif
 
     if (QString(new_bytes).trimmed().size() == 0 && !(http_->lastResponse().isValid() && http_->lastResponse().statusCode() == 303))
@@ -548,7 +607,7 @@ namespace OpenMS
       // see http://www.matrixscience.com/help/export_help.html for parameter documentation
       String required_params = "&do_export=1&export_format=XML&generate_file=1&group_family=1&peptide_master=1&protein_master=1&search_master=1&show_unassigned=1&show_mods=1&show_header=1&show_params=1&prot_score=1&pep_exp_z=1&pep_score=1&pep_seq=1&pep_homol=1&pep_ident=1&pep_expect=1&pep_var_mod=1&pep_scan_title=1&query_qualifiers=1&query_peaks=1&query_raw=1&query_title=1";
       String adjustable_params = param_.getValue("export_params");
-      results_path.append(required_params.toQString() + "&" + 
+      results_path.append(required_params.toQString() + "&" +
                           adjustable_params.toQString());
       // results_path.append("&show_same_sets=1&show_unassigned=1&show_queries=1&do_export=1&export_format=XML&pep_rank=1&_sigthreshold=0.99&_showsubsets=1&show_header=1&prot_score=1&pep_exp_z=1&pep_score=1&pep_seq=1&pep_homol=1&pep_ident=1&show_mods=1&pep_var_mod=1&protein_master=1&search_master=1&show_params=1&pep_scan_title=1&query_qualifiers=1&query_peaks=1&query_raw=1&query_title=1&pep_expect=1&peptide_master=1&generate_file=1&group_family=1");
 
