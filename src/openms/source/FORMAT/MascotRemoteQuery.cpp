@@ -47,7 +47,7 @@
 #include <QTextDocument>
 
 
-#define MASCOTREMOTEQUERY_DEBUG
+// #define MASCOTREMOTEQUERY_DEBUG
 
 // Requests with more bytes then this will be buffered into a file, since
 // QByteArray cannot hold them anymore.
@@ -108,6 +108,23 @@ namespace OpenMS
       http_->abort(); // hardcore close connection (otherwise server might have too many dangling requests)
     }
     delete http_;
+
+    // clear request_buffer_ file if it was used
+    if (request_buffer_ != NULL)
+    {
+      // close the file
+      if (request_buffer_->isOpen())
+      {
+        request_buffer_->close();
+      }
+      // .. and try to delete it
+      if (!request_buffer_->remove())
+      {
+        LOG_WARN << "Failed to remove buffer file: " << request_buffer_->fileName().toStdString() << std::endl;
+      }
+      delete request_buffer_;
+      request_buffer_ = NULL;
+    }
   }
 
   void MascotRemoteQuery::timedOut()
@@ -354,15 +371,11 @@ namespace OpenMS
       ofs << "--" << boundary.toStdString() << "--\r\n";
       ofs.close();
 
-      QFile qf(tmp_filename.toQString());
-      LOG_INFO << "Content Length: " << qf.size() << std::endl;
-      header.setContentLength(qf.size());
-
-
       request_buffer_ = new QFile(tmp_filename.toQString());
       request_buffer_->open(QIODevice::ReadOnly);
-      //if (!request_buffer_->open(QIODevice::ReadOnly | QIODevice::Text))
-      //  return; // TODO handle IO error
+
+      LOG_INFO << "Content Length: " << request_buffer_->size() << std::endl;
+      header.setContentLength(request_buffer_->size());
 
       if (to_ > 0)
         timeout_.start();
@@ -378,20 +391,8 @@ namespace OpenMS
     }
 #ifdef MASCOTREMOTEQUERY_DEBUG
     cerr << "Request Finished Id: " << requestId << "\n";
-    cerr << "Error: " << error << "(" << http_->errorString().toStdString() << ")" << "\n";
+    cerr << "Error: " << error << " (" << http_->errorString().toStdString() << ")" << "\n";
 #endif
-
-    // clear request_buffer_ file if it was used
-    if (request_buffer_ != NULL)
-    {
-      if (!request_buffer_->remove())
-      {
-        LOG_WARN << "Failed to remove buffer file: " << request_buffer_->fileName().toStdString() << std::endl;
-      }
-      delete request_buffer_;
-      request_buffer_ = NULL;
-    }
-
   }
 
 #ifdef MASCOTREMOTEQUERY_DEBUG
