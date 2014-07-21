@@ -343,6 +343,45 @@ public:
   }
 };
 
+//test class with restricted parameters
+class TOPPBaseRestrictionTest
+  : public TOPPBase
+{
+
+public:
+  TOPPBaseRestrictionTest()
+    : TOPPBase("TOPPBaseRestrictionTest", "A test class to test the application of restrictions", false)
+  {}
+
+  virtual void registerOptionsAndFlags_()
+  {
+    //for testing write_ini parameter (and with it setDefaults)
+    registerStringOption_("stringoption","<string>", "hopla", "stringoption with restrictions",false);
+    vector<String> rest;
+    rest.push_back("hopla");
+    rest.push_back("dude");
+    setValidStrings_("stringoption",rest);
+
+    registerIntOption_("intoption","<int>",2,"int description",false);
+    setMinInt_("intoption",2);
+    setMaxInt_("intoption",6);
+
+    registerDoubleOption_("doubleoption","<double>", 0.2,"double description", false);
+    setMinFloat_("doubleoption",0.2);
+    setMaxFloat_("doubleoption",5.4);
+  }
+
+  ExitCodes run(int argc , const char** argv)
+  {
+    return main(argc, argv);
+  }
+
+  virtual ExitCodes main_(int /*argc*/ , const char** /*argv*/)
+  {
+    return EXECUTION_OK;
+  }
+};
+
 /////////////////////////////////////////////////////////////
 
   START_TEST(TOPPBase, "$Id$");
@@ -781,9 +820,104 @@ START_SECTION(([EXTRA] test subsection parameters))
 }
 END_SECTION
 
+const char* a31 = "-stringoption";
+const char* a32 = "not-valid-for-stringoption";
+const char* a33 = "dude";
+
+const char* a34 = "-intoption";
+const char* a35 = "1";
+const char* a36 = "3";
+
+const char* a37 = "-doubleoption";
+const char* a38 = "-5.9";
+const char* a39 = "0.3";
+
+std::string temp_a40(OPENMS_GET_TEST_DATA_PATH("TOPPBase_value_restrictions_instance.ini"));
+const char* a40 = temp_a40.c_str();
+
+std::string temp_a41(OPENMS_GET_TEST_DATA_PATH("TOPPBase_value_restrictions_common_tool.ini"));
+const char* a41 = temp_a41.c_str();
+
+std::string temp_a42(OPENMS_GET_TEST_DATA_PATH("TOPPBase_value_restrictions_common.ini"));
+const char* a42 = temp_a42.c_str();
+
+START_SECTION(([EXTRA] test invalid parameter values))
+{
+  // valid string
+  {
+    const char* string_cl[3] = { a1 , a31 , a33};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::EXECUTION_OK);
+  }
+
+  // invalid string
+  {
+    const char* string_cl[3] = { a1 , a31 , a32};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+  // valid int
+  {
+    const char* string_cl[3] = { a1 , a34 , a36};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::EXECUTION_OK);
+  }
+
+  // invalid int
+  {
+    const char* string_cl[3] = { a1 , a34 , a35};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+  // valid double
+  {
+    const char* string_cl[3] = { a1 , a37 , a39};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::EXECUTION_OK);
+  }
+
+  // invalid double
+  {
+    const char* string_cl[3] = { a1 , a37 , a38};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+  // invalid value from ini-file instance section
+  {
+    const char* string_cl[3] = { a1 , a3 , a40};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+  // invalid value from ini-file common tool section
+  {
+    const char* string_cl[3] = { a1 , a3 , a41};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+  // invalid value from ini-file instance section
+  {
+    const char* string_cl[3] = { a1 , a3 , a42};
+    TOPPBaseRestrictionTest tmp;
+    TOPPBase::ExitCodes ec = tmp.run(3, string_cl);
+    TEST_EQUAL(ec, TOPPBase::ILLEGAL_PARAMETERS);
+  }
+
+}
+END_SECTION
+
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 END_TEST
-
-
-
