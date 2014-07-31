@@ -108,6 +108,14 @@ private:
       double target_;
     };
 
+private:
+    /// Hidden assignment operator (pure utils class)
+    ListUtils & operator=(ListUtils const &);
+    /// Hidden c'tor (pure utils class)
+    ListUtils(ListUtils const &);
+    /// Hidden c'tor (pure utils class)
+    ListUtils();
+
 public:
     /**
       @brief Returns a list that is created by splitting the given comma-separated string.
