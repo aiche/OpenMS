@@ -42,6 +42,16 @@
 #include <string>
 #include <iosfwd>
 
+/**
+  @brief Decrlares assignment operator, copy constructor, and destructor for
+  exceptions.
+*/
+#define DECLARE_EXCEPTION_OP(T)  \
+public:                          \
+  T & operator=(T const&);    \
+  T(T const &);                \
+  virtual ~T() throw();
+
 namespace OpenMS
 {
 
@@ -110,6 +120,9 @@ public:
 
       /// Destructor
       virtual ~BaseException() throw();
+
+      /// Assignment operator
+      BaseException& operator=(const BaseException&) throw();
       //@}
 
       /**	@name	Accessors
@@ -167,6 +180,7 @@ protected:
     class OPENMS_DLLAPI Precondition :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(Precondition)
 public:
       Precondition(const char* file, int line, const char* function, const std::string& condition)  throw();
     };
@@ -181,6 +195,7 @@ public:
     class OPENMS_DLLAPI Postcondition :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(Postcondition)
 public:
       Postcondition(const char* file, int line, const char* function, const std::string& condition) throw();
     };
@@ -196,6 +211,7 @@ public:
     class OPENMS_DLLAPI MissingInformation :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(MissingInformation)
 public:
       MissingInformation(const char* file, int line, const char* function, const std::string& error_message) throw();
     };
@@ -217,6 +233,7 @@ public:
     class OPENMS_DLLAPI IndexUnderflow :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IndexUnderflow)
 public:
       IndexUnderflow(const char* file, int line, const char* function, SignedSize index = 0, Size size = 0) throw();
     };
@@ -236,6 +253,7 @@ public:
     class OPENMS_DLLAPI SizeUnderflow :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(SizeUnderflow)
 public:
       SizeUnderflow(const char* file, int line, const char* function, Size size = 0) throw();
     };
@@ -255,6 +273,7 @@ public:
     class OPENMS_DLLAPI IndexOverflow :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IndexOverflow)
 public:
       IndexOverflow(const char* file, int line, const char* function, SignedSize index = 0, Size size = 0) throw();
     };
@@ -272,6 +291,7 @@ public:
     class OPENMS_DLLAPI FailedAPICall :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(FailedAPICall)
 public:
       FailedAPICall(const char* file, int line, const char* function, const std::string& message) throw();
     };
@@ -286,6 +306,7 @@ public:
     class OPENMS_DLLAPI InvalidRange :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(InvalidRange)
 public:
       InvalidRange(const char* file, int line, const char* function) throw();
     };
@@ -304,6 +325,7 @@ public:
     class OPENMS_DLLAPI InvalidSize :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(InvalidSize)
 public:
       InvalidSize(const char* file, int line, const char* function, Size size = 0) throw();
     };
@@ -320,6 +342,7 @@ public:
     class OPENMS_DLLAPI OutOfRange :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(OutOfRange)
 public:
       OutOfRange(const char* file, int line, const char* function) throw();
     };
@@ -336,6 +359,7 @@ public:
     class OPENMS_DLLAPI InvalidValue :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(InvalidValue)
 public:
       InvalidValue(const char* file, int line, const char* function, const std::string& message, const std::string& value) throw();
     };
@@ -348,6 +372,7 @@ public:
     class OPENMS_DLLAPI InvalidParameter :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(InvalidParameter)
 public:
       InvalidParameter(const char* file, int line, const char* function, const std::string& message) throw();
     };
@@ -363,6 +388,7 @@ public:
     class OPENMS_DLLAPI ConversionError :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(ConversionError)
 public:
       ConversionError(const char* file, int line, const char* function, const std::string& error) throw();
     };
@@ -379,6 +405,7 @@ public:
     class OPENMS_DLLAPI IllegalSelfOperation :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IllegalSelfOperation)
 public:
       IllegalSelfOperation(const char* file, int line, const char* function) throw();
     };
@@ -394,6 +421,7 @@ public:
     class OPENMS_DLLAPI NullPointer :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(NullPointer)
 public:
       NullPointer(const char* file, int line, const char* function) throw();
     };
@@ -408,6 +436,7 @@ public:
     class OPENMS_DLLAPI InvalidIterator :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(InvalidIterator)
 public:
       InvalidIterator(const char* file, int line, const char* function) throw();
     };
@@ -423,6 +452,7 @@ public:
     class OPENMS_DLLAPI IncompatibleIterators :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IncompatibleIterators)
 public:
       IncompatibleIterators(const char* file, int line, const char* function) throw();
     };
@@ -437,6 +467,7 @@ public:
     class OPENMS_DLLAPI NotImplemented :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(NotImplemented)
 public:
       NotImplemented(const char* file, int line, const char* function) throw();
     };
@@ -451,6 +482,7 @@ public:
     class OPENMS_DLLAPI IllegalTreeOperation :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IllegalTreeOperation)
 public:
       IllegalTreeOperation(const char* file, int line, const char* function) throw();
     };
@@ -472,6 +504,7 @@ public:
     class OPENMS_DLLAPI OutOfMemory :
       public BaseException, public std::bad_alloc
     {
+      DECLARE_EXCEPTION_OP(OutOfMemory)
 public:
       OutOfMemory(const char* file, int line, const char* function, Size size = 0) throw();
     };
@@ -486,6 +519,7 @@ public:
     class OPENMS_DLLAPI BufferOverflow :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(BufferOverflow)
 public:
       BufferOverflow(const char* file, int line, const char* function) throw();
     };
@@ -498,6 +532,7 @@ public:
     class OPENMS_DLLAPI DivisionByZero :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(DivisionByZero)
 public:
       DivisionByZero(const char* file, int line, const char* function) throw();
     };
@@ -510,6 +545,7 @@ public:
     class OPENMS_DLLAPI OutOfGrid :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(OutOfGrid)
 public:
       OutOfGrid(const char* file, int line, const char* function) throw();
     };
@@ -524,6 +560,7 @@ public:
     class OPENMS_DLLAPI FileNotFound :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(FileNotFound)
 public:
       FileNotFound(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -538,6 +575,7 @@ public:
     class OPENMS_DLLAPI FileNotReadable :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(FileNotReadable)
 public:
       FileNotReadable(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -552,6 +590,7 @@ public:
     class OPENMS_DLLAPI FileNotWritable :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(FileNotWritable)
 public:
       FileNotWritable(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -566,6 +605,7 @@ public:
     class OPENMS_DLLAPI IOException :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IOException)
 public:
       IOException(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -580,6 +620,7 @@ public:
     class OPENMS_DLLAPI FileEmpty :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(FileEmpty)
 public:
       FileEmpty(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -594,6 +635,7 @@ public:
     class OPENMS_DLLAPI IllegalPosition :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IllegalPosition)
 public:
       IllegalPosition(const char* file, int line, const char* function, float x, float y, float z) throw();
     };
@@ -608,6 +650,7 @@ public:
     class OPENMS_DLLAPI ParseError :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(ParseError)
 public:
       ParseError(const char* file, int line, const char* function, const std::string& expression, const std::string& message) throw();
     };
@@ -622,6 +665,7 @@ public:
     class OPENMS_DLLAPI UnableToCreateFile :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(UnableToCreateFile)
 public:
       UnableToCreateFile(const char* file, int line, const char* function, const std::string& filename) throw();
     };
@@ -634,6 +678,7 @@ public:
     class OPENMS_DLLAPI IllegalArgument :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(IllegalArgument)
 public:
       IllegalArgument(const char* file, int line, const char* function, const std::string& error_message) throw();
     };
@@ -648,6 +693,7 @@ public:
     class OPENMS_DLLAPI ElementNotFound :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(ElementNotFound)
 public:
       ElementNotFound(const char* file, int line, const char* function, const std::string& element)   throw();
     };
@@ -662,6 +708,7 @@ public:
     class OPENMS_DLLAPI UnableToFit :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(UnableToFit)
 public:
       UnableToFit(const char* file, int line, const char* function, const std::string& name, const std::string& message) throw();
     };
@@ -677,6 +724,7 @@ public:
     class OPENMS_DLLAPI UnableToCalibrate :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(UnableToCalibrate)
 public:
       UnableToCalibrate(const char* file, int line, const char* function, const std::string& name, const std::string& message) throw();
     };
@@ -691,6 +739,7 @@ public:
     class OPENMS_DLLAPI DepletedIDPool :
       public BaseException
     {
+      DECLARE_EXCEPTION_OP(DepletedIDPool)
 public:
       DepletedIDPool(const char* file, int line, const char* function, const std::string& name, const std::string& message) throw();
     };
