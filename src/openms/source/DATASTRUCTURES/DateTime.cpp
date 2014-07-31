@@ -45,19 +45,20 @@ namespace OpenMS
   DateTime::DateTime() :
     QDateTime()
   {
-
   }
 
   DateTime::DateTime(const DateTime & date) :
     QDateTime(date)
   {
-
   }
 
   DateTime::DateTime(const QDateTime & date) :
     QDateTime(date)
   {
+  }
 
+  DateTime::~DateTime()
+  {
   }
 
   DateTime & DateTime::operator=(const DateTime & source)

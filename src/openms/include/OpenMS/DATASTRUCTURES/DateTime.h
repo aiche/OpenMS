@@ -67,6 +67,8 @@ public:
     DateTime(const DateTime & date);
     /// Copy constructor from Qt base class
     DateTime(const QDateTime & date);
+    /// Destructor
+    ~DateTime();
 
     /// Assignment operator
     DateTime & operator=(const DateTime & source);
