@@ -42,7 +42,9 @@ if [ "${WITH_GUI}" = "Off" ]; then
 fi
 
 # add test category to build name
-if [ "${ACTIVE_TESTS}" = "TOPP" ]; then
+if [ "${ACTIVE_TESTS}" = "TOPP;CLASS_TESTS" ]; then
+  _build_name=${_build_name}"-all-tests"
+elif [ "${ACTIVE_TESTS}" = "TOPP" ]; then
   _build_name=${_build_name}"-topp-tests"
 elif [ "${ACTIVE_TESTS}" = "CLASS_TESTS" ]; then
   _build_name=${_build_name}"-class-tests"
