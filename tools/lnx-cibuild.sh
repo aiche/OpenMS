@@ -41,6 +41,13 @@ if [ "${WITH_GUI}" = "Off" ]; then
   _build_name=${_build_name}"-no-gui"
 fi
 
+# add test category to build name
+if [ "${ACTIVE_TESTS}" = "TOPP" ]; then
+  _build_name=${_build_name}"-topp-tests"
+elif [ "${ACTIVE_TESTS}" = "CLASS_TESTS" ]; then
+  _build_name=${_build_name}"-class-tests"
+fi
+
 # we will use this in the cmake script
 export BUILD_NAME=${_build_name}
 
