@@ -39,15 +39,30 @@ option(ENABLE_STYLE_TESTING "Enables checking of code convention violations (cpp
 option(ENABLE_PIPELINE_TESTING "Enables the additional testing of various TOPPAS pipelines when 'make test' is called." OFF)
 
 #------------------------------------------------------------------------------
+# divide available tests .. note that this mostly for internal use to reduce
+# test/build time on travis-ci
+set(ACTIVE_TESTS "TOPP;CLASS_TESTS" CACHE INTERNAL "List of activated tests that will be added and executed when calling the test target.")
+
+# check which tests where activated by the user
+list(FIND ACTIVE_TESTS "TOPP" _topp_index)
+list(FIND ACTIVE_TESTS "CLASS_TESTS" _class_test_index)
+
+#------------------------------------------------------------------------------
 # we only test if we have no package target
 if("${PACKAGE_TYPE}" STREQUAL "none")
   if(ENABLE_STYLE_TESTING)
     add_subdirectory(coding)
   else()
     ## configure the regular class ..
-    add_subdirectory(class_tests)
+    if(${_class_test_index} GREATER -1)
+      add_subdirectory(class_tests)
+    endif()
+
     # TOPP Test project ..
-    add_subdirectory(topp)
+    if(${_topp_index} GREATER -1)
+      add_subdirectory(topp)
+    endif()
+
     # and if requested also toppas pipeline tests
     if(ENABLE_PIPELINE_TESTING)
       add_subdirectory(toppas)
