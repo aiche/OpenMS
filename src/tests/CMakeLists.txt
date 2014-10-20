@@ -41,11 +41,19 @@ option(ENABLE_PIPELINE_TESTING "Enables the additional testing of various TOPPAS
 #------------------------------------------------------------------------------
 # divide available tests .. note that this mostly for internal use to reduce
 # test/build time on travis-ci
-set(ACTIVE_TESTS "TOPP;CLASS_TESTS" CACHE INTERNAL "List of activated tests that will be added and executed when calling the test target.")
+set(ACTIVE_TESTS "ALL" CACHE INTERNAL "List of activated tests that will be added and executed when calling the test target.")
 
 # check which tests where activated by the user
-list(FIND ACTIVE_TESTS "TOPP" _topp_index)
-list(FIND ACTIVE_TESTS "CLASS_TESTS" _class_test_index)
+if(ACTIVE_TESTS STREQUAL "TOPP")
+  set(_with_topp_tests ON)
+elseif(ACTIVE_TESTS STREQUAL "CLASS_TESTS")
+  set(_with_class_tests ON)
+elseif(ACTIVE_TESTS STREQUAL "ALL")
+  set(_with_class_tests ON)
+  set(_with_topp_tests ON)
+else()
+  message(FATAL_ERROR "Invalid test selection. Please choose either TOPP, CLASS_TESTS, or ALL.")
+endif()
 
 #------------------------------------------------------------------------------
 # we only test if we have no package target
@@ -54,12 +62,12 @@ if("${PACKAGE_TYPE}" STREQUAL "none")
     add_subdirectory(coding)
   else()
     ## configure the regular class ..
-    if(${_class_test_index} GREATER -1)
+    if(_with_class_tests)
       add_subdirectory(class_tests)
     endif()
 
     # TOPP Test project ..
-    if(${_topp_index} GREATER -1)
+    if(_with_topp_tests)
       add_subdirectory(topp)
     endif()
 
