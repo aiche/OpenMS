@@ -65,10 +65,10 @@ START_SECTION((~MassTrace()))
 END_SECTION
 
 
-std::vector<PeakType> peak_vec;
-std::list<PeakType> peak_lst;
+std::vector<MassTrace::PeakType> peak_vec;
+std::list<MassTrace::PeakType> peak_lst;
 
-PeakType tmp_peak0, tmp_peak1, tmp_peak2, tmp_peak3, tmp_peak4, tmp_peak5, tmp_peak6;
+MassTrace::PeakType tmp_peak0, tmp_peak1, tmp_peak2, tmp_peak3, tmp_peak4, tmp_peak5, tmp_peak6;
 
 tmp_peak0.setRT(152.22);
 tmp_peak0.setMZ(230.10223);
@@ -106,7 +106,7 @@ tmp_peak5.setIntensity((OpenMS::Peak2D::IntensityType)333291.0);
 peak_vec.push_back(tmp_peak5);
 peak_lst.push_back(tmp_peak5);
 
-tmp_peak6.setRT(158.238);      
+tmp_peak6.setRT(158.238);
 tmp_peak6.setMZ(230.10254);
 tmp_peak6.setIntensity((OpenMS::Peak2D::IntensityType)339.0);
 peak_vec.push_back(tmp_peak6);
@@ -117,11 +117,11 @@ peak_lst.push_back(tmp_peak6);
 // detailed constructors test
 /////////////////////////////////////////////////////////////
 
-START_SECTION((MassTrace(const std::list< PeakType > &, const double &scan_time=1.0)))
+START_SECTION((MassTrace(const std::list< MassTrace::PeakType > &, const double &scan_time=1.0)))
 {
     MassTrace tmp_mt(peak_lst);
 
-    std::list<PeakType>::const_iterator l_it = peak_lst.begin();
+    std::list<MassTrace::PeakType>::const_iterator l_it = peak_lst.begin();
 
     for (MassTrace::const_iterator m_it = tmp_mt.begin(); m_it != tmp_mt.end(); ++m_it)
     {
@@ -140,11 +140,11 @@ END_SECTION
 
 /////
 
-START_SECTION((MassTrace(const std::vector< PeakType > &, const double &scan_time=1.0)))
+START_SECTION((MassTrace(const std::vector< MassTrace::PeakType > &, const double &scan_time=1.0)))
 {
     MassTrace tmp_mt(peak_vec);
 
-    std::vector<PeakType>::const_iterator v_it = peak_vec.begin();
+    std::vector<MassTrace::PeakType>::const_iterator v_it = peak_vec.begin();
 
     for (MassTrace::const_iterator m_it = tmp_mt.begin(); m_it != tmp_mt.end(); ++m_it)
     {
@@ -172,7 +172,7 @@ test_mt.updateWeightedMeanMZ();
 // operator tests
 /////////////////////////////////////////////////////////////
 
-START_SECTION((PeakType& operator[](const Size &mt_idx)))
+START_SECTION((MassTrace::PeakType& operator[](const Size &mt_idx)))
 {
     TEST_REAL_SIMILAR(test_mt[1].getRT(), 153.23);
     TEST_REAL_SIMILAR(test_mt[1].getMZ(), 230.10235);
@@ -186,7 +186,7 @@ END_SECTION
 
 /////
 
-START_SECTION((const PeakType& operator[](const Size &mt_idx) const ))
+START_SECTION((const MassTrace::PeakType& operator[](const Size &mt_idx) const ))
 {
     const MassTrace test_mt_const(test_mt);
 
@@ -212,15 +212,15 @@ END_SECTION
 // iterator tests
 /////////////////////////////////////////////////////////////
 
-std::vector<PeakType>::iterator start_it = peak_vec.begin();
-std::vector<PeakType>::iterator end_it = peak_vec.end();
-std::vector<PeakType>::reverse_iterator rstart_it = peak_vec.rbegin();
-std::vector<PeakType>::reverse_iterator rend_it = peak_vec.rend();
+std::vector<MassTrace::PeakType>::iterator start_it = peak_vec.begin();
+std::vector<MassTrace::PeakType>::iterator end_it = peak_vec.end();
+std::vector<MassTrace::PeakType>::reverse_iterator rstart_it = peak_vec.rbegin();
+std::vector<MassTrace::PeakType>::reverse_iterator rend_it = peak_vec.rend();
 
-std::vector<PeakType>::const_iterator const_start_it = peak_vec.begin();
-std::vector<PeakType>::const_iterator const_end_it = peak_vec.end();
-std::vector<PeakType>::const_reverse_iterator const_rstart_it = peak_vec.rbegin();
-std::vector<PeakType>::const_reverse_iterator const_rend_it = peak_vec.rend();
+std::vector<MassTrace::PeakType>::const_iterator const_start_it = peak_vec.begin();
+std::vector<MassTrace::PeakType>::const_iterator const_end_it = peak_vec.end();
+std::vector<MassTrace::PeakType>::const_reverse_iterator const_rstart_it = peak_vec.rbegin();
+std::vector<MassTrace::PeakType>::const_reverse_iterator const_rend_it = peak_vec.rend();
 
 
 START_SECTION((iterator begin()))
@@ -392,13 +392,13 @@ END_SECTION
 
 
 
-PeakType p1, p2;
+MassTrace::PeakType p1, p2;
 p1.setMZ(123.123);
 p1.setIntensity(0.0);
 p2.setMZ(123.321);
 p2.setIntensity(0.0);
 
-std::vector<PeakType> peaks;
+std::vector<MassTrace::PeakType> peaks;
 peaks.push_back(p1);
 peaks.push_back(p2);
 
@@ -419,7 +419,7 @@ START_SECTION((void updateWeightedMZsd()))
 END_SECTION
 
 /////
-                          
+
 START_SECTION((double getCentroidSD() const ))
 {
     MassTrace test_mt_const(test_mt);
@@ -546,7 +546,7 @@ START_SECTION((double getFWHM() const))
     TEST_REAL_SIMILAR(test_mt_fwhm, 4.01);
 }
 END_SECTION
-                                         
+
 
 /////
 
@@ -677,7 +677,7 @@ END_SECTION
 /////
 
 
-std::vector<PeakType> double_peak(peak_vec);
+std::vector<MassTrace::PeakType> double_peak(peak_vec);
 double_peak.insert(double_peak.end(), peak_vec.begin(), peak_vec.end());
 
 std::vector<double> double_smooth_ints(smoothed_ints);

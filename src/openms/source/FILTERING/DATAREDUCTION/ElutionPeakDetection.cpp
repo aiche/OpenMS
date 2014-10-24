@@ -469,7 +469,7 @@ namespace OpenMS
       for (Size min_idx = 0; min_idx < mins.size(); ++min_idx)
       {
         // copy sub-trace between cp_it and split point
-        std::vector<PeakType> tmp_mt;
+        std::vector<MassTrace::PeakType> tmp_mt;
         std::vector<double> smoothed_tmp;
 
         while (last_idx <= mins[min_idx])
@@ -556,7 +556,7 @@ namespace OpenMS
     // looking at the unit test, this method gives better fits than lowess smoothing
     // reference paper uses lowess smoothing
 
-    MSSpectrum<PeakType> spectrum;
+    MSSpectrum<MassTrace::PeakType> spectrum;
     spectrum.insert(spectrum.begin(), mt.begin(), mt.end());
     SavitzkyGolayFilter sg;
     Param param;
@@ -564,7 +564,7 @@ namespace OpenMS
     param.setValue("frame_length", win_size);
     sg.setParameters(param);
     sg.filter(spectrum);
-    MSSpectrum<PeakType>::iterator iter = spectrum.begin();
+    MSSpectrum<MassTrace::PeakType>::iterator iter = spectrum.begin();
     std::vector<double> smoothed_intensities;
     for (; iter != spectrum.end(); ++iter)
     {

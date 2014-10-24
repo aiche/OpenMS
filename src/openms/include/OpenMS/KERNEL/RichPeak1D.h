@@ -38,6 +38,8 @@
 #include <OpenMS/KERNEL/Peak1D.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
 
+#include <OpenMS/OpenMSConfig.h>
+
 namespace OpenMS
 {
 

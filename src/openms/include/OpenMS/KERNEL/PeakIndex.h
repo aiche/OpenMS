@@ -35,10 +35,8 @@
 #ifndef OPENMS_KERNEL_PEAKINDEX_H
 #define OPENMS_KERNEL_PEAKINDEX_H
 
-
-#include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/CONCEPT/Macros.h>
+#include <OpenMS/CONCEPT/Types.h>
 #include <limits>
 
 namespace OpenMS

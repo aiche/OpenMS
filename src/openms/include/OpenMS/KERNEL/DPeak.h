@@ -38,6 +38,8 @@
 #include <OpenMS/KERNEL/Peak1D.h>
 #include <OpenMS/KERNEL/Peak2D.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+
 namespace OpenMS
 {
 

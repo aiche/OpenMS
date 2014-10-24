@@ -36,29 +36,32 @@
 #define OPENMS_KERNEL_MASSTRACE_H
 
 #include <OpenMS/KERNEL/Peak2D.h>
-#include <OpenMS/KERNEL/FeatureMap.h>
-
-
-#include <vector>
 #include <list>
 #include <map>
+#include <vector>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/ConvexHull2D.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
+#include <OpenMS/config.h>
 
 namespace OpenMS
 {
-  typedef Peak2D PeakType;
-
-/** @brief A container type that gathers peaks similar in m/z and moving along retention time.
+  /** 
+    @brief A container type that gathers peaks similar in m/z and moving along retention time.
 
     Depending on the method of extraction a mass trace could virtually represent a complete ion chromatogram (XIC) or merely a part of it
     (e.g., a chromatographic peak). The kernel class provides methods for computing mass trace characteristics such
     as its centroid m/z and retention time. Coeluting mass traces can be further assembled to complete isotope patterns of peptides/metabolites.
 
     @ingroup Kernel
- */
+  */
   class OPENMS_DLLAPI MassTrace
   {
 public:
+    typedef Peak2D PeakType;
+    
     /** @name Constructors and Destructor
         */
     /// Default constructor
@@ -92,133 +95,58 @@ public:
     typedef std::vector<PeakType>::reverse_iterator reverse_iterator;
     typedef std::vector<PeakType>::const_reverse_iterator const_reverse_iterator;
 
-    iterator begin()
-    {
-      return trace_peaks_.begin();
-    }
+    iterator begin();
 
-    iterator end()
-    {
-      return trace_peaks_.end();
-    }
+    iterator end();
 
-    const_iterator begin() const
-    {
-      return trace_peaks_.begin();
-    }
+    const_iterator begin() const;
 
-    const_iterator end() const
-    {
-      return trace_peaks_.end();
-    }
+    const_iterator end() const;
+    
+    reverse_iterator rbegin();
 
-    reverse_iterator rbegin()
-    {
-      return trace_peaks_.rbegin();
-    }
+    reverse_iterator rend();
 
-    reverse_iterator rend()
-    {
-      return trace_peaks_.rend();
-    }
+    const_reverse_iterator rbegin() const;
 
-    const_reverse_iterator rbegin() const
-    {
-      return trace_peaks_.rbegin();
-    }
-
-    const_reverse_iterator rend() const
-    {
-      return trace_peaks_.rend();
-    }
+    const_reverse_iterator rend() const;
 
     /** @name Accessor methods
         */
 
     /// Returns the number of peaks contained in the mass trace.
-    Size getSize() const
-    {
-      return trace_peaks_.size();
-    }
+    Size getSize() const;
 
     /// Gets label of mass trace.
-    String getLabel() const
-    {
-      return label_;
-    }
+    String getLabel() const;
 
     /// Sets label of mass trace.
-    void setLabel(const String & label)
-    {
-      label_ = label;
-    }
+    void setLabel(const String & label);
 
     /// Returns the centroid m/z.
-    double getCentroidMZ() const
-    {
-      return centroid_mz_;
-    }
+    double getCentroidMZ() const;
 
     /// Returns the centroid RT.
-    double getCentroidRT() const
-    {
-      return centroid_rt_;
-    }
+    double getCentroidRT() const;
 
-    double getCentroidSD() const
-    {
-      return centroid_sd_;
-    }
+    double getCentroidSD() const;
 
-    void setCentroidSD(const double & tmp_sd)
-    {
-      centroid_sd_ = tmp_sd;
-    }
+    void setCentroidSD(const double & tmp_sd);
 
-    double getFWHM() const
-    {
-        return fwhm_;
-    }
+    double getFWHM() const;
 
-    double getTraceLength() const
-    {
-        double length(0.0);
+    double getTraceLength() const;
 
-        if (trace_peaks_.size() > 1)
-        {
-            length = std::fabs(trace_peaks_.rbegin()->getRT() - trace_peaks_.begin()->getRT());
-        }
-
-        return length;
-    }
-
-    std::pair<Size, Size> getFWHMborders() const
-    {
-      return std::make_pair(fwhm_start_idx_, fwhm_end_idx_);
-    }
+    std::pair<Size, Size> getFWHMborders() const;
 
     /// Gets smoothed intensities (empty if no smoothing was explicitly done beforehand!).
-    const std::vector<double>& getSmoothedIntensities() const
-    {
-      return smoothed_intensities_;
-    }
+    const std::vector<double>& getSmoothedIntensities() const;
 
     /// Set smoothed intensities (smoothing is done externally, e.g. by LowessSmoothing).
-    void setSmoothedIntensities(const std::vector<double> & db_vec)
-    {
-      if (trace_peaks_.size() != db_vec.size())
-      {
-        throw Exception::InvalidValue(__FILE__, __LINE__, __PRETTY_FUNCTION__, "Number of smoothed intensities deviates from mass trace size! Aborting...", String(db_vec.size()));
-      }
-
-      smoothed_intensities_ = db_vec;
-    }
+    void setSmoothedIntensities(const std::vector<double> & db_vec);
 
     /// Get scan time of mass trace
-    double getScanTime() const
-    {
-      return scan_time_;
-    }
+    double getScanTime() const;
 
     /** @name Computational methods
         */

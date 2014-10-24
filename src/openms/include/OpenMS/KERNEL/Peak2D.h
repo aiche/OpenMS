@@ -37,9 +37,10 @@
 
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/DPosition.h>
-
-#include <iosfwd>
 #include <functional>
+#include <iosfwd>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

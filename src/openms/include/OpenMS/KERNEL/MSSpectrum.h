@@ -35,14 +35,18 @@
 #ifndef OPENMS_KERNEL_MSSPECTRUM_H
 #define OPENMS_KERNEL_MSSPECTRUM_H
 
-#include <OpenMS/METADATA/SpectrumSettings.h>
-#include <OpenMS/METADATA/MetaInfoDescription.h>
 #include <OpenMS/KERNEL/RangeManager.h>
+#include <OpenMS/METADATA/MetaInfoDescription.h>
+#include <OpenMS/METADATA/SpectrumSettings.h>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/KERNEL/Peak1D.h>
 #include <OpenMS/KERNEL/ComparatorUtils.h>
+#include <OpenMS/config.h>
 
 namespace OpenMS
 {
-  class Peak1D;
 
   /**
     @brief The representation of a 1D spectrum.

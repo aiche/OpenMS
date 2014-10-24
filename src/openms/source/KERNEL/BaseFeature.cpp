@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/KERNEL/BaseFeature.h>
+#include <OpenMS/KERNEL/RichPeak2D.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace std;

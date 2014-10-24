@@ -33,7 +33,6 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/KERNEL/MSSpectrum.h>
-#include <OpenMS/KERNEL/ChromatogramPeak.h>
 
 namespace OpenMS
 {

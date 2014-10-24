@@ -35,12 +35,15 @@
 #ifndef OPENMS_KERNEL_MSCHROMATOGRAM_H
 #define OPENMS_KERNEL_MSCHROMATOGRAM_H
 
-#include <OpenMS/METADATA/ChromatogramSettings.h>
-#include <OpenMS/METADATA/MetaInfoDescription.h>
-#include <OpenMS/KERNEL/RangeManager.h>
-#include <OpenMS/KERNEL/ComparatorUtils.h>
 #include <OpenMS/KERNEL/ChromatogramPeak.h>
+#include <OpenMS/KERNEL/RangeManager.h>
+#include <OpenMS/METADATA/ChromatogramSettings.h>
+#include <OpenMS/KERNEL/ComparatorUtils.h>
+#include <OpenMS/METADATA/MetaInfoDescription.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/config.h>
 
 namespace OpenMS
 {

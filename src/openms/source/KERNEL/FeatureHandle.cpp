@@ -32,9 +32,12 @@
 // $Authors: $
 // --------------------------------------------------------------------------
 
+#include <OpenMS/KERNEL/BaseFeature.h>
 #include <OpenMS/KERNEL/FeatureHandle.h>
 
-#include <OpenMS/KERNEL/BaseFeature.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/CONCEPT/UniqueIdInterface.h>
+#include <OpenMS/KERNEL/Peak2D.h>
 
 namespace OpenMS
 {

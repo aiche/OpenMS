@@ -37,11 +37,14 @@
 
 #include <OpenMS/KERNEL/RichPeak2D.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
+
 namespace OpenMS
 {
-  
-  class PeptideIdentification;
 
+  class PeptideIdentification;
+  
   /**
     @brief A basic LC-MS feature.
 

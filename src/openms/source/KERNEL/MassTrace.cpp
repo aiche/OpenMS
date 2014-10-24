@@ -33,11 +33,127 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/KERNEL/MassTrace.h>
-
-#include <boost/dynamic_bitset.hpp>
+#include <cmath>
 
 namespace OpenMS
 {
+  MassTrace::iterator MassTrace::begin()
+  {
+    return trace_peaks_.begin();
+  }
+  
+  MassTrace::iterator MassTrace::end()
+  {
+    return trace_peaks_.end();
+  }
+  
+  MassTrace::const_iterator MassTrace::begin() const
+  {
+    return trace_peaks_.begin();
+  }
+  
+  MassTrace::const_iterator MassTrace::end() const
+  {
+    return trace_peaks_.end();
+  }
+  
+  MassTrace::reverse_iterator MassTrace::rbegin()
+  {
+    return trace_peaks_.rbegin();
+  }
+  
+  MassTrace::reverse_iterator MassTrace::rend()
+  {
+    return trace_peaks_.rend();
+  }
+  
+  MassTrace::const_reverse_iterator MassTrace::rbegin() const
+  {
+    return trace_peaks_.rbegin();
+  }
+  
+  MassTrace::const_reverse_iterator MassTrace::rend() const
+  {
+    return trace_peaks_.rend();
+  }
+  
+  Size MassTrace::getSize() const
+  {
+    return trace_peaks_.size();
+  }
+  
+  String MassTrace::getLabel() const
+  {
+    return label_;
+  }
+  
+  void MassTrace::setLabel(const String & label)
+  {
+    label_ = label;
+  }
+  
+  double MassTrace::getCentroidMZ() const
+  {
+    return centroid_mz_;
+  }
+  
+  double MassTrace::getCentroidRT() const
+  {
+    return centroid_rt_;
+  }
+  
+  double MassTrace::getCentroidSD() const
+  {
+    return centroid_sd_;
+  }
+  
+  void MassTrace::setCentroidSD(const double & tmp_sd)
+  {
+    centroid_sd_ = tmp_sd;
+  }
+  
+  double MassTrace::getFWHM() const
+  {
+    return fwhm_;
+  }
+  
+  double MassTrace::getTraceLength() const
+  {
+    double length(0.0);
+    
+    if (trace_peaks_.size() > 1)
+    {
+      length = std::fabs(trace_peaks_.rbegin()->getRT() - trace_peaks_.begin()->getRT());
+    }
+    
+    return length;
+  }
+  
+  std::pair<Size, Size> MassTrace::getFWHMborders() const
+  {
+    return std::make_pair(fwhm_start_idx_, fwhm_end_idx_);
+  }
+  
+  const std::vector<double>& MassTrace::getSmoothedIntensities() const
+  {
+    return smoothed_intensities_;
+  }
+  
+  void MassTrace::setSmoothedIntensities(const std::vector<double> & db_vec)
+  {
+    if (trace_peaks_.size() != db_vec.size())
+    {
+      throw Exception::InvalidValue(__FILE__, __LINE__, __PRETTY_FUNCTION__, "Number of smoothed intensities deviates from mass trace size! Aborting...", String(db_vec.size()));
+    }
+    
+    smoothed_intensities_ = db_vec;
+  }
+  
+  double MassTrace::getScanTime() const
+  {
+    return scan_time_;
+  }
+  
   MassTrace::MassTrace() :
     trace_peaks_(),
     centroid_mz_(),
@@ -120,12 +236,12 @@ namespace OpenMS
     return *this;
   }
 
-  PeakType& MassTrace::operator[](const Size& mt_idx)
+  MassTrace::PeakType& MassTrace::operator[](const Size& mt_idx)
   {
     return trace_peaks_[mt_idx];
   }
 
-  const PeakType& MassTrace::operator[](const Size& mt_idx) const
+  const MassTrace::PeakType& MassTrace::operator[](const Size& mt_idx) const
   {
     return trace_peaks_[mt_idx];
   }

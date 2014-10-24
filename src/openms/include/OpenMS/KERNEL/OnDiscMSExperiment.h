@@ -35,20 +35,25 @@
 #ifndef OPENMS_KERNEL_ONDISCMSEXPERIMENT_H
 #define OPENMS_KERNEL_ONDISCMSEXPERIMENT_H
 
-#include <OpenMS/INTERFACES/DataStructures.h>
-
-#include <OpenMS/KERNEL/MSExperiment.h>
-#include <OpenMS/KERNEL/MSSpectrum.h>
-#include <OpenMS/KERNEL/MSChromatogram.h>
-#include <OpenMS/METADATA/ExperimentalSettings.h>
 #include <OpenMS/FORMAT/IndexedMzMLFile.h>
 #include <OpenMS/FORMAT/MzMLFile.h>
-
-#include <vector>
+#include <OpenMS/INTERFACES/DataStructures.h>
+#include <OpenMS/KERNEL/MSChromatogram.h>
+#include <OpenMS/KERNEL/MSExperiment.h>
+#include <OpenMS/KERNEL/MSSpectrum.h>
+#include <boost/smart_ptr/shared_ptr.hpp>
 #include <algorithm>
 #include <limits>
+#include <vector>
 
-#include <boost/shared_ptr.hpp>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/KERNEL/ChromatogramPeak.h>
+#include <OpenMS/KERNEL/Peak1D.h>
+
+namespace OpenMS {
+class ExperimentalSettings;
+}  // namespace OpenMS
 
 namespace OpenMS
 {

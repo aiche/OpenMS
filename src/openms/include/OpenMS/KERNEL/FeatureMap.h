@@ -35,18 +35,18 @@
 #ifndef OPENMS_KERNEL_FEATUREMAP_H
 #define OPENMS_KERNEL_FEATUREMAP_H
 
-#include <OpenMS/KERNEL/Feature.h>
-#include <OpenMS/KERNEL/RangeManager.h>
-#include <OpenMS/METADATA/DocumentIdentifier.h>
-#include <algorithm>
-#include <exception>
-#include <vector>
-
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/CONCEPT/UniqueIdInterface.h>
 #include <OpenMS/CONCEPT/UniqueIdIndexer.h>
 #include <OpenMS/KERNEL/BaseFeature.h>
+#include <OpenMS/KERNEL/Feature.h>
+#include <OpenMS/KERNEL/RangeManager.h>
+#include <OpenMS/METADATA/DocumentIdentifier.h>
 #include <OpenMS/OpenMSConfig.h>
+
+#include <algorithm>
+#include <exception>
+#include <vector>
 
 namespace OpenMS
 {

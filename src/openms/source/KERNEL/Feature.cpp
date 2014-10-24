@@ -32,11 +32,12 @@
 // $Authors: $
 // --------------------------------------------------------------------------
 
+#include <OpenMS/CONCEPT/Macros.h>
+#include <OpenMS/DATASTRUCTURES/ConvexHull2D.h>
+#include <OpenMS/KERNEL/BaseFeature.h>
 #include <OpenMS/KERNEL/Feature.h>
 
-#include <OpenMS/CONCEPT/Macros.h> // for OPENMS_PRECONDITION
-#include <OpenMS/DATASTRUCTURES/ConvexHull2D.h> // for ConvexHull2D, etc
-#include <OpenMS/KERNEL/BaseFeature.h> // for BaseFeature::QualityType, etc
+#include <OpenMS/CONCEPT/Types.h>
 
 using namespace std;
 

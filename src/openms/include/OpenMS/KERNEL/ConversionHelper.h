@@ -35,12 +35,15 @@
 #ifndef OPENMS_KERNEL_CONVERSIONHELPER_H
 #define OPENMS_KERNEL_CONVERSIONHELPER_H
 
-#include <OpenMS/KERNEL/ConsensusMap.h>
-#include <OpenMS/KERNEL/MSExperiment.h>
-#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/KERNEL/MSExperiment.h>  // for MSExperiment
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class ConsensusMap;
+  class FeatureMap;
 
   class OPENMS_DLLAPI MapConversion
   {

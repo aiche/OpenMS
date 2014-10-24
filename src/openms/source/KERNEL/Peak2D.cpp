@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/KERNEL/Peak2D.h>
+#include <OpenMS/CONCEPT/Types.h>
 
 namespace OpenMS
 {

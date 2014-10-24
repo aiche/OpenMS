@@ -37,6 +37,9 @@
 
 #include <OpenMS/DATASTRUCTURES/DRange.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/DPosition.h>
+
 namespace OpenMS
 {
   /**

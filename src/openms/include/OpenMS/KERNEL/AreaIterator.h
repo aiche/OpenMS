@@ -35,10 +35,7 @@
 #ifndef OPENMS_KERNEL_AREAITERATOR_H
 #define OPENMS_KERNEL_AREAITERATOR_H
 
-// OpenMS includes
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/KERNEL/PeakIndex.h>
-
 // STL includes
 #include <iterator>
 

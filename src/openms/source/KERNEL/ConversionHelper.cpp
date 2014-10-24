@@ -34,6 +34,15 @@
 
 #include <OpenMS/KERNEL/ConversionHelper.h>
 
+#include <OpenMS/KERNEL/ConsensusMap.h>
+#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/KERNEL/MSExperiment.h>
+
+namespace OpenMS {
+class ConsensusFeature;
+class Feature;
+}  // namespace OpenMS
+
 namespace OpenMS
 {
   void MapConversion::convert(UInt64 const input_map_index,

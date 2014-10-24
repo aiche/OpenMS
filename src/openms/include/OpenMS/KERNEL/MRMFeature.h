@@ -37,6 +37,9 @@
 
 #include <OpenMS/KERNEL/Feature.h>
 
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
+
 namespace OpenMS
 {
   /**

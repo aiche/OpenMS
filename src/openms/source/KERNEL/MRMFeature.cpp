@@ -36,6 +36,7 @@
 #define OPENMS_KERNEL_MRMFEATURE_C
 
 #include <OpenMS/KERNEL/MRMFeature.h>
+#include <OpenMS/KERNEL/Feature.h>
 
 namespace OpenMS
 {

@@ -35,6 +35,9 @@
 #ifndef OPENMS_KERNEL_MRMTRANSITIONGROUP_H
 #define OPENMS_KERNEL_MRMTRANSITIONGROUP_H
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+
 #include <OpenMS/KERNEL/MRMFeature.h>
 #include <boost/numeric/conversion/cast.hpp>
 

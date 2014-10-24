@@ -35,20 +35,27 @@
 #ifndef OPENMS_KERNEL_MSEXPERIMENT_H
 #define OPENMS_KERNEL_MSEXPERIMENT_H
 
-#include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/DATASTRUCTURES/DRange.h>
-#include <OpenMS/KERNEL/AreaIterator.h>
 #include <OpenMS/KERNEL/MSChromatogram.h>
 #include <OpenMS/KERNEL/MSSpectrum.h>
 #include <OpenMS/METADATA/ExperimentalSettings.h>
 
-#include <vector>
+#include <OpenMS/CONCEPT/Constants.h>
+#include <OpenMS/CONCEPT/Macros.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/KERNEL/ChromatogramPeak.h>
+#include <OpenMS/KERNEL/Peak1D.h>
+#include <OpenMS/KERNEL/RangeManager.h>
+#include <OpenMS/KERNEL/AreaIterator.h>
+#include <OpenMS/config.h>
+
 #include <algorithm>
 #include <limits>
+#include <vector>
 
 namespace OpenMS
 {
-  class Peak1D;
 
   /**
     @brief In-Memory representation of a mass spectrometry experiment.

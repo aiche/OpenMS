@@ -38,6 +38,8 @@
 #include <OpenMS/KERNEL/RichPeak1D.h>
 #include <OpenMS/KERNEL/RichPeak2D.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+
 namespace OpenMS
 {
 

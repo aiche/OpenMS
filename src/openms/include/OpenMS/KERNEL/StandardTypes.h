@@ -35,47 +35,49 @@
 #ifndef OPENMS_KERNEL_STANDARDTYPES_H
 #define OPENMS_KERNEL_STANDARDTYPES_H
 
-#include <OpenMS/config.h>
-#include <OpenMS/KERNEL/RichPeak1D.h>
 #include <OpenMS/KERNEL/MSExperiment.h>
+#include <OpenMS/KERNEL/MSChromatogram.h>
+#include <OpenMS/KERNEL/MSSpectrum.h>
+
+#include <OpenMS/KERNEL/RichPeak1D.h>
 
 namespace OpenMS
 {
   //@{
   /**
-      @brief Spectrum consisting of raw data points or peaks.
+    @brief Spectrum consisting of raw data points or peaks.
 
-      Meta information includes retention time and MS-level.
+    Meta information includes retention time and MS-level.
 
-      @ingroup Kernel
+    @ingroup Kernel
   */
   typedef MSSpectrum<Peak1D> PeakSpectrum;
   /**
-      @brief Two-dimensional map of raw data points or peaks.
+    @brief Two-dimensional map of raw data points or peaks.
 
-      @ingroup Kernel
+    @ingroup Kernel
   */
   typedef MSExperiment<Peak1D> PeakMap;
 
   /**
-      @brief Spectrum consisting of raw data points or peaks with meta information.
+    @brief Spectrum consisting of raw data points or peaks with meta information.
 
-      @ingroup Kernel
+    @ingroup Kernel
   */
   typedef MSSpectrum<RichPeak1D> RichPeakSpectrum;
 
   /**
-      @brief  Two-dimensional map of raw data points or peaks with meta information.
+    @brief  Two-dimensional map of raw data points or peaks with meta information.
 
-      @ingroup Kernel
+    @ingroup Kernel
   */
   typedef MSExperiment<RichPeak1D> RichPeakMap;
 
 
   /**
-      @brief Chromatogram consisting of raw data points or peaks
+    @brief Chromatogram consisting of raw data points or peaks
 
-      @ingroup Kernel
+    @ingroup Kernel
   */
   typedef MSChromatogram<ChromatogramPeak> Chromatogram;
   //@}

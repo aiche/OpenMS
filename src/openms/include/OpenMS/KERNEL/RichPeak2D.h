@@ -35,9 +35,11 @@
 #ifndef OPENMS_KERNEL_RICHPEAK2D_H
 #define OPENMS_KERNEL_RICHPEAK2D_H
 
+#include <OpenMS/CONCEPT/UniqueIdInterface.h>
 #include <OpenMS/KERNEL/Peak2D.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/CONCEPT/UniqueIdInterface.h>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

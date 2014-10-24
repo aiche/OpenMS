@@ -35,11 +35,11 @@
 #ifndef OPENMS_KERNEL_CHROMATOGRAMPEAK_H
 #define OPENMS_KERNEL_CHROMATOGRAMPEAK_H
 
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/DPosition.h>
-
-#include <ostream>
 #include <functional>
+#include <ostream>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
