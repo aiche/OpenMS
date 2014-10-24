@@ -36,6 +36,8 @@
 #define OPENMS_CHEMISTRY_EDWARDSLIPPERTITERATOR_H
 
 #include <OpenMS/CHEMISTRY/PepIterator.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
@@ -59,7 +61,7 @@ public:
     /**
     @brief Copy Constructor
     */
-    EdwardsLippertIterator(const EdwardsLippertIterator &);
+    EdwardsLippertIterator(const EdwardsLippertIterator&);
     /**
     @brief Destructor
     */
@@ -77,21 +79,21 @@ public:
     @return Reference to PepIterator
     @throw InvalidIterator if iterator has not been initialized
     */
-    virtual PepIterator & operator++();
+    virtual PepIterator& operator++();
 
     /**
     @brief operator ++ for preincrement
     @return pointer to PepIterator
     @throw InvalidIterator if iterator has not been initialized
     */
-    virtual PepIterator * operator++(int i);
+    virtual PepIterator* operator++(int i);
 
     /**
     @brief setter for fasta file
     @param f String with fasta file location
     @throw FileNotFound if file could not be found
     */
-    virtual void setFastaFile(const String & f);
+    virtual void setFastaFile(const String& f);
 
     /**
     @brief getter for FASTA file
@@ -117,13 +119,13 @@ public:
     @param s spectrum as a vector of doubles
     @throw InvalidValue if spectrum is not sorted
     */
-    virtual void setSpectrum(const std::vector<double> & s);
+    virtual void setSpectrum(const std::vector<double>& s);
 
     /**
     @brief getter for spectrum
     @return the used spectrum
     */
-    virtual const std::vector<double> & getSpectrum();
+    virtual const std::vector<double>& getSpectrum();
 
     /**
     @brief initializing iterator
@@ -158,7 +160,7 @@ public:
     @brief needed by Factory
     @return pointer to new object
     */
-    static PepIterator * create()
+    static PepIterator* create()
     {
       return new EdwardsLippertIterator;
     }
@@ -185,27 +187,27 @@ protected:
     @brief indicates if a mass is in spectrum
     @return true if a given mass is in spectrum
     */
-    virtual bool isInSpectrum_(double & mass);
+    virtual bool isInSpectrum_(double& mass);
 
-    String f_file_;         ///< fasta file location
+    String f_file_; ///< fasta file location
 
-    std::string actual_pep_;         ///< actual peptide
+    std::string actual_pep_; ///< actual peptide
 
-    std::vector<double> spec_;         ///< given spectrum
+    std::vector<double> spec_; ///< given spectrum
 
-    double tol_;         ///< tolerance
+    double tol_; ///< tolerance
 
-    double masse_[255];         ///< mass table
+    double masse_[255]; ///< mass table
 
-    bool is_at_end_;         ///< indicates if iterator is at end
+    bool is_at_end_; ///< indicates if iterator is at end
 
-    PepIterator * f_iterator_;         ///< FastaIterator
+    PepIterator* f_iterator_; ///< FastaIterator
 
-    FASTAEntry f_entry_;         ///< actual fasta entry
+    FASTAEntry f_entry_; ///< actual fasta entry
 
-    unsigned int b_, e_;        ///< to ints representing a position within the actual string (b = begin, e = end)
+    unsigned int b_, e_; ///< to ints representing a position within the actual string (b = begin, e = end)
 
-    double m_, massMax_;         ///< mass and maximum masse
+    double m_, massMax_; ///< mass and maximum masse
 
 
   };

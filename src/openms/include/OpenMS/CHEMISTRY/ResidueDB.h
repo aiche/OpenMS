@@ -36,15 +36,15 @@
 #define OPENMS_CHEMISTRY_RESIDUEDB_H
 
 #include <OpenMS/DATASTRUCTURES/Map.h>
-#include <boost/unordered_map.hpp>
-#include <OpenMS/DATASTRUCTURES/String.h>
-
 #include <set>
+#include <boost/unordered_map.hpp>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-  // forward declarations
-  class ResidueModification;
   class Residue;
 
   /** @ingroup Chemistry

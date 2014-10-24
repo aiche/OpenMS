@@ -38,81 +38,83 @@
 
 #include <map>
 #include <vector>
-#include <OpenMS/DATASTRUCTURES/String.h>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class String;
 
-/**
-@brief Implements modification for suffix arrays
-*/
-
+  /**
+    @brief Implements modification for suffix arrays
+  */
   class OPENMS_DLLAPI ModifierRep
   {
 
 public:
-/**
-@brief Constructor
-*/
+    /**
+      @brief Constructor
+    */
     ModifierRep();
-/**
-@brief copy constructor
-*/
-    ModifierRep(const ModifierRep & source);
-/**
-@brief destructor
-*/
+    /**
+      @brief copy constructor
+    */
+    ModifierRep(const ModifierRep& source);
+    /**
+      @brief destructor
+    */
     virtual ~ModifierRep();
 
-/**
-@brief setter for number of modifications
-@param i number of modifications
-*/
+    /**
+      @brief setter for number of modifications
+      @param i number of modifications
+    */
     void setNumberOfModifications(Size i);
 
-/**
-@brief getter for number of modifications
-@return number of modifications
-*/
+    /**
+      @brief getter for number of modifications
+      @return number of modifications
+    */
     Size getNumberOfModifications() const;
 
-/**
-@brief getter for the modification table
-@return const reference to the modofication table
-*/
-    const std::vector<std::vector<double> > & getModificationTable();
-/**
-@brief updates the modifications list if with the modifications of a new amino acid
-@param mod_map reference to the map holding the possible modifications
-@param c const character for the amino acid
+    /**
+      @brief getter for the modification table
+      @return const reference to the modofication table
+    */
+    const std::vector<std::vector<double> >& getModificationTable();
+    
+    /**
+      @brief updates the modifications list if with the modifications of a new amino acid
+      @param mod_map reference to the map holding the possible modifications
+      @param c const character for the amino acid
 
-All modification for the given amino acid are added to the map. The key is the mass, the value is the number of modifications for that mass. So the advantage of using a map is that a value will occur only once. The mass of the modification is added to all elements in the map whose number of modifications is smaller than the maximal number of modifications.
-*/
-    void refreshModificationList(std::map<double, SignedSize> & mod_map, const char & c);
+      All modification for the given amino acid are added to the map. The key is the mass, the value is the number of modifications for that mass. So the advantage of using a map is that a value will occur only once. The mass of the modification is added to all elements in the map whose number of modifications is smaller than the maximal number of modifications.
+    */
+    void refreshModificationList(std::map<double, SignedSize>& mod_map, const char& c);
 
-/**
-@brief calculates the maximal number unique masses of combinations of modifications (maximal possible size of the modification map)
-@return Size
-*/
+    /**
+      @brief calculates the maximal number unique masses of combinations of modifications (maximal possible size of the modification map)
+      @return Size
+    */
     Size getMaxModificationMasses();
 
-/**
-@brief gets all modification possibilities for a given mass
-@param m masse
-@return vector of strings
-therefor at first the massmapping is calculated. This massmapping will be saved as private member mass_mapping_ so that it has to be calculated only once.
-*/
-    std::vector<String> getModificationsForMass(double & m);
+    /**
+      @brief gets all modification possibilities for a given mass
+      @param m masse
+      @return vector of strings
+      therefor at first the massmapping is calculated. This massmapping will be saved as private member mass_mapping_ so that it has to be calculated only once.
+    */
+    std::vector<String> getModificationsForMass(double& m);
 
-/**
-@brief gets all modification possibilities for a given mass and for the given peptide
-@param m mass
-@param seq peptide sequence
-@return vector of strings
-the getModificationsForMass (double & m) will be used. then a character histogram of the sequence is created as well as for every possible combination of modifications. Then only modifications that are possible are returned.
-*/
-    std::vector<String> getModificationsForMass(double & m, const String & seq);
-
+    /**
+      @brief gets all modification possibilities for a given mass and for the given peptide
+      @param m mass
+      @param seq peptide sequence
+      @return vector of strings
+      the getModificationsForMass (double & m) will be used. then a character histogram of the sequence is created as well as for every possible combination of modifications. Then only modifications that are possible are returned.
+    */
+    std::vector<String> getModificationsForMass(double& m, const String& seq);
 
 protected:
 

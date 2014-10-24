@@ -37,16 +37,16 @@
 #define OPENMS_CHEMISTRY_MODIFICATIONDEFINITIONSSET_H
 
 #include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/DATASTRUCTURES/StringListUtils.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
-#include <OpenMS/CHEMISTRY/ModificationDefinition.h>
-#include <OpenMS/CHEMISTRY/AASequence.h>
-
 #include <set>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class AASequence;
+  class ModificationDefinition;
+  
   /** @ingroup Chemistry
 
           @brief Representation of a set of modification definitions

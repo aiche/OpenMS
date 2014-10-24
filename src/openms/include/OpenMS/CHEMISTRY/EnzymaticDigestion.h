@@ -35,11 +35,14 @@
 #ifndef OPENMS_CHEMISTRY_ENZYMATICDIGESTION_H
 #define OPENMS_CHEMISTRY_ENZYMATICDIGESTION_H
 
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/CHEMISTRY/AASequence.h>
-
+#include <OpenMS/CONCEPT/Types.h>
 #include <string>
 #include <vector>
+
+#include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

@@ -31,21 +31,21 @@
 // $Maintainer: Andreas Bertsch $
 // $Authors: Andreas Bertsch $
 // --------------------------------------------------------------------------
-//
 
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
-#include <OpenMS/CHEMISTRY/ResidueModification.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
-
+#include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/ResidueModification.h>
 #include <OpenMS/DATASTRUCTURES/Param.h>
-#include <OpenMS/DATASTRUCTURES/ListUtils.h>
-
 #include <OpenMS/FORMAT/ParamXMLFile.h>
-
-#include <OpenMS/SYSTEM/File.h>
-
 #include <iostream>
+
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/SYSTEM/File.h>
+#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

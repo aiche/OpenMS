@@ -36,15 +36,14 @@
 #ifndef OPENMS_CHEMISTRY_RESIDUEMODIFICATION_H
 #define OPENMS_CHEMISTRY_RESIDUEMODIFICATION_H
 
-#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
-
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <set>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-  // forward declaration
-  class Residue;
 
   /** @brief Representation of a modification
 

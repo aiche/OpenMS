@@ -34,17 +34,20 @@
 //
 
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CONCEPT/LogStream.h>
+#include <cstddef>
+#include <algorithm>
+#include <cmath>
+#include <fstream>
+#include <vector>
 
+#include <OpenMS/CHEMISTRY/ResidueModification.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/FORMAT/UnimodXMLFile.h>
 #include <OpenMS/SYSTEM/File.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
-#include <OpenMS/CHEMISTRY/Residue.h>
-#include <OpenMS/CONCEPT/LogStream.h>
-
-#include <vector>
-#include <algorithm>
-#include <fstream>
-#include <cmath>
+#include <OpenMS/config.h>
 
 using namespace std;
 

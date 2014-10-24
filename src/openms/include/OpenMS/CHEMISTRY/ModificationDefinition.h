@@ -36,12 +36,14 @@
 #ifndef OPENMS_CHEMISTRY_MODIFICATIONDEFINITION_H
 #define OPENMS_CHEMISTRY_MODIFICATIONDEFINITION_H
 
-#include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CHEMISTRY/ResidueModification.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class String;
+  
   /** @ingroup Chemistry
 
           @brief Representation of modification definition

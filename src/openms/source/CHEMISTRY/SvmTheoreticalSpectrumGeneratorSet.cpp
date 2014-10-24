@@ -33,10 +33,14 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGeneratorSet.h>
+#include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGenerator.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/FORMAT/TextFile.h>
 #include <OpenMS/SYSTEM/File.h>
 
-
+#include <OpenMS/DATASTRUCTURES/Param.h>
+#include <OpenMS/KERNEL/StandardTypes.h>
+#include <OpenMS/config.h>
 
 namespace OpenMS
 {

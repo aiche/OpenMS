@@ -36,12 +36,16 @@
 #define OPENMS_CHEMISTRY_EDWARDSLIPPERTITERATORTRYPTIC_H
 
 #include <OpenMS/CHEMISTRY/EdwardsLippertIterator.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-/**
-@brief EdwardsLippertIterator that only retrieves tryptic sequences
-*/
+  class PepIterator;
+  class String;
+
+  /**
+    @brief EdwardsLippertIterator that only retrieves tryptic sequences
+  */
   class OPENMS_DLLAPI EdwardsLippertIteratorTryptic :
     public EdwardsLippertIterator
   {
@@ -67,22 +71,16 @@ public:
     virtual bool isDigestingEnd(char aa1, char aa2);
 
     /**
-    @brief needed by Factory
-    @return const string name of class
+      @brief needed by Factory
+      @return const string name of class
     */
-    static const String getProductName()
-    {
-      return "EdwardsLippertIteratorTryptic";
-    }
+    static const String getProductName();
 
     /**
-    @brief needed by Factory
-    @return pointer to new object
+      @brief needed by Factory
+      @return pointer to new object
     */
-    static PepIterator * create()
-    {
-      return new EdwardsLippertIteratorTryptic;
-    }
+    static PepIterator * create();
 
   };
 

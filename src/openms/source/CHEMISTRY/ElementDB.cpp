@@ -32,17 +32,17 @@
 // $Authors: Andreas Bertsch, Timo Sachsenberg $
 // --------------------------------------------------------------------------
 //
-#include <OpenMS/CHEMISTRY/ElementDB.h>
 #include <OpenMS/CHEMISTRY/Element.h>
-
+#include <OpenMS/CHEMISTRY/ElementDB.h>
 #include <OpenMS/DATASTRUCTURES/Param.h>
-
 #include <OpenMS/FORMAT/ParamXMLFile.h>
-
-#include <OpenMS/SYSTEM/File.h>
-
 #include <cmath>
 #include <iostream>
+
+#include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
+#include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/SYSTEM/File.h>
 
 using namespace std;
 

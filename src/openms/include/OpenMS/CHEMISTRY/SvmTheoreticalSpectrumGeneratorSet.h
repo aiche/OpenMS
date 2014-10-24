@@ -36,12 +36,21 @@
 #ifndef OPENMS_CHEMISTRY_SVMTHEORETICALSPECTRUMGENERATORSET_H
 #define OPENMS_CHEMISTRY_SVMTHEORETICALSPECTRUMGENERATORSET_H
 
-#include <OpenMS/SIMULATION/SimTypes.h>
+#include <boost/random/mersenne_twister.hpp>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 #include <OpenMS/KERNEL/StandardTypes.h>
-#include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGenerator.h>
+
+#include <set>
+#include <map>
 
 namespace OpenMS
 {
+  class AASequence;
+  class SvmTheoreticalSpectrumGenerator;
+  
   /**
    @brief Loads SvmTheoreticalSpectrumGenerator instances for different charges
 

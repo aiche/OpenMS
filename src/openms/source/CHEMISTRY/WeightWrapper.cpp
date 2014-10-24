@@ -34,6 +34,11 @@
 
 #include <OpenMS/CHEMISTRY/WeightWrapper.h>
 
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/config.h>
+#include <OpenMS/CONCEPT/Exception.h>
+
 namespace OpenMS
 {
 

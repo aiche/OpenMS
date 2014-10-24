@@ -1,32 +1,32 @@
 // --------------------------------------------------------------------------
-//                   OpenMS -- Open-Source Mass Spectrometry               
+//                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
 // ETH Zurich, and Freie Universitaet Berlin 2002-2014.
-// 
+//
 // This software is released under a three-clause BSD license:
 //  * Redistributions of source code must retain the above copyright
 //    notice, this list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright
 //    notice, this list of conditions and the following disclaimer in the
 //    documentation and/or other materials provided with the distribution.
-//  * Neither the name of any author or any participating institution 
-//    may be used to endorse or promote products derived from this software 
+//  * Neither the name of any author or any participating institution
+//    may be used to endorse or promote products derived from this software
 //    without specific prior written permission.
-// For a full list of authors, refer to the file AUTHORS. 
+// For a full list of authors, refer to the file AUTHORS.
 // --------------------------------------------------------------------------
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING 
-// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
-// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING
+// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
+//
 // --------------------------------------------------------------------------
 // $Maintainer: Clemens Groepl,Andreas Bertsch$
 // $Authors: Chris Bauer $
@@ -36,6 +36,7 @@
 #include <OpenMS/test_config.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
 #include <OpenMS/CONCEPT/Exception.h>
 
@@ -65,7 +66,7 @@ START_SECTION(SuffixArrayTrypticSeqan(const String &st, const String &filename, 
 	ptr = new SuffixArrayTrypticSeqan(text,"");
   TEST_NOT_EQUAL(ptr, nullPointer);
 	TEST_EXCEPTION (Exception::FileNotFound,new SuffixArrayTrypticSeqan(text,"FileThatNotExists"));
-	
+
 END_SECTION
 
 START_SECTION(bool isDigestingEnd(const char aa1, const char aa2) const)
@@ -82,9 +83,9 @@ END_SECTION
 START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double> & spec ))
 	double masse[255];
 	ResidueDB* rdb = ResidueDB::getInstance();
-		
+
 	char aa[] = "ARNDCEQGHILKMFPSTWYV";
-		
+
 	for (Size i = 0; i<255;++i)
 	{
 		masse[i]=0;
@@ -116,7 +117,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	{
 		TEST_EQUAL(res.at(i).size(),1);
 	}
-	
+
 	TEST_EQUAL(res.at(0).at(0).first.first,8)
 	TEST_EQUAL(res.at(0).at(0).first.second,2)
 	TEST_EQUAL(res.at(1).at(0).first.first,1)
@@ -126,7 +127,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	res.clear();
 	sa->findSpec(res, specc2);
 	TEST_EQUAL(res.size(),0);
-	spec.push_back(441.4806);	
+	spec.push_back(441.4806);
 	spec.push_back(178.1864);
 	const vector<double> specc3 (spec);
 	res.clear();
@@ -137,7 +138,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	getline(i_stream,txt);
 	sa = new SuffixArrayTrypticSeqan(txt,"");
 	vector<double> spec_new;
-	for (int i = 500; i < 5000; i += 197) 
+	for (int i = 500; i < 5000; i += 197)
 	{
 		spec_new.push_back((double)i);
 	}
@@ -145,7 +146,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	vector<double> specc_new(spec_new);
 	res.clear();
 	sa->findSpec(res, specc_new);
-	
+
 	//checking for doubled results;
 	for (Size i = 0; i < res.size();++i)
 	{
@@ -153,7 +154,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 		{
 			for (Size k = j+1; k < res.at(i).size();++k)
 			{
-				TEST_EQUAL(res.at(i).at(j).first.first==res.at(i).at(k).first.first && res.at(i).at(j).first.second==res.at(i).at(k).first.second, false);			
+				TEST_EQUAL(res.at(i).at(j).first.first==res.at(i).at(k).first.first && res.at(i).at(j).first.second==res.at(i).at(k).first.second, false);
 			}
 		}
 	}
@@ -162,7 +163,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	sa->setTolerance(0.5);
 	// checking if the mass of the found candidates is correct
 	// checking if the next character is not a P
-	
+
 	for (Size i = 0; i < res.size();i++)
 	{
 		for (Size j = 0;j<res.at(i).size();j++)
@@ -178,7 +179,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 			TEST_REAL_SIMILAR(m,specc_new.at(i));
 		}
 	}
-	// getting all candidates with tags 
+	// getting all candidates with tags
 	Size number_of_tags=0;
 	vector<String> res_with_tags_exp;
 	for (Size i = 0; i < res.size();i++)
@@ -199,7 +200,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 				++number_of_tags;
 				res_with_tags_exp.push_back(seq);
 			}
-			
+
 		}
 	}
 	//cout << "number_of_tags_:" << number_of_tags << endl;
@@ -228,7 +229,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 			if (!has_tag) cout << seq << endl;
 			TEST_EQUAL(has_tag,true);
 			TEST_EQUAL(res.at(i).at(j).second, 0);
-			
+
 			res_with_tags.push_back(seq);
 		}
 	}
@@ -252,7 +253,7 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 	sa->setUseTags(false);
 	res.clear();
 	sa->findSpec(res, specc_new);
-	
+
 	for (Size i = 0; i < res.size(); i++)
 	{
 		for (Size j = 0; j < res[i].size(); j++)
@@ -263,11 +264,11 @@ START_SECTION([EXTRA]SuffixArrayTrypticSeqan::findSpec(const std::vector<double>
 			{
 				m += masse[(int)seq[k]];
 			}
-			
+
 			TEST_REAL_SIMILAR(m + res[i][j].second, specc_new[i]);
 		}
 	}
-	
+
 END_SECTION
 
 

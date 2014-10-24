@@ -34,20 +34,29 @@
 //
 
 #include <OpenMS/CHEMISTRY/AASequence.h>
-#include <OpenMS/CONCEPT/Constants.h>
-
-#include <OpenMS/CHEMISTRY/ResidueModification.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
-
+#include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/ResidueModification.h>
+#include <OpenMS/CONCEPT/Constants.h>
 #include <OpenMS/CONCEPT/LogStream.h>
 #include <OpenMS/CONCEPT/Macros.h>
-#include <OpenMS/CONCEPT/PrecisionWrapper.h>
-
+#include <cstddef>
 #include <algorithm>
-#include <cmath> // for "pow"
-#include <iterator> // for "distance"
+#include <cmath>
+#include <iterator>
 #include <sstream>
+
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/CONCEPT/PrecisionWrapper.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/config.h>
+
+namespace OpenMS {
+template <class Key, class T> class Map;
+}  // namespace OpenMS
 
 using namespace std;
 

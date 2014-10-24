@@ -35,18 +35,18 @@
 #ifndef OPENMS_CHEMISTRY_EMPIRICALFORMULA_H
 #define OPENMS_CHEMISTRY_EMPIRICALFORMULA_H
 
-#include <iosfwd>
-#include <vector>
-#include <map>
-
 #include <OpenMS/CONCEPT/Types.h>
+#include <iosfwd>
+#include <map>
+#include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-  class String;
   class Element;
-  class ElementDB;
   class IsotopeDistribution;
+  class String;
 
   /**
     @ingroup Chemistry

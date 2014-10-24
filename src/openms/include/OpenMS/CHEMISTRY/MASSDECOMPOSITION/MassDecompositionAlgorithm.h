@@ -36,25 +36,19 @@
 #define OPENMS_CHEMISTRY_MASSDECOMPOSITION_MASSDECOMPOSITIONALGORITHM_H
 
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
-#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/MassDecomposition.h>
-
-// ims includes
-#ifdef OPENMS_COMPILER_MSVC
-#pragma warning( push )
-#pragma warning( disable : 4290 4267)
-#endif
-
-#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/IMS/RealMassDecomposer.h>
-#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/IMS/IMSAlphabet.h>
-#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/IMS/Weights.h>
-#ifdef OPENMS_COMPILER_MSVC
-#pragma warning( pop )
-#endif
+#include <OpenMS/OpenMSConfig.h>
 
 #include <vector>
 
 namespace OpenMS
 {
+  namespace ims {
+    class IMSAlphabet;
+    class RealMassDecomposer;
+  }  // namespace ims
+  
+  class MassDecomposition;
+  
   /**
     @brief Mass decomposition algorithm, given a mass it suggests possible compositions
 

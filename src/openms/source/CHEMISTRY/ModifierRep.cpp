@@ -32,13 +32,12 @@
 // $Authors: Martin Langwisch $
 // --------------------------------------------------------------------------
 
-
 #include <OpenMS/CHEMISTRY/ModifierRep.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
-#include <OpenMS/CHEMISTRY/ResidueModification.h>
-#include <set>
 #include <list>
+#include <set>
 #include <sstream>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 using namespace std;
 

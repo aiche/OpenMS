@@ -33,12 +33,11 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CHEMISTRY/TrypticIterator.h>
-#include <OpenMS/FORMAT/FastaIterator.h>
 #include <fstream>
-#include <OpenMS/CONCEPT/Factory.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
-#include <OpenMS/CHEMISTRY/Residue.h>
 
+#include <OpenMS/CHEMISTRY/PepIterator.h>
+#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/CONCEPT/Factory.h>
 
 namespace OpenMS
 {
@@ -231,6 +230,26 @@ namespace OpenMS
   bool TrypticIterator::isDigestingEnd(char aa1, char aa2)
   {
     return (aa1 == 'K' || aa1 == 'R') && aa2 != 'P';
+  }
+  
+  void TrypticIterator::setTolerance(double)
+  {
+    throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
+  }
+  
+  double TrypticIterator::getTolerance()
+  {
+    throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
+  }
+  
+  void TrypticIterator::setSpectrum(const std::vector<double> &)
+  {
+    throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
+  }
+  
+  const std::vector<double> & TrypticIterator::getSpectrum()
+  {
+    throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
   }
 
 } // namespace OpenMS

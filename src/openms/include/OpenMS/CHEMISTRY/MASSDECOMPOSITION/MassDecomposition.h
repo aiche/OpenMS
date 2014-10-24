@@ -35,8 +35,8 @@
 #ifndef OPENMS_CHEMISTRY_MASSDECOMPOSITION_MASSDECOMPOSITION_H
 #define OPENMS_CHEMISTRY_MASSDECOMPOSITION_MASSDECOMPOSITION_H
 
-#include <OpenMS/config.h>
 #include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #include <map>
 

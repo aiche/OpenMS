@@ -37,12 +37,12 @@
 #define OPENMS_CHEMISTRY_RESIDUE_H
 
 #include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
-
 #include <iosfwd>
 #include <set>
 #include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

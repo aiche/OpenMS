@@ -30,6 +30,8 @@
 
 #include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
 #include <OpenMS/CHEMISTRY/ElementDB.h>
+#include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <iostream>
 
 using namespace OpenMS;

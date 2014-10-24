@@ -35,12 +35,14 @@
 #ifndef OPENMS_CHEMISTRY_WEIGHTWRAPPER_H
 #define OPENMS_CHEMISTRY_WEIGHTWRAPPER_H
 
-#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
-#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-
+  class AASequence;
+  class EmpiricalFormula;
+  
   /**
   @brief Encapsulated weight queries to simplify mono vs average weight computation
 

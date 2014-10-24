@@ -36,17 +36,21 @@
 #ifndef OPENMS_CHEMISTRY_SVMTHEORETICALSPECTRUMGENERATOR_H
 #define OPENMS_CHEMISTRY_SVMTHEORETICALSPECTRUMGENERATOR_H
 
-#include <OpenMS/config.h>
-#include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
-#include <OpenMS/SIMULATION/SimTypes.h>
-#include <OpenMS/ANALYSIS/SVM/SVMWrapper.h>
-
 #include <boost/random/mersenne_twister.hpp>
 
-
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
+#include <OpenMS/ANALYSIS/SVM/SVMWrapper.h>
+#include <OpenMS/KERNEL/StandardTypes.h>
 
 namespace OpenMS
 {
+  class AASequence;
+  
   /**
    @brief Simulates MS2 spectra with support vector machines.
 

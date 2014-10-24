@@ -32,8 +32,10 @@
 // $Authors: $
 // --------------------------------------------------------------------------
 
-
 #include <OpenMS/CHEMISTRY/EdwardsLippertIteratorTryptic.h>
+#include <OpenMS/CHEMISTRY/EdwardsLippertIterator.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+
 namespace OpenMS
 {
   EdwardsLippertIteratorTryptic::EdwardsLippertIteratorTryptic() :
@@ -62,6 +64,16 @@ namespace OpenMS
   bool EdwardsLippertIteratorTryptic::isDigestingEnd(char aa1, char aa2)
   {
     return (aa1 == 'K' || aa1 == 'R') && aa2 != 'P';
+  }
+  
+  const String EdwardsLippertIteratorTryptic::getProductName()
+  {
+    return "EdwardsLippertIteratorTryptic";
+  }
+  
+  PepIterator * EdwardsLippertIteratorTryptic::create()
+  {
+    return new EdwardsLippertIteratorTryptic;
   }
 
 }

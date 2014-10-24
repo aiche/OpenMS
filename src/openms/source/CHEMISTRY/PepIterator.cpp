@@ -33,13 +33,12 @@
 // --------------------------------------------------------------------------
 
 
+#include <OpenMS/CHEMISTRY/EdwardsLippertIteratorTryptic.h>
 #include <OpenMS/CHEMISTRY/PepIterator.h>
+#include <OpenMS/CHEMISTRY/TrypticIterator.h>
 #include <OpenMS/CONCEPT/Factory.h>
 #include <OpenMS/FORMAT/FastaIterator.h>
-#include <OpenMS/CHEMISTRY/EdwardsLippertIterator.h>
 #include <OpenMS/FORMAT/FastaIteratorIntern.h>
-#include <OpenMS/CHEMISTRY/EdwardsLippertIteratorTryptic.h>
-#include <OpenMS/CHEMISTRY/TrypticIterator.h>
 
 namespace OpenMS
 {

@@ -34,8 +34,10 @@
 //
 
 #include <OpenMS/CHEMISTRY/ResidueModification.h>
-
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
 #include <iostream>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 using namespace std;
 

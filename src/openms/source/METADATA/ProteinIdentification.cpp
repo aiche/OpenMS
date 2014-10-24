@@ -37,6 +37,7 @@
 #include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/CONCEPT/LogStream.h>
 #include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/DATASTRUCTURES/Map.h>
 
 #include <sstream>
 #include <algorithm>

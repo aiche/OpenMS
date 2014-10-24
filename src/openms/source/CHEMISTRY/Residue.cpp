@@ -33,11 +33,14 @@
 // --------------------------------------------------------------------------
 //
 
+#include <OpenMS/CHEMISTRY/ModificationsDB.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
 #include <OpenMS/CHEMISTRY/ResidueModification.h>
-#include <OpenMS/CHEMISTRY/ModificationsDB.h>
 #include <cstdlib>
 #include <iostream>
+
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 using namespace std;
 

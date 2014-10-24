@@ -36,20 +36,21 @@
 #define OPENMS_CHEMISTRY_AASEQUENCE_H
 
 #include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
-#include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/DATASTRUCTURES/Map.h>
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
-
-#include <vector>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <iosfwd>
+#include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
 
   //forward declarations
   class ResidueModification;
-
+  template <class Key, class T> class Map;
+  
   /**
       @brief Representation of a peptide/protein sequence
 

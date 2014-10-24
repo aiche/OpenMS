@@ -34,8 +34,11 @@
 //
 
 #include <OpenMS/CHEMISTRY/Element.h>
-
 #include <ostream>
+
+#include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 using namespace std;
 

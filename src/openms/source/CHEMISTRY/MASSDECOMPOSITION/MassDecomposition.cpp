@@ -33,8 +33,8 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/MassDecomposition.h>
-
 #include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/CONCEPT/Types.h>
 
 #include <iostream>
 

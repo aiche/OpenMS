@@ -36,8 +36,11 @@
 #define OPENMS_CHEMISTRY_TRYPTICITERATOR_H
 
 #include <OpenMS/CHEMISTRY/PepIterator.h>
-#include <OpenMS/CONCEPT/Exception.h>
 #include <vector>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
+#include <OpenMS/config.h>
 
 namespace OpenMS
 {
@@ -103,39 +106,27 @@ public:
     @brief setter for tolerance
     @throw NotImplemented because its not available for tryptic iterator
     */
-    virtual void setTolerance(double)
-    {
-      throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
-    }
+    virtual void setTolerance(double);
 
     /**
     @brief getter for tolerance
     @return tolerance
     @throw NotImplemented because its not available for tryptic iterator
     */
-    virtual double getTolerance()
-    {
-      throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
-    }
+    virtual double getTolerance();
 
     /**
     @brief setter for spectrum
     @throw NotImplemented because its not available for tryptic iterator
     */
-    virtual void setSpectrum(const std::vector<double> &)
-    {
-      throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
-    }
+    virtual void setSpectrum(const std::vector<double> &);
 
     /**
     @brief getter for spectrum
     @return the used spectrum
     @throw NotImplemented because its not available for tryptic iterator
     */
-    virtual const std::vector<double> & getSpectrum()
-    {
-      throw Exception::NotImplemented(__FILE__, __LINE__, __PRETTY_FUNCTION__);
-    }
+    virtual const std::vector<double> & getSpectrum();
 
     /**
     @brief initializing iterator

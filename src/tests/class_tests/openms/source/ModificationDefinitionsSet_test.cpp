@@ -39,6 +39,9 @@
 #include <OpenMS/CHEMISTRY/ModificationDefinitionsSet.h>
 ///////////////////////////
 
+#include <OpenMS/CHEMISTRY/ModificationDefinition.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+
 using namespace OpenMS;
 using namespace std;
 

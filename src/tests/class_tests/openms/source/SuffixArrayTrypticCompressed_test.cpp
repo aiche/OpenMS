@@ -1,32 +1,32 @@
 // --------------------------------------------------------------------------
-//                   OpenMS -- Open-Source Mass Spectrometry               
+//                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
 // ETH Zurich, and Freie Universitaet Berlin 2002-2014.
-// 
+//
 // This software is released under a three-clause BSD license:
 //  * Redistributions of source code must retain the above copyright
 //    notice, this list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright
 //    notice, this list of conditions and the following disclaimer in the
 //    documentation and/or other materials provided with the distribution.
-//  * Neither the name of any author or any participating institution 
-//    may be used to endorse or promote products derived from this software 
+//  * Neither the name of any author or any participating institution
+//    may be used to endorse or promote products derived from this software
 //    without specific prior written permission.
-// For a full list of authors, refer to the file AUTHORS. 
+// For a full list of authors, refer to the file AUTHORS.
 // --------------------------------------------------------------------------
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING 
-// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
-// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+// ARE DISCLAIMED. IN NO EVENT SHALL ANY OF THE AUTHORS OR THE CONTRIBUTING
+// INSTITUTIONS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-// 
+//
 // --------------------------------------------------------------------------
 // $Maintainer: Clemens Groepl,Andreas Bertsch$
 // $Authors: Chris Bauer $
@@ -37,6 +37,7 @@
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CHEMISTRY/ResidueDB.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/CONCEPT/Exception.h>
 #include <iostream>
 #include <vector>
@@ -183,7 +184,7 @@ START_SECTION(bool open(const String &file_name))
 	sa = new SuffixArrayTrypticCompressed(text,"");
 	NEW_TMP_FILE(String("SuffixArrayTrypticCompressed_test_save.lcp2"))
 	NEW_TMP_FILE(String("SuffixArrayTrypticCompressed_test_save.skip2"))
-	NEW_TMP_FILE(String("SuffixArrayTrypticCompressed_test_save.sa2"))		
+	NEW_TMP_FILE(String("SuffixArrayTrypticCompressed_test_save.sa2"))
 	sa->save("SuffixArrayTrypticCompressed_test_save");
 	SuffixArrayTrypticCompressed * sa2 = new SuffixArrayTrypticCompressed(text,"");
 	sa2->open("SuffixArrayTrypticCompressed_test_save");
@@ -221,9 +222,9 @@ END_SECTION
 START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< SignedSize, SignedSize >, double > > > &candidates, const std::vector< double > &spec)))
 	double masse[255];
 	ResidueDB* rdb = ResidueDB::getInstance();
-		
+
 	char aa[] = "ARNDCEQGHILKMFPSTWYV";
-		
+
 	for (Size i = 0; i<255;++i)
 	{
 		masse[i]=0;
@@ -243,25 +244,25 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 	vector<double> specc(spec);
 	vector<vector<pair<pair<SignedSize, SignedSize>, double> > > res;
 	sa->findSpec(res, specc);
-	
+
 	TEST_EQUAL(res.size(),specc.size());
 	for (Size i = 0; i < res.size(); ++i)
 	{
 		TEST_EQUAL(res.at(i).size(), 1);
 	}
-	
+
 	TEST_EQUAL(res.at(0).at(0).first.first, 8)
 	TEST_EQUAL(res.at(0).at(0).first.second, 2)
 	TEST_EQUAL(res.at(1).at(0).first.first, 1)
 	TEST_EQUAL(res.at(1).at(0).first.second, 4)
 
-				
+
 	spec.clear();
 	const vector<double> specc2(spec);
 	res.clear();
 	sa->findSpec(res, specc2);
 	TEST_EQUAL(res.size(),0);
-	spec.push_back(441.4806);	
+	spec.push_back(441.4806);
 	spec.push_back(178.1864);
 	const vector<double> specc3 (spec);
 	res.clear();
@@ -270,12 +271,12 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 	i_stream.open(OPENMS_GET_TEST_DATA_PATH("SuffixArrayTrypticCompressed_test.txt"));
 	String txt;
 	getline(i_stream,txt);
-	
+
 	sa = new SuffixArrayTrypticCompressed(txt,"");
 	sa->setNumberOfModifications(0);
   sa->setUseTags(false);
-	
-	
+
+
 	vector<double> spec_new;
 	for (int i = 500; i < 5000; i += 197)
 	{
@@ -298,7 +299,7 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 
 	TOLERANCE_ABSOLUTE(0.55)
 	sa->setTolerance(0.5);
-		
+
 	// checking if the mass of the found candidates is correct
 	// checking if the next character is not a P
 	for (Size i = 0; i < res.size();++i)
@@ -311,14 +312,14 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 			{
 				m += masse[(int)seq[k]];
 			}
-			
+
 			if (txt[res.at(i).at(j).first.first-1]!='$') TEST_NOT_EQUAL(seq[0],'P');
 			if (txt[res.at(i).at(j).first.first+res.at(i).at(j).first.second]!='$') TEST_EQUAL(seq[seq.length()-1]=='R'||seq[seq.length()-1]=='K',true)
-			
+
 			TEST_REAL_SIMILAR(m,specc_new.at(i));
 		}
 	}
-	// getting all candidates with tags 
+	// getting all candidates with tags
 	Size number_of_tags=0;
 	vector<String> res_with_tags_exp;
 	for (Size i = 0; i < res.size();++i)
@@ -335,12 +336,12 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 					break;
 				}
 			}
-			if (has_tag) 
+			if (has_tag)
 			{
 				++number_of_tags;
 				res_with_tags_exp.push_back(seq);
 			}
-			
+
 		}
 	}
 	//std::cout<<"number_of_tags_:"<<number_of_tags<<std::endl;
@@ -369,7 +370,7 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 			//if (!has_tag) std::cout <<seq<<std::endl;
 			TEST_EQUAL(has_tag, true);
 			TEST_EQUAL(res.at(i).at(j).second, 0);
-			
+
 			res_with_tags.push_back(seq);
 		}
 	}
@@ -391,7 +392,7 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 	sa->setUseTags(false);
 	res.clear();
 	sa->findSpec(res, specc_new);
-	
+
 	for (Size i = 0; i < res.size();i++)
 	{
 		for (Size j = 0;j<res.at(i).size();j++)
@@ -408,7 +409,7 @@ START_SECTION((void findSpec(std::vector< std::vector< std::pair< std::pair< Sig
 			//}
 			TEST_NOT_EQUAL(txt[res.at(i).at(j).first.first+res.at(i).at(j).first.second],'P');
 			TEST_REAL_SIMILAR(m+res.at(i).at(j).second,specc_new.at(i));
-			
+
 		}
 	}
 	// testing if a candidate can belong to several input masses

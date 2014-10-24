@@ -36,6 +36,7 @@
 #include <OpenMS/SYSTEM/File.h>
 
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/ModificationDefinition.h>
 
 #include <set>
 #include <fstream>

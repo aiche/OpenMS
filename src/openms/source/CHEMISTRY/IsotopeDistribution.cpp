@@ -32,15 +32,17 @@
 // $Authors: Clemens Groepl, Andreas Bertsch $
 // --------------------------------------------------------------------------
 //
-#include <cmath>
-#include <iostream>
-#include <cstdlib>
-#include <algorithm>
-#include <limits>
-
-#include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
 #include <OpenMS/CHEMISTRY/ElementDB.h>
 #include <OpenMS/CHEMISTRY/Element.h>
+#include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
+#include <iostream>
+#include <limits>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/MATH/MISC/MathFunctions.h>
 
 using namespace std;

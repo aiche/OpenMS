@@ -37,11 +37,12 @@
 
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 #include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGenerator.h>
-#include <OpenMS/SIMULATION/SimTypes.h>
-#include <OpenMS/FORMAT/TextFile.h>
+#include <OpenMS/KERNEL/StandardTypes.h>
 
 namespace OpenMS
 {
+  class TextFile;
+  
   /**
    @brief Train SVM models that are used by SvmTheoreticalSpectrumGenerator
 

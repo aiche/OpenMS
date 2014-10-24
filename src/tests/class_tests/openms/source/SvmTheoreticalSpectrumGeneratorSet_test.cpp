@@ -36,14 +36,13 @@
 #include <OpenMS/test_config.h>
 
 ///////////////////////////
-
-#include <iostream>
-
 #include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGeneratorSet.h>
+///////////////////////////
+
+#include <OpenMS/CHEMISTRY/SvmTheoreticalSpectrumGenerator.h>
 #include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/FORMAT/MzMLFile.h>
-
-///////////////////////////
+#include <iostream>
 
 START_TEST(SvmTheoreticalSpectrumGeneratorSet, "$Id$")
 

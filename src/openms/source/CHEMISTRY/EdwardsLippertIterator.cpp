@@ -33,14 +33,18 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CHEMISTRY/EdwardsLippertIterator.h>
-#include <OpenMS/DATASTRUCTURES/SuffixArraySeqan.h>
-#include <OpenMS/CONCEPT/Factory.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
-
-#include <cstring>
+#include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/DATASTRUCTURES/SuffixArraySeqan.h>
+#include <string>
 #include <algorithm>
+#include <cstring>
 #include <fstream>
+
+#include <OpenMS/CHEMISTRY/PepIterator.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/CONCEPT/Factory.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

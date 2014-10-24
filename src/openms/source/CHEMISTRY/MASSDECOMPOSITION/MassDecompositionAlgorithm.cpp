@@ -33,13 +33,30 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/MassDecompositionAlgorithm.h>
+#include <iostream>
+#include <set>
+
+// ims includes
+#ifdef OPENMS_COMPILER_MSVC
+#pragma warning( push )
+#pragma warning( disable : 4290 4267)
+#endif
+
+#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/IMS/IMSAlphabet.h>
+#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/IMS/RealMassDecomposer.h>
+
+#ifdef OPENMS_COMPILER_MSVC
+#pragma warning( pop )
+#endif
+
+#include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
-#include <OpenMS/CHEMISTRY/ResidueDB.h>
 #include <OpenMS/CHEMISTRY/ModificationDefinition.h>
 #include <OpenMS/CHEMISTRY/ModificationDefinitionsSet.h>
-
-#include <set>
-#include <iostream>
+#include <OpenMS/CHEMISTRY/Residue.h>
+#include <OpenMS/CHEMISTRY/ResidueModification.h>
+#include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/MASSDECOMPOSITION/MassDecomposition.h>
 
 using namespace std;
 
