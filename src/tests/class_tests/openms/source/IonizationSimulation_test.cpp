@@ -37,9 +37,12 @@
 
 ///////////////////////////
 #include <OpenMS/SIMULATION/IonizationSimulation.h>
+///////////////////////////
+
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <OpenMS/APPLICATIONS/TOPPBase.h>
-///////////////////////////
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace OpenMS;
 using namespace std;

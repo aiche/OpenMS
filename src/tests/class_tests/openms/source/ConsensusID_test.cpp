@@ -39,6 +39,8 @@
 
 #include <OpenMS/ANALYSIS/ID/ConsensusID.h>
 #include <OpenMS/KERNEL/Feature.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace OpenMS;
 using namespace std;

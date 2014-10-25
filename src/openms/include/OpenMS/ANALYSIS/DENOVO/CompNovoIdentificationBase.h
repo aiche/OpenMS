@@ -50,6 +50,9 @@
 
 namespace OpenMS
 {
+  class AASequence;
+  class Residue;
+  
   /**
     @brief  run with CompNovoIdentificationBase
 

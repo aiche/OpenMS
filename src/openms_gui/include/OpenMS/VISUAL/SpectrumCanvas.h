@@ -44,6 +44,7 @@
 #include <OpenMS/DATASTRUCTURES/DRange.h>
 #include <OpenMS/VISUAL/LayerData.h>
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
+#include <OpenMS/METADATA/DataProcessing.h>
 
 //QT
 #include <QtGui/QWidget>

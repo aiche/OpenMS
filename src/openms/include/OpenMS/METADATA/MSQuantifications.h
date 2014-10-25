@@ -35,19 +35,23 @@
 #ifndef OPENMS_METADATA_MSQUANTIFICATIONS_H
 #define OPENMS_METADATA_MSQUANTIFICATIONS_H
 
-#include <OpenMS/METADATA/ExperimentalSettings.h>
-#include <OpenMS/CONCEPT/Exception.h>
-#include <OpenMS/KERNEL/ConsensusMap.h>
-//~ #include <OpenMS/KERNEL/ConsensusFeature.h>
-#include <OpenMS/KERNEL/FeatureMap.h>
 #include <OpenMS/KERNEL/MSExperiment.h>
-#include <OpenMS/METADATA/DataProcessing.h>
-
-#include <vector>
+#include <OpenMS/METADATA/ExperimentalSettings.h>
 #include <map>
+#include <vector>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/CVTermList.h>
+#include <OpenMS/METADATA/MetaInfo.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class ConsensusMap;
+  class FeatureMap;
+  class Peak1D;
+  class DataProcessing;
+  
   class OPENMS_DLLAPI MSQuantifications :
     public ExperimentalSettings
   {
@@ -127,33 +131,13 @@ public:
     struct Assay
     {
       //TODO feature_maps_ also in Assay?! srsly?!
-      Assay()
-      {
-      }
+      Assay();
 
-      Assay(const Assay & rhs)
-      {
-        uid_ = rhs.uid_;
-        mods_ = rhs.mods_;
-        raw_files_ = rhs.raw_files_;
-        feature_maps_ = rhs.feature_maps_;
-      }
+      Assay(const Assay & rhs);
 
-      virtual ~Assay()
-      {
-      }
+      virtual ~Assay();
 
-      Assay & operator=(const Assay & rhs)
-      {
-        if (&rhs != this)
-        {
-          uid_ = rhs.uid_;
-          mods_ = rhs.mods_;
-          raw_files_ = rhs.raw_files_;
-          feature_maps_ = rhs.feature_maps_;
-        }
-        return *this;
-      }
+      Assay & operator=(const Assay & rhs);
 
       String uid_;
       std::vector<std::pair<String, double> > mods_;

@@ -34,8 +34,11 @@
 
 #include <OpenMS/METADATA/Sample.h>
 #include <OpenMS/METADATA/SampleTreatment.h>
-
 #include <iostream>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

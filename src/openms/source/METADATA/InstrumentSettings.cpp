@@ -33,6 +33,8 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/InstrumentSettings.h>
+#include <OpenMS/METADATA/IonSource.h>
+#include <OpenMS/METADATA/ScanWindow.h>
 
 using namespace std;
 

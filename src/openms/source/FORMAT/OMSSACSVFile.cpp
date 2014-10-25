@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/FORMAT/OMSSACSVFile.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <fstream>
 #include <algorithm>

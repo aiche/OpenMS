@@ -35,26 +35,30 @@
 #ifndef OPENMS_METADATA_EXPERIMENTALSETTINGS_H
 #define OPENMS_METADATA_EXPERIMENTALSETTINGS_H
 
-#include <OpenMS/METADATA/Sample.h>
-#include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/METADATA/HPLC.h>
-#include <OpenMS/METADATA/SourceFile.h>
-#include <OpenMS/METADATA/ContactPerson.h>
-#include <OpenMS/METADATA/Instrument.h>
 #include <OpenMS/METADATA/DocumentIdentifier.h>
-#include <OpenMS/METADATA/ProteinIdentification.h>
-
+#include <OpenMS/METADATA/HPLC.h>
+#include <OpenMS/METADATA/Instrument.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/Sample.h>
 #include <vector>
+
+#include <OpenMS/DATASTRUCTURES/DateTime.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class ProteinIdentification;
+  class ContactPerson;
+  class SourceFile;
+  
   /**
-      @brief Description of the experimental settings
+    @brief Description of the experimental settings
 
-      These settings are valid for the whole experiment.
-      See SpectrumSettings for settings which are spectrum specific.
+    These settings are valid for the whole experiment.
+    See SpectrumSettings for settings which are spectrum specific.
 
-      @ingroup Metadata
+    @ingroup Metadata
   */
   class OPENMS_DLLAPI ExperimentalSettings :
     public MetaInfoInterface,

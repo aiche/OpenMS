@@ -41,6 +41,7 @@
 #include <OpenMS/ANALYSIS/ID/PILISModel.h>
 #include <OpenMS/ANALYSIS/MRM/MRMFragmentSelection.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace std;
 

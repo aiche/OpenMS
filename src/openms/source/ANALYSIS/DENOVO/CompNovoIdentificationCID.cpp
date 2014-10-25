@@ -39,6 +39,8 @@
 #include <OpenMS/FILTERING/TRANSFORMERS/Normalizer.h>
 #include <OpenMS/COMPARISON/SPECTRA/SpectrumAlignmentScore.h>
 #include <OpenMS/ANALYSIS/DENOVO/CompNovoIonScoringCID.h>
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <boost/math/special_functions/fpclassify.hpp>
 

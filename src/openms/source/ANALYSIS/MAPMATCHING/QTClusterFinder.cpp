@@ -37,6 +37,7 @@
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <OpenMS/KERNEL/FeatureMap.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 using namespace std;
 

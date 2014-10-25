@@ -37,6 +37,9 @@
 #include <OpenMS/ANALYSIS/TARGETED/PrecursorIonSelectionPreprocessing.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+
 #ifdef DEBUG_OPS
 #include <OpenMS/SYSTEM/StopWatch.h>
 #endif

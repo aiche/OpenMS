@@ -40,10 +40,11 @@
 #include <OpenMS/KERNEL/ConsensusMap.h>
 
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 
 #include <OpenMS/CONCEPT/LogStream.h>
-
-#include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 #include <algorithm>
 #include <limits>

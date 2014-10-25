@@ -42,6 +42,9 @@
 
 namespace OpenMS
 {
+  class ResidueModification;
+  class AASequence;
+  
   class OPENMS_DLLAPI ModifiedPeptideGenerator
   {
   public:

@@ -35,11 +35,14 @@
 #ifndef OPENMS_METADATA_INSTRUMENTSETTINGS_H
 #define OPENMS_METADATA_INSTRUMENTSETTINGS_H
 
-#include <OpenMS/METADATA/ScanWindow.h>
 #include <OpenMS/METADATA/IonSource.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class ScanWindow;
+  
   /**
       @brief Description of the settings a MS Instrument was run with.
 

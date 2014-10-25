@@ -41,7 +41,9 @@
 #include <OpenMS/CHEMISTRY/ModificationDefinitionsSet.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
 #include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/ANALYSIS/DENOVO/CompNovoIonScoring.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <boost/math/special_functions/fpclassify.hpp>
 

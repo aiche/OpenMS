@@ -39,6 +39,11 @@
 #include <OpenMS/METADATA/ExperimentalSettings.h>
 ///////////////////////////
 
+#include <OpenMS/METADATA/ContactPerson.h>
+#include <OpenMS/METADATA/SourceFile.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+
 using namespace OpenMS;
 using namespace std;
 

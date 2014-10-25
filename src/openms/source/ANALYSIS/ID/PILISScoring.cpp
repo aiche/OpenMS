@@ -36,6 +36,7 @@
 #include <OpenMS/ANALYSIS/ID/PILISScoring.h>
 #include <OpenMS/MATH/STATISTICS/LinearRegression.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace std;
 

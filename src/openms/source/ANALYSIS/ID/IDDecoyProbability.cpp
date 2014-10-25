@@ -35,6 +35,7 @@
 #include <OpenMS/ANALYSIS/ID/IDDecoyProbability.h>
 
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <boost/math/special_functions/gamma.hpp>
 #include <cmath>

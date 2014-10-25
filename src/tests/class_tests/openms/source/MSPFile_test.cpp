@@ -39,6 +39,7 @@
 #include <OpenMS/FORMAT/MSPFile.h>
 #include <OpenMS/FORMAT/FileTypes.h>
 #include <OpenMS/KERNEL/StandardTypes.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace OpenMS;
 using namespace std;

@@ -34,6 +34,7 @@
 
 #include <OpenMS/FILTERING/ID/IDFilter.h>
 #include <OpenMS/CONCEPT/LogStream.h>
+#include <OpenMS/METADATA/ProteinHit.h>
 
 #include <cmath>
 #include <climits>

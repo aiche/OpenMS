@@ -34,7 +34,6 @@
 
 #include <OpenMS/METADATA/DocumentIDTagger.h>
 #include <OpenMS/SYSTEM/File.h>
-#include <QDir>
 
 #ifdef _MSC_VER // disable some boost warnings that distract from ours
 #   pragma warning( push ) // save warning state
@@ -47,11 +46,15 @@
 
 
 #include <algorithm>
-#include <fstream>
-#include <iostream>
-#include <exception>
 #include <cstdio>
 #include <ctime>
+#include <exception>
+#include <fstream>
+#include <iostream>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/DocumentIdentifier.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

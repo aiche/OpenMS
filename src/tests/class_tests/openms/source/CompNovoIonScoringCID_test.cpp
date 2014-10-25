@@ -38,6 +38,7 @@
 ///////////////////////////
 #include <OpenMS/ANALYSIS/DENOVO/CompNovoIonScoringCID.h>
 #include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 ///////////////////////////
 
 using namespace OpenMS;

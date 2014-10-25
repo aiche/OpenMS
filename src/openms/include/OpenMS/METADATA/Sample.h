@@ -35,11 +35,12 @@
 #ifndef OPENMS_METADATA_SAMPLE_H
 #define OPENMS_METADATA_SAMPLE_H
 
-#include <list>
-
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/CONCEPT/Exception.h>
+#include <list>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

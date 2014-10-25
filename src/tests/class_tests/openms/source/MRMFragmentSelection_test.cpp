@@ -37,10 +37,13 @@
 
 ///////////////////////////
 #include <OpenMS/ANALYSIS/MRM/MRMFragmentSelection.h>
-#include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
 ///////////////////////////
 
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace OpenMS;
 using namespace std;

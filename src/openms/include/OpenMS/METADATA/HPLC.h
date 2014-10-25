@@ -39,6 +39,8 @@
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/Gradient.h>
 
+#include <OpenMS/OpenMSConfig.h>
+
 namespace OpenMS
 {
   /**

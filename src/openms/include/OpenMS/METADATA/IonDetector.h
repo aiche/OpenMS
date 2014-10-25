@@ -35,7 +35,10 @@
 #ifndef OPENMS_METADATA_IONDETECTOR_H
 #define OPENMS_METADATA_IONDETECTOR_H
 
-#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>  // for MetaInfoInterface
+
+#include "OpenMS/CONCEPT/Types.h"       // for Int
+#include "OpenMS/OpenMSConfig.h"        // for OPENMS_DLLAPI
 
 namespace OpenMS
 {

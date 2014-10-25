@@ -34,6 +34,9 @@
 
 #include <OpenMS/METADATA/Precursor.h>
 
+#include <OpenMS/KERNEL/Peak1D.h>
+#include <OpenMS/METADATA/CVTermList.h>
+
 using namespace std;
 
 namespace OpenMS

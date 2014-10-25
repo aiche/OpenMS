@@ -35,15 +35,19 @@
 #ifndef OPENMS_METADATA_PROTEINIDENTIFICATION_H
 #define OPENMS_METADATA_PROTEINIDENTIFICATION_H
 
-#include <OpenMS/METADATA/ProteinHit.h>
-#include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <OpenMS/DATASTRUCTURES/DateTime.h>
-
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <set>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
   class PeptideIdentification;
+  class ProteinHit;
+  
   /**
     @brief Representation of a protein identification run
 

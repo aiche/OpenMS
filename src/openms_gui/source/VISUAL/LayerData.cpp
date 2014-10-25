@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/VISUAL/LayerData.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace std;
 
@@ -40,12 +41,36 @@ namespace OpenMS
 {
   const std::string LayerData::NamesOfLabelType[] = {"None", "Index", "Label meta data", "Peptide identification", "All peptide identifications"};
 
-  const LayerData::ExperimentType::SpectrumType & LayerData::getCurrentSpectrum() const
+  LayerData::LayerData() :
+    flags(),
+    visible(true),
+    flipped(false),
+    type(DT_UNKNOWN),
+    name(),
+    filename(),
+    peptides(),
+    param(),
+    gradient(),
+    filters(),
+    annotations_1d(),
+    modifiable(false),
+    modified(false),
+    label(L_NONE),
+    features(new FeatureMapType()),
+    consensus(new ConsensusMapType()),
+    peaks(new ExperimentType()),
+    chromatograms(new ExperimentType()),
+    current_spectrum_(0)
+  {
+    annotations_1d.resize(1);
+  }
+
+  const LayerData::ExperimentType::SpectrumType& LayerData::getCurrentSpectrum() const
   {
     return (*peaks)[current_spectrum_];
   }
 
-  std::ostream & operator<<(std::ostream & os, const LayerData & rhs)
+  std::ostream& operator<<(std::ostream& os, const LayerData& rhs)
   {
     os << "--LayerData BEGIN--" << std::endl;
     os << "name: " << rhs.name << std::endl;

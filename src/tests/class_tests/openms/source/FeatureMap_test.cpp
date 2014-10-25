@@ -41,6 +41,9 @@
 #include <OpenMS/METADATA/DataProcessing.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 #include <algorithm>
 #include <string>

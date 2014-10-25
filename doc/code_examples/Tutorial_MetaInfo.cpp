@@ -29,6 +29,7 @@
 //
 
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <iostream>
 

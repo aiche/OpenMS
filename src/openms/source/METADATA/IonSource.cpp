@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/IonSource.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 
 using namespace std;
 

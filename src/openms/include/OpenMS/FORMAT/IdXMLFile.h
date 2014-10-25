@@ -36,7 +36,9 @@
 #define OPENMS_FORMAT_IDXMLFILE_H
 
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/FORMAT/HANDLERS/XMLHandler.h>
 #include <OpenMS/FORMAT/XMLFile.h>
 

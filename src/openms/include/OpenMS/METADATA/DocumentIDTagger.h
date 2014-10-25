@@ -35,14 +35,16 @@
 #ifndef OPENMS_METADATA_DOCUMENTIDTAGGER_H
 #define OPENMS_METADATA_DOCUMENTIDTAGGER_H
 
-#include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/METADATA/DocumentIdentifier.h>
-
 #include <vector>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class DocumentIdentifier;
+
   /**
     @brief Tags OpenMS file containers with a DocumentID
 

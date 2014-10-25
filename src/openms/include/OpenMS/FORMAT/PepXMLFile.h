@@ -41,6 +41,7 @@
 #include <OpenMS/FORMAT/XMLFile.h>
 #include <OpenMS/KERNEL/MSExperiment.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
 
 #include <vector>

@@ -36,6 +36,8 @@
 #define OPENMS_ANALYSIS_ID_PILISCROSSVALIDATION_H
 
 #include <OpenMS/KERNEL/StandardTypes.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 
 #include <vector>

@@ -35,15 +35,15 @@
 #ifndef OPENMS_METADATA_PEPTIDEEVIDENCE_H
 #define OPENMS_METADATA_PEPTIDEEVIDENCE_H
 
-#include <vector>
-
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
-  class AASequence;
 
   /**
     @brief Representation of a MzIdentML PeptideEvidence

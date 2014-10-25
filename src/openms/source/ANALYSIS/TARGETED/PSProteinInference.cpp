@@ -35,7 +35,9 @@
 #include <OpenMS/ANALYSIS/TARGETED/PSProteinInference.h>
 #include <OpenMS/DATASTRUCTURES/LPWrapper.h>
 #include <OpenMS/CONCEPT/LogStream.h>
-
+#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <algorithm>
 

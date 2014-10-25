@@ -34,6 +34,13 @@
 
 #include <OpenMS/METADATA/Instrument.h>
 
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/Software.h>
+#include <OpenMS/METADATA/IonSource.h>
+#include <OpenMS/METADATA/MassAnalyzer.h>
+#include <OpenMS/METADATA/IonDetector.h>
+
 using namespace std;
 
 namespace OpenMS

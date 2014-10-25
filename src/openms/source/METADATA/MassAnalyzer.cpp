@@ -33,6 +33,8 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/MassAnalyzer.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 
 using namespace std;
 

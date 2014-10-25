@@ -38,6 +38,7 @@
 #include <OpenMS/CONCEPT/Constants.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/CHEMISTRY/IsotopeDistribution.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 

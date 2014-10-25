@@ -36,6 +36,8 @@
 #define OPENMS_METADATA_TAGGING_H
 
 #include <OpenMS/METADATA/Modification.h>
+#include <OpenMS/METADATA/SampleTreatment.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

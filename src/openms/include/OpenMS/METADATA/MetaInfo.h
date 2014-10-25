@@ -35,15 +35,16 @@
 #ifndef OPENMS_METADATA_METAINFO_H
 #define OPENMS_METADATA_METAINFO_H
 
-#include <vector>
-
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/METADATA/MetaInfoRegistry.h>
-#include <OpenMS/DATASTRUCTURES/DataValue.h>
+#include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
   class String;
+  class DataValue;
 
   /**
       @brief A Type-Name-Value tuple class.

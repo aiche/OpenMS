@@ -38,6 +38,7 @@
 #include <OpenMS/APPLICATIONS/TOPPBase.h>
 #include <OpenMS/SYSTEM/File.h>
 #include <OpenMS/FORMAT/ParamXMLFile.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 #include <QtCore/QStringList>
 #include <QtGui/QPushButton>

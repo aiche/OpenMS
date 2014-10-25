@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/ANALYSIS/RNPXL/RNPxlModificationsGenerator.h>
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
 
 using namespace std;
 

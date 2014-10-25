@@ -36,9 +36,10 @@
 #include <OpenMS/ANALYSIS/MAPMATCHING/TransformationDescription.h>
 
 #include <OpenMS/KERNEL/ConsensusFeature.h>
-
 #include <OpenMS/KERNEL/ConsensusMap.h>
 #include <OpenMS/KERNEL/FeatureMap.h>
+
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using std::vector;
 

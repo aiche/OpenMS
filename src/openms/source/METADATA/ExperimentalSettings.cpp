@@ -33,6 +33,14 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/ExperimentalSettings.h>
+#include <OpenMS/METADATA/DocumentIdentifier.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/HPLC.h>
+#include <OpenMS/METADATA/Instrument.h>
+#include <OpenMS/METADATA/Sample.h>
+#include <OpenMS/METADATA/SourceFile.h>
+#include <OpenMS/METADATA/ContactPerson.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
 
 using namespace std;
 

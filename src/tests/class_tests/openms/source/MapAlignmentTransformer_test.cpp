@@ -40,6 +40,7 @@
 #include <OpenMS/KERNEL/ConsensusFeature.h>
 #include <OpenMS/KERNEL/Feature.h>
 #include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 ///////////////////////////
 #include <OpenMS/ANALYSIS/MAPMATCHING/MapAlignmentTransformer.h>

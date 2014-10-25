@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/FORMAT/HANDLERS/MascotXMLHandler.h>
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 
 #include <xercesc/sax2/Attributes.hpp>
 

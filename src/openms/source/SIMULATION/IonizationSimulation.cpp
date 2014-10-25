@@ -40,6 +40,10 @@
 
 #include <OpenMS/CONCEPT/Constants.h>
 
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/ScanWindow.h>
+
 #include <cmath>
 #include <algorithm>
 

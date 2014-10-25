@@ -42,6 +42,8 @@
 #include <OpenMS/ANALYSIS/RNPXL/ModifiedPeptideGenerator.h>
 ///////////////////////////
 
+#include <OpenMS/CHEMISTRY/AASequence.h>
+
 using namespace OpenMS;
 using namespace std;
 

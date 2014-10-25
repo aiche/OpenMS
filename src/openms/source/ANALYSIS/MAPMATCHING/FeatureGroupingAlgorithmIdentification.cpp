@@ -35,6 +35,10 @@
 #include <OpenMS/ANALYSIS/MAPMATCHING/FeatureGroupingAlgorithmIdentification.h>
 
 #include <OpenMS/KERNEL/ConversionHelper.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
 
 namespace OpenMS
 {

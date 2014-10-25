@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/Acquisition.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 
 using namespace std;
 

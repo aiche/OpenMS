@@ -38,10 +38,13 @@
 #include <OpenMS/FORMAT/HANDLERS/XMLHandler.h>
 #include <OpenMS/FORMAT/ControlledVocabulary.h>
 #include <OpenMS/METADATA/MSQuantifications.h>
+#include <OpenMS/METADATA/DataProcessing.h>
+#include <OpenMS/KERNEL/ConsensusFeature.h>
 
 namespace OpenMS
 {
   class ProgressLogger;
+  class FeatureHandle;
 
   namespace Internal
   {

@@ -36,6 +36,8 @@
 #define OPENMS_METADATA_SOURCEFILE_H
 
 #include <OpenMS/METADATA/CVTermList.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

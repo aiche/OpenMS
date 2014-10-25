@@ -37,8 +37,16 @@
 
 ///////////////////////////
 #include <OpenMS/METADATA/SpectrumSettings.h>
-#include <OpenMS/METADATA/ProteinIdentification.h>
 ///////////////////////////
+
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/Precursor.h>
+#include <OpenMS/METADATA/DataProcessing.h>
+#include <OpenMS/METADATA/Product.h>
+#include <OpenMS/METADATA/ScanWindow.h>
 
 using namespace OpenMS;
 using namespace std;

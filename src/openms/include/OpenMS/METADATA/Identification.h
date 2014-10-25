@@ -35,11 +35,16 @@
 #ifndef OPENMS_METADATA_IDENTIFICATION_H
 #define OPENMS_METADATA_IDENTIFICATION_H
 
-#include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <OpenMS/DATASTRUCTURES/DateTime.h>
-#include <OpenMS/METADATA/SpectrumIdentification.h>
-
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <vector>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
+
+namespace OpenMS {
+class SpectrumIdentification;
+}  // namespace OpenMS
 
 namespace OpenMS
 {

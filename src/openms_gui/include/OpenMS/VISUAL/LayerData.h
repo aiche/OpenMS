@@ -41,6 +41,7 @@
 #include <OpenMS/KERNEL/MSExperiment.h>
 #include <OpenMS/KERNEL/FeatureMap.h>
 #include <OpenMS/KERNEL/ConsensusMap.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/VISUAL/MultiGradient.h>
 #include <OpenMS/VISUAL/ANNOTATION/Annotations1DContainer.h>
@@ -125,29 +126,7 @@ public:
     //@}
 
     /// Default constructor
-    LayerData() :
-      flags(),
-      visible(true),
-      flipped(false),
-      type(DT_UNKNOWN),
-      name(),
-      filename(),
-      peptides(),
-      param(),
-      gradient(),
-      filters(),
-      annotations_1d(),
-      modifiable(false),
-      modified(false),
-      label(L_NONE),
-      features(new FeatureMapType()),
-      consensus(new ConsensusMapType()),
-      peaks(new ExperimentType()),
-      chromatograms(new ExperimentType()),
-      current_spectrum_(0)
-    {
-      annotations_1d.resize(1);
-    }
+    LayerData();
 
     /// Returns a const reference to the current spectrum (1d view)
     const ExperimentType::SpectrumType & getCurrentSpectrum() const;

@@ -32,9 +32,13 @@
 // $Authors: Marc Sturm $
 // --------------------------------------------------------------------------
 
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 #include <sstream>
 
-#include <OpenMS/METADATA/MetaInfoRegistry.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

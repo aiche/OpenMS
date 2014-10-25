@@ -35,8 +35,10 @@
 #ifndef OPENMS_METADATA_ACQUISITIONINFO_H
 #define OPENMS_METADATA_ACQUISITIONINFO_H
 
-#include <OpenMS/METADATA/Acquisition.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/Acquisition.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #include <vector>
 

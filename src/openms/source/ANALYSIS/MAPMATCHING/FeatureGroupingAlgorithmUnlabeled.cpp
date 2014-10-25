@@ -36,6 +36,8 @@
 #include <OpenMS/ANALYSIS/MAPMATCHING/StablePairFinder.h>
 
 #include <OpenMS/KERNEL/ConversionHelper.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
 
 namespace OpenMS
 {

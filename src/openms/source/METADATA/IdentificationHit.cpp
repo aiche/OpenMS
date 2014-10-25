@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/IdentificationHit.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 
 using namespace std;
 

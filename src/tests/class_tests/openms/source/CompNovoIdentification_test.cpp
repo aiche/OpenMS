@@ -37,9 +37,12 @@
 
 ///////////////////////////
 #include <OpenMS/ANALYSIS/DENOVO/CompNovoIdentification.h>
-#include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
-#include <OpenMS/CONCEPT/Constants.h>
 ///////////////////////////
+
+#include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/CONCEPT/Constants.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace OpenMS;
 using namespace std;

@@ -34,6 +34,7 @@
 
 //OpenMS
 #include <OpenMS/VISUAL/VISUALIZER/MetaInfoVisualizer.h>
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 
 //QT
 #include <QtGui/QGridLayout>

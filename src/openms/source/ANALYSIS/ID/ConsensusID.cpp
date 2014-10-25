@@ -37,6 +37,8 @@
 #include <OpenMS/DATASTRUCTURES/SeqanIncludeWrapper.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <map>
 #include <cmath>

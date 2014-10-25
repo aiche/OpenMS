@@ -32,15 +32,18 @@
 // $Authors: Nico Pfeifer, Chris Bielow $
 // --------------------------------------------------------------------------
 
-#include <OpenMS/METADATA/ProteinIdentification.h>
-#include <OpenMS/METADATA/PeptideIdentification.h>
-#include <OpenMS/CONCEPT/Exception.h>
 #include <OpenMS/CONCEPT/LogStream.h>
-#include <OpenMS/METADATA/PeptideHit.h>
-#include <OpenMS/DATASTRUCTURES/Map.h>
-
-#include <sstream>
+#include <OpenMS/METADATA/ProteinIdentification.h>
 #include <algorithm>
+#include <sstream>
+
+#include <OpenMS/DATASTRUCTURES/DateTime.h>
+#include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/config.h>
 
 using namespace std;
 

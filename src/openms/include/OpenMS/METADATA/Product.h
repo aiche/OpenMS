@@ -36,6 +36,7 @@
 #define OPENMS_METADATA_PRODUCT_H
 
 #include <OpenMS/METADATA/CVTermList.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

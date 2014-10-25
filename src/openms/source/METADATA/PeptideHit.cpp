@@ -33,8 +33,12 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/PeptideHit.h>
-
 #include <algorithm>
+
+#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
 
 using namespace std;
 

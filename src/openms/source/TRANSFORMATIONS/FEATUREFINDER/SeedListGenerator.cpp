@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/TRANSFORMATIONS/FEATUREFINDER/SeedListGenerator.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace std;
 

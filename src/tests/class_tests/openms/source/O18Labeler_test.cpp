@@ -37,9 +37,14 @@
 
 ///////////////////////////
 #include <OpenMS/SIMULATION/LABELING/O18Labeler.h>
+///////////////////////////
+
 #include <OpenMS/SIMULATION/DigestSimulation.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
-///////////////////////////
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
 
 using namespace OpenMS;
 using namespace std;

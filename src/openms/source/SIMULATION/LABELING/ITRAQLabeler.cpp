@@ -39,6 +39,9 @@
 
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+
 #include <Eigen/Dense>
 
 #include <boost/random/uniform_real.hpp>

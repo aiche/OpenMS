@@ -41,6 +41,11 @@
 #include <OpenMS/FORMAT/OPTIONS/PeakFileOptions.h>
 #include <OpenMS/FORMAT/Base64.h>
 #include <OpenMS/KERNEL/MSExperiment.h>
+#include <OpenMS/METADATA/DataProcessing.h>
+#include <OpenMS/METADATA/ScanWindow.h>
+#include <OpenMS/METADATA/MassAnalyzer.h>
+#include <OpenMS/METADATA/IonDetector.h>
+#include <OpenMS/METADATA/ContactPerson.h>
 
 #include <sstream>
 

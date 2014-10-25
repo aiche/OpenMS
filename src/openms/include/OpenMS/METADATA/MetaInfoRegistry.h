@@ -35,12 +35,12 @@
 #ifndef OPENMS_METADATA_METAINFOREGISTRY_H
 #define OPENMS_METADATA_METAINFOREGISTRY_H
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <map>
 #include <string>
 
-#include <OpenMS/CONCEPT/Exception.h>
-#include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #ifdef OPENMS_COMPILER_MSVC
 #pragma warning( push )

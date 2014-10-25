@@ -36,18 +36,21 @@
 #define OPENMS_METADATA_CHROMATOGRAMSETTINGS_H
 
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/METADATA/InstrumentSettings.h>
 #include <OpenMS/METADATA/AcquisitionInfo.h>
-#include <OpenMS/METADATA/SourceFile.h>
+#include <OpenMS/METADATA/InstrumentSettings.h>
 #include <OpenMS/METADATA/Precursor.h>
 #include <OpenMS/METADATA/Product.h>
-#include <OpenMS/METADATA/DataProcessing.h>
+#include <OpenMS/METADATA/SourceFile.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #include <map>
 #include <vector>
 
 namespace OpenMS
 {
+  class DataProcessing;
+  
   /**
       @brief Representation of chromatogram settings, e.g. SRM/MRM chromatograms
 

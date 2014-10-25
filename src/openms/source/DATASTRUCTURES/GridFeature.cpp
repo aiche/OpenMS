@@ -35,6 +35,7 @@
 #include <OpenMS/DATASTRUCTURES/GridFeature.h>
 #include <OpenMS/KERNEL/BaseFeature.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace std;
 

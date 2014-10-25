@@ -41,6 +41,8 @@
 #include <OpenMS/METADATA/DocumentIDTagger.h>
 ///////////////////////////
 
+#include <OpenMS/METADATA/DocumentIdentifier.h>
+
 using namespace OpenMS;
 using namespace std;
 

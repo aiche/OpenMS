@@ -39,6 +39,9 @@
 #include <OpenMS/METADATA/ChromatogramSettings.h>
 ///////////////////////////
 
+#include <OpenMS/METADATA/ScanWindow.h>
+#include <OpenMS/METADATA/DataProcessing.h>
+
 using namespace OpenMS;
 using namespace std;
 

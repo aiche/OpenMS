@@ -36,6 +36,8 @@
 #include <OpenMS/VISUAL/DIALOGS/LayerStatisticsDialog.h>
 #include <OpenMS/VISUAL/SpectrumWidget.h>
 
+#include <OpenMS/METADATA/MetaInfo.h>
+
 using namespace std;
 
 namespace OpenMS

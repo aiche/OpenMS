@@ -44,6 +44,7 @@
 #include <OpenMS/ANALYSIS/ID/PILISScoring.h>
 #include <OpenMS/CONCEPT/Factory.h>
 #include <OpenMS/KERNEL/StandardTypes.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 using namespace std;
 

@@ -39,6 +39,9 @@
 #include <OpenMS/SIMULATION/LABELING/LabelFreeLabeler.h>
 ///////////////////////////
 
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+
 using namespace OpenMS;
 using namespace std;
 

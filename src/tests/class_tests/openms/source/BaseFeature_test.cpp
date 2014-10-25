@@ -36,11 +36,12 @@
 #include <OpenMS/test_config.h>
 
 ///////////////////////////
-
 #include <OpenMS/KERNEL/BaseFeature.h>
-#include <OpenMS/METADATA/PeptideIdentification.h>
-
 ///////////////////////////
+
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 START_TEST(BaseFeature, "$Id$")
 

@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/Product.h>
+#include <OpenMS/METADATA/CVTermList.h>
 
 using namespace std;
 

@@ -32,10 +32,13 @@
 // $Authors: $
 // --------------------------------------------------------------------------
 
-#include <OpenMS/METADATA/DocumentIdentifier.h>
 #include <OpenMS/FORMAT/FileHandler.h>
-
+#include <OpenMS/METADATA/DocumentIdentifier.h>
 #include <QDir>
+#include <QString>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/FORMAT/FileTypes.h>
 
 namespace OpenMS
 {

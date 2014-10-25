@@ -37,15 +37,17 @@
 
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/METADATA/IonSource.h>
-#include <OpenMS/METADATA/MassAnalyzer.h>
-#include <OpenMS/METADATA/IonDetector.h>
 #include <OpenMS/METADATA/Software.h>
-
 #include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class IonSource;
+  class MassAnalyzer;
+  class IonDetector;
+  
   /**
       @brief Description of a MS instrument
 

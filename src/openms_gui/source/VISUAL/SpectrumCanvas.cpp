@@ -38,6 +38,8 @@
 #include <OpenMS/VISUAL/AxisWidget.h>
 #include <OpenMS/SYSTEM/FileWatcher.h>
 #include <OpenMS/VISUAL/MetaDataBrowser.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 // QT
 #include <QtGui/QPainter>

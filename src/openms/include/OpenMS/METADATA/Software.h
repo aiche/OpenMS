@@ -36,8 +36,8 @@
 #define OPENMS_METADATA_SOFTWARE_H
 
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <OpenMS/METADATA/CVTermList.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

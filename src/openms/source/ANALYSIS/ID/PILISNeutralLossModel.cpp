@@ -35,6 +35,8 @@
 
 #include <OpenMS/ANALYSIS/ID/PILISNeutralLossModel.h>
 #include <OpenMS/CHEMISTRY/ResidueDB.h>
+#include <OpenMS/CHEMISTRY/EmpiricalFormula.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 
 // TODOs

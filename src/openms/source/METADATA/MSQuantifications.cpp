@@ -33,8 +33,14 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/MSQuantifications.h>
-#include <set>
 #include <iostream>
+#include <set>
+
+#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/METADATA/ExperimentalSettings.h>
+#include <OpenMS/KERNEL/ConsensusMap.h>
+#include <OpenMS/KERNEL/Peak1D.h>
+#include <OpenMS/METADATA/DataProcessing.h>
 
 using namespace std;
 
@@ -42,6 +48,35 @@ namespace OpenMS
 {
   const std::string MSQuantifications::NamesOfQuantTypes[] = {"MS1LABEL", "MS2LABEL", "LABELFREE"};
 
+  
+  MSQuantifications::Assay::Assay()
+  {
+  }
+  
+  MSQuantifications::Assay::Assay(const Assay & rhs)
+  {
+    uid_ = rhs.uid_;
+    mods_ = rhs.mods_;
+    raw_files_ = rhs.raw_files_;
+    feature_maps_ = rhs.feature_maps_;
+  }
+  
+  MSQuantifications::Assay::~Assay()
+  {
+  }
+  
+  MSQuantifications::Assay & MSQuantifications::Assay::operator=(const Assay & rhs)
+  {
+    if (&rhs != this)
+    {
+      uid_ = rhs.uid_;
+      mods_ = rhs.mods_;
+      raw_files_ = rhs.raw_files_;
+      feature_maps_ = rhs.feature_maps_;
+    }
+    return *this;
+  }
+  
   /// Constructor
   MSQuantifications::MSQuantifications() :
     ExperimentalSettings()

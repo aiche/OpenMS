@@ -39,6 +39,7 @@
 #include <OpenMS/VISUAL/OpenMS_GUIConfig.h>
 
 //OpenMS
+#include <OpenMS/METADATA/PeptideIdentification.h>
 #include <OpenMS/KERNEL/StandardTypes.h>
 #include <OpenMS/DATASTRUCTURES/DefaultParamHandler.h>
 #include <OpenMS/VISUAL/SpectrumCanvas.h>

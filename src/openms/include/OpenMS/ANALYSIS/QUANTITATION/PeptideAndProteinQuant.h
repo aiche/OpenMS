@@ -43,6 +43,8 @@
 
 namespace OpenMS
 {
+  class AASequence;
+  
   /**
       @brief Helper class for peptide and protein quantification based on feature data annotated with IDs
 

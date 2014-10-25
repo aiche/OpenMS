@@ -34,6 +34,7 @@
 
 
 #include <OpenMS/FILTERING/CALIBRATION/InternalCalibration.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
 #include <OpenMS/ANALYSIS/ID/IDMapper.h>
 #include <stdio.h>
 

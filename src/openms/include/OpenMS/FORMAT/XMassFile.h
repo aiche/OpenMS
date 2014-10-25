@@ -39,6 +39,8 @@
 #include <OpenMS/FORMAT/HANDLERS/FidHandler.h>
 #include <OpenMS/CONCEPT/ProgressLogger.h>
 #include <OpenMS/KERNEL/MSExperiment.h>
+#include <OpenMS/METADATA/DataProcessing.h>
+#include <OpenMS/METADATA/MassAnalyzer.h>
 
 namespace OpenMS
 {

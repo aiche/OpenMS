@@ -34,6 +34,10 @@
 
 #include <OpenMS/METADATA/HPLC.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/Gradient.h>
+
 using namespace std;
 
 namespace OpenMS

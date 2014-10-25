@@ -50,9 +50,6 @@
 #include <QtGui/QFileDialog>
 #include <QtGui/QCheckBox>
 
-#include <OpenMS/ANALYSIS/MAPMATCHING/FeatureGroupingAlgorithm.h>
-#include <OpenMS/TRANSFORMATIONS/FEATUREFINDER/FeatureFinder.h>
-
 using namespace std;
 
 namespace OpenMS

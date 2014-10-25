@@ -33,8 +33,11 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/Gradient.h>
-
 #include <algorithm>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/config.h>
+#include <OpenMS/CONCEPT/Exception.h>
 
 using namespace std;
 

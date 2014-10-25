@@ -33,8 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/SourceFile.h>
-
-#include <iostream>
+#include <OpenMS/METADATA/CVTermList.h>
 
 using namespace std;
 

@@ -34,6 +34,7 @@
 
 #include <OpenMS/ANALYSIS/RNPXL/ModifiedPeptideGenerator.h>
 #include <OpenMS/CHEMISTRY/ResidueModification.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <vector>
 #include <map>
 

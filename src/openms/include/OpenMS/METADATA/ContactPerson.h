@@ -37,13 +37,12 @@
 
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
   /**
       @brief Contact person information
-
-
 
       @ingroup Metadata
   */

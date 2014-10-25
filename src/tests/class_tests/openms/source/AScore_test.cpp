@@ -35,10 +35,11 @@
 #include <OpenMS/CONCEPT/ClassTest.h>
 #include <OpenMS/test_config.h>
 
-
 ///////////////////////////
 #include <OpenMS/ANALYSIS/ID/AScore.h>
 ///////////////////////////
+
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 using namespace OpenMS;
 using namespace std;

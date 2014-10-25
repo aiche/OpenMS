@@ -34,10 +34,12 @@
 
 #include <OpenMS/FORMAT/MSPFile.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/KERNEL/RichPeak1D.h>
 #include <OpenMS/CONCEPT/Constants.h>
 #include <OpenMS/SYSTEM/File.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <fstream>
 
 using namespace std;

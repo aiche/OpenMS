@@ -34,6 +34,7 @@
 
 #include <OpenMS/ANALYSIS/OPENSWATH/MRMDecoy.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 #include <map>
 #include <utility> //for pair

@@ -34,10 +34,16 @@
 
 #include <OpenMS/CONCEPT/ClassTest.h>
 #include <OpenMS/test_config.h>
-#include <OpenMS/SIMULATION/DigestSimulation.h>
+
 ///////////////////////////
 #include <OpenMS/SIMULATION/LABELING/ICPLLabeler.h>
 ///////////////////////////
+
+#include <OpenMS/SIMULATION/DigestSimulation.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
 
 using namespace OpenMS;
 using namespace std;

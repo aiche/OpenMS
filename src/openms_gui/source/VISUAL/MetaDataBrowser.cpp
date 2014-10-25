@@ -66,6 +66,11 @@
 #include <OpenMS/VISUAL/VISUALIZER/DocumentIdentifierVisualizer.h>
 #include <OpenMS/VISUAL/VISUALIZER/ScanWindowVisualizer.h>
 
+#include <OpenMS/KERNEL/ConsensusMap.h>
+#include <OpenMS/KERNEL/ConsensusFeature.h>
+#include <OpenMS/KERNEL/FeatureMap.h>
+#include <OpenMS/KERNEL/Feature.h>
+
 #include <QtGui/QLabel>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QHBoxLayout>
@@ -183,6 +188,26 @@ namespace OpenMS
 
     //close dialog
     accept();
+  }
+  
+  void MetaDataBrowser::add(FeatureMap& map)
+  {
+    //identifier
+    add(static_cast<DocumentIdentifier &>(map));
+    
+    //protein ids
+    for (Size i = 0; i < map.getProteinIdentifications().size(); ++i)
+    {
+      add(map.getProteinIdentifications()[i]);
+    }
+    
+    //unassigned peptide ids
+    for (Size i = 0; i < map.getUnassignedPeptideIdentifications().size(); ++i)
+    {
+      add(map.getUnassignedPeptideIdentifications()[i]);
+    }
+    
+    treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
   }
 
   //-------------------------------------------------------------------------------

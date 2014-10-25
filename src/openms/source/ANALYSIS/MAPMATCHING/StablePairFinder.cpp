@@ -40,6 +40,8 @@
 #include <OpenMS/KERNEL/ConsensusFeature.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 #ifdef Debug_StablePairFinder
 #define V_(bla) std::cout << __FILE__ ":" << __LINE__ << ": " << bla << std::endl;

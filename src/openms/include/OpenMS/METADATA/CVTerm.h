@@ -35,8 +35,10 @@
 #ifndef OPENMS_METADATA_CVTERM_H
 #define OPENMS_METADATA_CVTERM_H
 
-#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/DATASTRUCTURES/DataValue.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

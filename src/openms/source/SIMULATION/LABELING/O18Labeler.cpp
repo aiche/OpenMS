@@ -36,6 +36,9 @@
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
 #include <OpenMS/CHEMISTRY/ResidueModification.h>
 
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+
 using std::vector;
 
 // TODO: change postRawHook to SimTypes::FeatureMapSim?

@@ -35,12 +35,13 @@
 #ifndef OPENMS_METADATA_PEPTIDEHIT_H
 #define OPENMS_METADATA_PEPTIDEHIT_H
 
-#include <vector>
-
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/CHEMISTRY/AASequence.h>
+#include <vector>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

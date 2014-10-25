@@ -36,19 +36,18 @@
 #ifndef OPENMS_ANALYSIS_TARGETED_PSPROTEININFERENCE_H
 #define OPENMS_ANALYSIS_TARGETED_PSPROTEININFERENCE_H
 
-#include <OpenMS/METADATA/PeptideIdentification.h>
 #include <OpenMS/DATASTRUCTURES/LPWrapper.h>
+
+#include <set>
+#include <map>
+#include <vector>
 
 namespace OpenMS
 {
+  class PeptideIdentification;
 
   /**
-       @brief This class implements protein inference for the precursor ion selection strategies.
-
-
-
-
-
+     @brief This class implements protein inference for the precursor ion selection strategies.
   */
   class OPENMS_DLLAPI PSProteinInference
   {

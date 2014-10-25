@@ -37,9 +37,11 @@
 
 #include <OpenMS/KERNEL/Peak1D.h>
 #include <OpenMS/METADATA/CVTermList.h>
-#include <OpenMS/CONCEPT/Constants.h>
-
 #include <set>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/CONCEPT/Constants.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

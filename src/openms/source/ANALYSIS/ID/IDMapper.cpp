@@ -34,6 +34,8 @@
 
 #include <OpenMS/ANALYSIS/ID/IDMapper.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/DataProcessing.h>
 
 using namespace std;
 

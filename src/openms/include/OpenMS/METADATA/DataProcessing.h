@@ -35,11 +35,12 @@
 #ifndef OPENMS_METADATA_DATAPROCESSING_H
 #define OPENMS_METADATA_DATAPROCESSING_H
 
+#include <OpenMS/DATASTRUCTURES/DateTime.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
 #include <OpenMS/METADATA/Software.h>
-#include <OpenMS/DATASTRUCTURES/DateTime.h>
-
 #include <set>
+
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

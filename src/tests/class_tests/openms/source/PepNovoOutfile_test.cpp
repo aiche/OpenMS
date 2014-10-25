@@ -39,6 +39,9 @@
 
 #include <OpenMS/FORMAT/PepNovoOutfile.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 #include <iostream>
 #include <vector>

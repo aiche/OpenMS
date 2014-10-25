@@ -35,15 +35,19 @@
 #ifndef OPENMS_METADATA_PEPTIDEIDENTIFICATION_H
 #define OPENMS_METADATA_PEPTIDEIDENTIFICATION_H
 
-#include <OpenMS/METADATA/PeptideHit.h>
-#include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/METADATA/ProteinHit.h>
-
-#include <string>
 #include <map>
+#include <string>
+
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class PeptideHit;
+  class ProteinHit;
+  class DataValue;
+  
   /**
     @brief Represents the peptide hits for a spectrum
 

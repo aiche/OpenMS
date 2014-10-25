@@ -36,11 +36,12 @@
 #define OPENMS_METADATA_METAINFODESCRIPTION_H
 
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/METADATA/DataProcessing.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class DataProcessing;
   /**
       @brief Description of the meta data arrays of MSSpectrum.
 

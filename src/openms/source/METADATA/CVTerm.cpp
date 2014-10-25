@@ -34,6 +34,9 @@
 
 #include <OpenMS/METADATA/CVTerm.h>
 
+#include <OpenMS/DATASTRUCTURES/DataValue.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+
 using namespace std;
 
 namespace OpenMS

@@ -35,11 +35,15 @@
 #ifndef OPENMS_METADATA_METAINFOINTERFACE_H
 #define OPENMS_METADATA_METAINFOINTERFACE_H
 
-#include <OpenMS/METADATA/MetaInfo.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/DataValue.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
   class String;
+  class MetaInfo;
+  class MetaInfoRegistry;
 
   /**
     @brief Interface for classes that can store arbitrary meta information

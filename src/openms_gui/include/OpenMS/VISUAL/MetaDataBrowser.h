@@ -39,8 +39,6 @@
 #include <OpenMS/VISUAL/OpenMS_GUIConfig.h>
 
 #include <OpenMS/KERNEL/MSExperiment.h>
-#include <OpenMS/KERNEL/FeatureMap.h>
-#include <OpenMS/KERNEL/ConsensusMap.h>
 
 //QT
 #include <QtGui/QDialog>
@@ -85,6 +83,10 @@ namespace OpenMS
   class Tagging;
   class DocumentIdentifier;
   class Product;
+  class FeatureMap;
+  class Feature;
+  class ConsensusFeature;
+  class ConsensusMap;
 
   /**
       @brief A meta data visualization widget
@@ -146,25 +148,7 @@ public:
     }
 
     /// Adds a feature map
-    void add(FeatureMap& map)
-    {
-      //identifier
-      add(static_cast<DocumentIdentifier &>(map));
-
-      //protein ids
-      for (Size i = 0; i < map.getProteinIdentifications().size(); ++i)
-      {
-        add(map.getProteinIdentifications()[i]);
-      }
-
-      //unassigned peptide ids
-      for (Size i = 0; i < map.getUnassignedPeptideIdentifications().size(); ++i)
-      {
-        add(map.getUnassignedPeptideIdentifications()[i]);
-      }
-
-      treeview_->expandItem(treeview_->findItems(QString::number(0), Qt::MatchExactly, 1).first());
-    }
+    void add(FeatureMap& map);
 
     /// Adds a feature
     void add(Feature & feature);

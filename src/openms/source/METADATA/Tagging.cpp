@@ -33,6 +33,7 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/Tagging.h>
+#include <OpenMS/METADATA/Modification.h>
 
 using namespace std;
 

@@ -39,6 +39,7 @@
 #include <OpenMS/CONCEPT/Constants.h>
 #include <OpenMS/ANALYSIS/ID/PILISNeutralLossModel.h>
 #include <OpenMS/CHEMISTRY/TheoreticalSpectrumGenerator.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 ///////////////////////////
 
 #include <algorithm>

@@ -33,7 +33,9 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/DATASTRUCTURES/DateTime.h>
 #include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <OpenMS/FORMAT/PepNovoOutfile.h>

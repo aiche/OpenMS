@@ -35,9 +35,9 @@
 #ifndef OPENMS_METADATA_MODIFICATION_H
 #define OPENMS_METADATA_MODIFICATION_H
 
-#include <OpenMS/METADATA/SampleTreatment.h>
-
 #include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/SampleTreatment.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

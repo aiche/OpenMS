@@ -35,13 +35,15 @@
 #ifndef OPENMS_METADATA_CVTERMLIST_H
 #define OPENMS_METADATA_CVTERMLIST_H
 
-#include <OpenMS/METADATA/CVTerm.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/DATASTRUCTURES/CVMappingRule.h>
-#include <OpenMS/FORMAT/ControlledVocabulary.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/DATASTRUCTURES/Map.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class CVTerm;
+  
   /**
       @brief Representation of controlled vocabulary term list
 

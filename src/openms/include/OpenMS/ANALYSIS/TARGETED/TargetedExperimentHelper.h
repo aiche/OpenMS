@@ -43,6 +43,8 @@
 
 namespace OpenMS
 {
+  class AASequence;
+  
   /**
     @brief This class stores helper structures that are used in multiple
     classes of the TargetedExperiment (e.g. ReactionMonitoringTransition and

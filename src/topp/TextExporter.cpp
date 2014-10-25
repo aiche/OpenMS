@@ -43,6 +43,7 @@
 #include <OpenMS/KERNEL/ConsensusMap.h>
 #include <OpenMS/FORMAT/ConsensusXMLFile.h>
 #include <OpenMS/FORMAT/SVOutStream.h>
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 
 #include <boost/math/special_functions/fpclassify.hpp>
 

@@ -34,6 +34,8 @@
 
 #include <OpenMS/ANALYSIS/ID/IDRipper.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/ProteinHit.h>
 
 #include <QDir>
 

@@ -35,6 +35,7 @@
 #include <OpenMS/FILTERING/DATAREDUCTION/DataFilters.h>
 #include <OpenMS/KERNEL/Feature.h>
 #include <OpenMS/KERNEL/ConsensusFeature.h>
+#include <OpenMS/METADATA/MetaInfo.h>
 
 #include <iostream>
 

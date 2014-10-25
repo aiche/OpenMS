@@ -33,7 +33,15 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/METADATA/SpectrumSettings.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 
+#include <OpenMS/METADATA/AcquisitionInfo.h>
+#include <OpenMS/METADATA/InstrumentSettings.h>
+#include <OpenMS/METADATA/SourceFile.h>
+#include <OpenMS/METADATA/Precursor.h>
+#include <OpenMS/METADATA/Product.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/DataProcessing.h>
 
 using namespace std;
 

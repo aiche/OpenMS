@@ -37,6 +37,7 @@
 
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/METADATA/SampleTreatment.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

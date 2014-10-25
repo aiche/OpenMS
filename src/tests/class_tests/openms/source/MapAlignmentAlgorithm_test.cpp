@@ -41,6 +41,8 @@
 #include <OpenMS/ANALYSIS/MAPMATCHING/MapAlignmentAlgorithmSpectrumAlignment.h>
 #include <OpenMS/ANALYSIS/MAPMATCHING/MapAlignmentAlgorithmIdentification.h>
 
+#include <OpenMS/METADATA/PeptideIdentification.h>
+
 #include <OpenMS/CONCEPT/Factory.h>
 
 using namespace std;

@@ -37,8 +37,10 @@
 
 ///////////////////////////
 #include <OpenMS/KERNEL/MSSpectrum.h>
-#include <OpenMS/KERNEL/StandardTypes.h>
 ///////////////////////////
+
+#include <OpenMS/KERNEL/StandardTypes.h>
+#include <OpenMS/METADATA/ScanWindow.h>
 
 using namespace OpenMS;
 using namespace std;

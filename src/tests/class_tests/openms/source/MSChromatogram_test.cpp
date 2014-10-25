@@ -39,6 +39,8 @@
 #include <OpenMS/KERNEL/MSChromatogram.h>
 ///////////////////////////
 
+#include <OpenMS/METADATA/ScanWindow.h>
+
 using namespace OpenMS;
 using namespace std;
 

@@ -37,6 +37,7 @@
 
 #include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

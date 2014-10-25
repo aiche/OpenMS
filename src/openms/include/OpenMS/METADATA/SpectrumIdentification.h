@@ -36,10 +36,13 @@
 #define OPENMS_METADATA_SPECTRUMIDENTIFICATION_H
 
 #include <OpenMS/METADATA/MetaInfoInterface.h>
-#include <OpenMS/METADATA/IdentificationHit.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {
+  class IdentificationHit;
+  
   /**
     @brief Represents a object which can store the information of an analysisXML instance
 

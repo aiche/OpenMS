@@ -36,6 +36,9 @@
 #include <OpenMS/SYSTEM/File.h>
 #include <OpenMS/DATASTRUCTURES/DateTime.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 
 #include <cstdlib>
 #include <fstream>

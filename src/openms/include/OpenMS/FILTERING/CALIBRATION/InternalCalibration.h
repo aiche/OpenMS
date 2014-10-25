@@ -41,6 +41,8 @@
 #include <OpenMS/ANALYSIS/MAPMATCHING/TransformationDescription.h>
 #include <OpenMS/CONCEPT/ProgressLogger.h>
 #include <OpenMS/ANALYSIS/MAPMATCHING/TransformationDescription.h>
+#include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 // TODO remove dependency from file reader here!
 #include <OpenMS/FORMAT/TransformationXMLFile.h>
 

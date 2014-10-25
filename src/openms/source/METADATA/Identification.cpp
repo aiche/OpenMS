@@ -34,6 +34,10 @@
 
 #include <OpenMS/METADATA/Identification.h>
 
+#include <OpenMS/DATASTRUCTURES/DateTime.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/METADATA/SpectrumIdentification.h>
+
 using namespace std;
 
 namespace OpenMS

@@ -34,6 +34,10 @@
 
 #include <OpenMS/METADATA/ProteinHit.h>
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+
 using namespace std;
 
 namespace OpenMS

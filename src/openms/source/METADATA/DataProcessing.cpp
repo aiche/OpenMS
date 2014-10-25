@@ -34,6 +34,13 @@
 
 #include <OpenMS/METADATA/DataProcessing.h>
 
+#include <OpenMS/DATASTRUCTURES/DateTime.h>
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+
+namespace OpenMS {
+class Software;
+}  // namespace OpenMS
+
 
 using namespace std;
 

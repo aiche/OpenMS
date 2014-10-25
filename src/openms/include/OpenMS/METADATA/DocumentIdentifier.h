@@ -38,6 +38,7 @@
 // OpenMS
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/FORMAT/FileTypes.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

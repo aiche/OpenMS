@@ -37,8 +37,11 @@
 
 #include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/KERNEL/ConsensusMap.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/METADATA/PeptideHit.h>
 
 // we need the quantitation types to extract the appropriate channels
 #include <OpenMS/ANALYSIS/QUANTITATION/IsobaricQuantitationMethod.h>

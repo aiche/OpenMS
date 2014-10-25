@@ -35,7 +35,11 @@
 #include <OpenMS/FORMAT/XTandemXMLFile.h>
 #include <OpenMS/SYSTEM/File.h>
 #include <OpenMS/CHEMISTRY/ModificationsDB.h>
+#include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/METADATA/ProteinIdentification.h>
+#include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/METADATA/PeptideHit.h>
+#include <OpenMS/METADATA/MetaInfoRegistry.h>
 
 using namespace xercesc;
 using namespace std;

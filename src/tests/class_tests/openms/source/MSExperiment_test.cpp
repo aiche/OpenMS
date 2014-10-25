@@ -36,13 +36,12 @@
 #include <OpenMS/test_config.h>
 
 ///////////////////////////
-
 #include <OpenMS/KERNEL/MSExperiment.h>
+///////////////////////////
 
 #include <OpenMS/KERNEL/FeatureMap.h>
 #include <OpenMS/KERNEL/Peak2D.h>
-
-///////////////////////////
+#include <OpenMS/METADATA/ContactPerson.h>
 
 START_TEST(MSExperiment, "$Id$");
 

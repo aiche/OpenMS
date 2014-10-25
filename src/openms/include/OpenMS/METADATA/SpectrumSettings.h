@@ -36,19 +36,22 @@
 #define OPENMS_METADATA_SPECTRUMSETTINGS_H
 
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/METADATA/InstrumentSettings.h>
 #include <OpenMS/METADATA/AcquisitionInfo.h>
+#include <OpenMS/METADATA/InstrumentSettings.h>
 #include <OpenMS/METADATA/SourceFile.h>
-#include <OpenMS/METADATA/Precursor.h>
-#include <OpenMS/METADATA/Product.h>
-#include <OpenMS/METADATA/PeptideIdentification.h>
-#include <OpenMS/METADATA/DataProcessing.h>
-
 #include <map>
 #include <vector>
 
+#include <OpenMS/METADATA/MetaInfoInterface.h>
+#include <OpenMS/OpenMSConfig.h>
+
 namespace OpenMS
 {
+  class Precursor;
+  class Product;
+  class PeptideIdentification;
+  class DataProcessing;
+  
   /**
       @brief Representation of 1D spectrum settings.
 

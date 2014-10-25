@@ -43,6 +43,7 @@
 namespace OpenMS
 {
   class TOPPViewBase;
+  class PeptideHit;
 
   /**
   @brief Behavior of TOPPView in identification mode.
