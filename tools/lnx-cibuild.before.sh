@@ -65,7 +65,7 @@ if [ $ENABLE_STYLE_TESTING == "On" ]; then
   sudo apt-get install -qq libpcre3-dev
   git clone git://github.com/danmar/cppcheck.git
   pushd cppcheck
-  git checkout 1.65
+  git checkout 1.67
   CXX=clang++ make SRCDIR=build CFGDIR=`pwd`/cfg HAVE_RULES=yes -j4
   popd
 else
