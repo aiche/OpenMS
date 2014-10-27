@@ -118,6 +118,7 @@ if(CPPCHECK_EXECUTABLE)
   			"--enable=performance")
 		_cppcheck_set_arg_var(CPPCHECK_INLINE_SUPPRESSION_ARG "--inline-suppr")
 		_cppcheck_set_arg_var(CPPCHECK_POSSIBLEERROR_ARG "--enable=all")
+		_cppcheck_set_arg_var(CPPCHECK_HAS_STDVERSION_ARG "--std=c++03")
 
 		if(MSVC)
 			set(CPPCHECK_TEMPLATE_ARG --template vs)
@@ -147,6 +148,11 @@ if(CPPCHECK_EXECUTABLE)
 	set(CPPCHECK_QUIET_ARG "--quiet")
 	set(CPPCHECK_INCLUDEPATH_ARG "-I")
 
+	if(CPPCHECK_HAS_STDVERSION_ARG)
+		set(CPPCHECK_STDVERSION_ARG "--std=c++03")
+	else()
+		set(CPPCHECK_STDVERSION_ARG "")
+	endif()
 endif()
 
 set(CPPCHECK_ALL

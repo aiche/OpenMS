@@ -106,6 +106,7 @@ function(add_cppcheck_sources _targetname)
 			# Older than CMake 2.8.0
 			add_test(${_targetname}_cppcheck_test
 				"${CPPCHECK_EXECUTABLE}"
+				${CPPCHECK_STDVERSION_ARG}
 				${CPPCHECK_TEMPLATE_ARG}
 				${_cppcheck_args}
 				${_files})
@@ -115,6 +116,7 @@ function(add_cppcheck_sources _targetname)
 				${_targetname}_cppcheck_test
 				COMMAND
 				"${CPPCHECK_EXECUTABLE}"
+				${CPPCHECK_STDVERSION_ARG}
 				${CPPCHECK_TEMPLATE_ARG}
 				${_cppcheck_args}
 				${_files})
@@ -130,6 +132,7 @@ function(add_cppcheck_sources _targetname)
 			PRE_BUILD
 			COMMAND
 			${CPPCHECK_EXECUTABLE}
+			${CPPCHECK_STDVERSION_ARG}
 			${CPPCHECK_QUIET_ARG}
 			${CPPCHECK_TEMPLATE_ARG}
 			${_cppcheck_args}
@@ -199,6 +202,7 @@ function(add_cppcheck _name)
 			# Older than CMake 2.8.0
 			add_test(${_name}_cppcheck_test
 				"${CPPCHECK_EXECUTABLE}"
+				${CPPCHECK_STDVERSION_ARG}
 				${CPPCHECK_TEMPLATE_ARG}
 				${_cppcheck_args}
 				${_files})
@@ -208,6 +212,7 @@ function(add_cppcheck _name)
 				${_name}_cppcheck_test
 				COMMAND
 				"${CPPCHECK_EXECUTABLE}"
+				${CPPCHECK_STDVERSION_ARG}
 				${CPPCHECK_TEMPLATE_ARG}
 				${_cppcheck_args}
 				${_files})
@@ -223,6 +228,7 @@ function(add_cppcheck _name)
 			PRE_BUILD
 			COMMAND
 			${CPPCHECK_EXECUTABLE}
+			${CPPCHECK_STDVERSION_ARG}
 			${CPPCHECK_QUIET_ARG}
 			${CPPCHECK_TEMPLATE_ARG}
 			${_cppcheck_args}
