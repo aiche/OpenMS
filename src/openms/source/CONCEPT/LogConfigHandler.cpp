@@ -32,11 +32,14 @@
 // $Authors: Stephan Aiche$
 // --------------------------------------------------------------------------
 
+#include <OpenMS/CONCEPT/LogConfigHandler.h>
+#include <OpenMS/CONCEPT/StreamHandler.h>  // for StreamHandler, etc
+#include <cstddef> // for NULL
 #include <iostream>
 
-#include <OpenMS/CONCEPT/LogConfigHandler.h>
-#include <OpenMS/CONCEPT/StreamHandler.h>
-#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/CONCEPT/LogStream.h>
+#include <OpenMS/DATASTRUCTURES/Param.h>
+#include <OpenMS/config.h>
 
 using std::cout;
 using std::cerr;

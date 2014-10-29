@@ -42,6 +42,7 @@
 #include <OpenMS/FORMAT/FileHandler.h>
 #include <OpenMS/FORMAT/FileTypes.h>
 #include <OpenMS/FORMAT/SVOutStream.h>
+#include <OpenMS/CONCEPT/UniqueIdGenerator.h>
 #include <cmath>
 
 using namespace OpenMS;

@@ -33,13 +33,97 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CONCEPT/UniqueIdInterface.h>
+#include <OpenMS/CONCEPT/UniqueIdGenerator.h>
 #include <iomanip>
+
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 namespace OpenMS
 {
 
-  void
-  UniqueIdInterface::setUniqueId(const String & rhs)
+  UniqueIdInterface::UniqueIdInterface() :
+    unique_id_(UInt64(INVALID))
+  {
+    //do not use clearUniqueId(), as it will be slower and creates a warranted valgrind warning;
+  }
+
+  /// Copy constructor - copies the unique id
+  UniqueIdInterface::UniqueIdInterface(const UniqueIdInterface & rhs) :
+    unique_id_(rhs.unique_id_)
+  {
+  }
+
+  /// Assignment operator - copies the unique id
+  UniqueIdInterface& UniqueIdInterface::operator=(UniqueIdInterface const & rhs)
+  {
+    unique_id_ = rhs.unique_id_;
+    return *this;
+  }
+
+  UniqueIdInterface::~UniqueIdInterface()
+  {
+  }
+
+  bool UniqueIdInterface::operator==(UniqueIdInterface const & rhs) const
+  {
+    return unique_id_ == rhs.unique_id_;
+  }
+
+  UInt64 UniqueIdInterface::getUniqueId() const
+  {
+    return unique_id_;
+  }
+
+  Size UniqueIdInterface::clearUniqueId()
+  {
+    if (hasValidUniqueId())
+    {
+      unique_id_ = 0;
+      return 1;
+    }
+    else
+      return 0;
+  }
+
+  void UniqueIdInterface::swap(UniqueIdInterface & from)
+  {
+    std::swap(unique_id_, from.unique_id_);
+    return;
+  }
+
+  Size UniqueIdInterface::hasValidUniqueId() const
+  {
+    return isValid(unique_id_);
+  }
+
+  Size UniqueIdInterface::hasInvalidUniqueId() const
+  {
+    return !isValid(unique_id_);
+  }
+
+  Size UniqueIdInterface::setUniqueId()
+  {
+    unique_id_ = UniqueIdGenerator::getUniqueId();
+    return 1;
+  }
+
+  Size UniqueIdInterface::ensureUniqueId()
+  {
+    if (!hasValidUniqueId())
+    {
+      unique_id_ = UniqueIdGenerator::getUniqueId();
+      return 1;
+    }
+    else
+      return 0;
+  }
+
+  void UniqueIdInterface::setUniqueId(UInt64 rhs)
+  {
+    unique_id_ = rhs;
+  }
+
+  void UniqueIdInterface::setUniqueId(const String & rhs)
   {
     clearUniqueId();
 

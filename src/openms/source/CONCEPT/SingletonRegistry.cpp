@@ -33,9 +33,46 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CONCEPT/SingletonRegistry.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/CONCEPT/Exception.h>
 
 namespace OpenMS
 {
+  SingletonRegistry * SingletonRegistry::instance_()
+  {
+    if (!singletonRegistryInstance_)
+    {
+      singletonRegistryInstance_ = new SingletonRegistry();
+    }
+    return singletonRegistryInstance_;
+  }
+
+  FactoryBase * SingletonRegistry::getFactory(const String & name)
+  {
+    MapIterator it = instance_()->inventory_.find(name);
+    if (it != instance_()->inventory_.end())
+    {
+      return it->second;
+    }
+    else
+    {
+      throw Exception::InvalidValue(__FILE__, __LINE__, __PRETTY_FUNCTION__, "This Factory is not registered with SingletonRegistry!", name.c_str());
+    }
+  }
+
+  void SingletonRegistry::registerFactory(const String & name, FactoryBase * instance)
+  {
+    instance_()->inventory_[name] = instance;
+  }
+
+  bool SingletonRegistry::isRegistered(String name)
+  {
+    if (instance_()->inventory_.find(name) != instance_()->inventory_.end())
+    {
+      return true;
+    }
+    return false;
+  }
 
   // unique instance of the SingletonRegistry!
   SingletonRegistry * SingletonRegistry::singletonRegistryInstance_ = 0;

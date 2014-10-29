@@ -35,11 +35,8 @@
 #ifndef OPENMS_CONCEPT_PRECISIONWRAPPER_H
 #define OPENMS_CONCEPT_PRECISIONWRAPPER_H
 
-#include <OpenMS/config.h>
-#include <OpenMS/CONCEPT/Types.h>
-
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 namespace OpenMS
 {

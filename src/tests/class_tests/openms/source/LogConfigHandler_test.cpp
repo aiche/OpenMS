@@ -39,6 +39,8 @@
 #include <OpenMS/CONCEPT/LogConfigHandler.h>
 ///////////////////////////
 
+#include <OpenMS/CONCEPT/LogStream.h>
+
 #include <boost/regex.hpp>
 
 using namespace OpenMS;

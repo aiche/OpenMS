@@ -35,8 +35,8 @@
 #ifndef OPENMS_CONCEPT_GLOBALEXCEPTIONHANDLER_H
 #define OPENMS_CONCEPT_GLOBALEXCEPTIONHANDLER_H
 
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #include <string>
 

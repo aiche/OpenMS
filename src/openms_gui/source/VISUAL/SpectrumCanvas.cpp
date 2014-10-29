@@ -40,6 +40,7 @@
 #include <OpenMS/VISUAL/MetaDataBrowser.h>
 #include <OpenMS/METADATA/PeptideHit.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 
 // QT
 #include <QtGui/QPainter>

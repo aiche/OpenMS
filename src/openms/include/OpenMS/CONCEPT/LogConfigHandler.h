@@ -35,14 +35,19 @@
 #ifndef OPENMS_CONCEPT_LOGCONFIGHANDLER_H
 #define OPENMS_CONCEPT_LOGCONFIGHANDLER_H
 
-#include <OpenMS/CONCEPT/LogStream.h>
 #include <OpenMS/CONCEPT/StreamHandler.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/DATASTRUCTURES/ListUtils.h>
+#include <OpenMS/OpenMSConfig.h>
 
-#include <OpenMS/DATASTRUCTURES/StringListUtils.h>
-#include <OpenMS/DATASTRUCTURES/Param.h>
+#include <set>
 
 namespace OpenMS
 {
+  class Param;
+  namespace Logger {
+    class LogStream;
+  }  // namespace Logger
 
   /**
     @brief The LogConfigHandler provides the functionality to configure the internal logging of OpenMS algorithms that use the

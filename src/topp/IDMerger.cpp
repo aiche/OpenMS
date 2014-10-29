@@ -34,6 +34,7 @@
 
 #include <OpenMS/FORMAT/IdXMLFile.h>
 #include <OpenMS/METADATA/PeptideIdentification.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 
 #include <OpenMS/APPLICATIONS/TOPPBase.h>
 

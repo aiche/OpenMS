@@ -42,6 +42,8 @@
 #include <OpenMS/ANALYSIS/QUANTITATION/IsobaricQuantitationMethod.h>
 #include <OpenMS/ANALYSIS/QUANTITATION/IsobaricNormalizer.h>
 
+#include <OpenMS/CONCEPT/LogStream.h>
+
 namespace OpenMS
 {
   IsobaricQuantifier::IsobaricQuantifier(const IsobaricQuantitationMethod* const quant_method) :

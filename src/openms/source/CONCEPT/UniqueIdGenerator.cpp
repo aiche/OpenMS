@@ -33,10 +33,13 @@
 // --------------------------------------------------------------------------
 
 #include <OpenMS/CONCEPT/UniqueIdGenerator.h>
+#include <OpenMS/CONCEPT/Types.h>
+
+#include <cstddef>
+#include <iostream>
+#include <limits>
 
 #include <boost/date_time/posix_time/posix_time_types.hpp> //no i/o just types
-#include <limits>
-#include <iostream>
 
 namespace OpenMS
 {
@@ -55,7 +58,7 @@ namespace OpenMS
       val = (*instance.dist_)(*instance.rng_);
     }
     // note: OpenMP can only work on a structured block, return needs to be outside that block
-    return val; 
+    return val;
 #else
     return (*instance.dist_)(*instance.rng_);
 #endif
@@ -106,10 +109,10 @@ namespace OpenMS
 #ifdef _OPENMP
 #pragma omp critical (OPENMS_UniqueIdGenerator_init_)
 #endif
-    { 
+    {
       // find a seed:
       // get something with high resolution (around microseconds) -- its hard to do better on Windows --
-      // which has absolute system time (there is higher resolution available for the time since program startup, but 
+      // which has absolute system time (there is higher resolution available for the time since program startup, but
       // we do not want this here since this seed usually gets initialized at the same program uptime).
       // Reason for high-res: in pipelines, instances of TOPP tools can get initialized almost simultaneously (i.e., resolution in seconds is not enough),
       // leading to identical random numbers (e.g. feature-IDs) in two or more distinct files.

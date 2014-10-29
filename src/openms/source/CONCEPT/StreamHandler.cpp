@@ -32,14 +32,15 @@
 // $Authors: Stephan Aiche$
 // --------------------------------------------------------------------------
 
-#include <iostream>
+#include <OpenMS/CONCEPT/StreamHandler.h>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 
-#include <OpenMS/CONCEPT/StreamHandler.h>
-#include <OpenMS/SYSTEM/File.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CONCEPT/Exception.h>
-#include <OpenMS/CONCEPT/LogStream.h>
+#include <OpenMS/SYSTEM/File.h>
+#include <OpenMS/config.h>
 
 using std::ios_base;
 using std::ostringstream;

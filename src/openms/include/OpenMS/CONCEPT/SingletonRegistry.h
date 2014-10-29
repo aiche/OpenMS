@@ -35,22 +35,21 @@
 #ifndef OPENMS_CONCEPT_SINGLETONREGISTRY_H
 #define OPENMS_CONCEPT_SINGLETONREGISTRY_H
 
-#include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/OpenMSConfig.h>
 
 #include <map>
 
 namespace OpenMS
 {
-  class String;
   class FactoryBase;
+  class String;
 
   /**
     @brief Holds pointers to unique instance of a singleton factory.
 
-        @note: NEVER(!) include this file anywhere (except for the SingletonRegistry.cpp)! :D
+    @note: NEVER(!) include this file anywhere (except for the SingletonRegistry.cpp)! :D
 
-        @ingroup Concept
+    @ingroup Concept
   */
   class OPENMS_DLLAPI SingletonRegistry
   {
@@ -68,51 +67,23 @@ private:
     SingletonRegistry(){}
 
     /// singleton access to SingletonRegistry
-    static SingletonRegistry * instance_()
-    {
-      if (!singletonRegistryInstance_)
-      {
-        singletonRegistryInstance_ = new SingletonRegistry();
-      }
-      return singletonRegistryInstance_;
-    }
+    static SingletonRegistry * instance_();
 
 public:
 
     /// return DefaultParamHandler according to unique identifier @p name
-    static FactoryBase * getFactory(const String & name)
-    {
-      MapIterator it = instance_()->inventory_.find(name);
-      if (it != instance_()->inventory_.end())
-      {
-        return it->second;
-      }
-      else
-      {
-        throw Exception::InvalidValue(__FILE__, __LINE__, __PRETTY_FUNCTION__, "This Factory is not registered with SingletonRegistry!", name.c_str());
-      }
-    }
+    static FactoryBase * getFactory(const String & name);
 
     /**
-        @brief register new concrete Factory
+      @brief register new concrete Factory
 
-       \param name unique name for Factory of certain type
-       \param instance pointer to this Factory
+      \param name unique name for Factory of certain type
+      \param instance pointer to this Factory
     */
-    static void registerFactory(const String & name, FactoryBase * instance)
-    {
-      instance_()->inventory_[name] = instance;
-    }
+    static void registerFactory(const String & name, FactoryBase * instance);
 
     /// Returns if a factory is registered
-    static bool isRegistered(String name)
-    {
-      if (instance_()->inventory_.find(name) != instance_()->inventory_.end())
-      {
-        return true;
-      }
-      return false;
-    }
+    static bool isRegistered(String name);
 
 private:
 

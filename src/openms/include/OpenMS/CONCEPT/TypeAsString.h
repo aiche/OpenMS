@@ -35,8 +35,6 @@
 #ifndef OPENMS_CONCEPT_TYPEASSTRING_H
 #define OPENMS_CONCEPT_TYPEASSTRING_H
 
-#include <OpenMS/config.h>
-
 #include <string>
 
 namespace OpenMS

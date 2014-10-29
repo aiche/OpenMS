@@ -35,7 +35,7 @@
 #ifndef OPENMS_CONCEPT_CONSTANTS_H
 #define OPENMS_CONCEPT_CONSTANTS_H
 
-#include <OpenMS/config.h>
+#include <OpenMS/OpenMSConfig.h>
 
 /**
     @brief Main %OpenMS namespace.

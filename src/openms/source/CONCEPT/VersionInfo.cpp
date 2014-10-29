@@ -31,9 +31,10 @@
 // $Maintainer: Chris Bielow $
 // $Authors: Clemens Groepl, Chris Bielow $
 // --------------------------------------------------------------------------
+
 #include <OpenMS/CONCEPT/VersionInfo.h>
-#include <OpenMS/DATASTRUCTURES/String.h>
 #include <OpenMS/CONCEPT/Exception.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 #include <cstdlib>
 #include <fstream>

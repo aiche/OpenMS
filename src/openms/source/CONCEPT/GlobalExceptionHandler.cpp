@@ -34,11 +34,13 @@
 
 #include <OpenMS/CONCEPT/GlobalExceptionHandler.h>
 #include <OpenMS/CONCEPT/Exception.h>
-#include <OpenMS/CONCEPT/PrecisionWrapper.h>
 
-#include <cstdlib>  // for getenv in terminate()
 //#include <sys/types.h>
 #include <csignal> // for SIGSEGV and kill
+#include <cstdlib> // for getenv in terminate()
+#include <iostream>
+
+#include <OpenMS/config.h> // for OPENMS_HAS_KILL, etc
 
 #ifndef OPENMS_WINDOWSPLATFORM
 #ifdef OPENMS_HAS_UNISTD_H

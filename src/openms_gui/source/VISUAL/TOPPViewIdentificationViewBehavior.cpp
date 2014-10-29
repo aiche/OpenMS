@@ -45,6 +45,7 @@
 #include <OpenMS/CHEMISTRY/AASequence.h>
 #include <OpenMS/CHEMISTRY/Residue.h>
 #include <OpenMS/FILTERING/ID/IDFilter.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QString>

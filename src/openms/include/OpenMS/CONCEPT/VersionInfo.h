@@ -36,6 +36,7 @@
 #define OPENMS_CONCEPT_VERSIONINFO_H
 
 #include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

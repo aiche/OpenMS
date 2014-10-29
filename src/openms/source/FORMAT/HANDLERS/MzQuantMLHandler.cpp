@@ -47,6 +47,7 @@
 #include <OpenMS/KERNEL/Feature.h>
 #include <OpenMS/KERNEL/ConsensusMap.h>
 #include <OpenMS/KERNEL/ConsensusFeature.h>
+#include <OpenMS/CONCEPT/UniqueIdGenerator.h>
 #include <set>
 #include <vector>
 #include <map>

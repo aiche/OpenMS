@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 //                   OpenMS -- Open-Source Mass Spectrometry
 // --------------------------------------------------------------------------
 // Copyright The OpenMS Team -- Eberhard Karls University Tuebingen,
@@ -48,6 +48,7 @@
 #include <algorithm>    // std::min
 #include <OpenMS/CONCEPT/LogStream.h>
 #include <OpenMS/CONCEPT/StreamHandler.h>
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -111,7 +112,7 @@ namespace OpenMS
 
     LogStreamBuf * LogStream::rdbuf()
     {
-      return (LogStreamBuf *)std::ios::rdbuf();
+      return static_cast<LogStreamBuf *>(std::ios::rdbuf());
     }
 
     LogStreamBuf * LogStream::operator->()
@@ -250,7 +251,7 @@ namespace OpenMS
               {
                 // Copy the incomplete line to the incomplete_line_ buffer
                 size_t length = line_end - line_start;
-                length = std::min(length, (size_t)(BUFFER_LENGTH - 1));
+                length = std::min(length, static_cast<size_t>(BUFFER_LENGTH - 1));
                 strncpy(&(buf[0]), line_start, length);
 
                 // if length was too large, we copied one byte less than BUFFER_LENGTH to have
@@ -298,7 +299,7 @@ namespace OpenMS
             }
           }
           // remove all processed lines from the buffer
-          pbump((int)(pbase() - pptr()));
+          pbump(static_cast<int>(pbase() - pptr()));
         }
 
       } // ! OMP
@@ -336,7 +337,7 @@ namespace OpenMS
         if (copied_index < index)
         {
           result.append(prefix.substr(copied_index, index - copied_index));
-          copied_index = (SignedSize)index;
+          copied_index = static_cast<SignedSize>(index);
         }
 
         if (index < prefix.size())

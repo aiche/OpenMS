@@ -50,6 +50,10 @@
 
 #include <QFileInfo>
 
+#include <cmath>
+
+#include <OpenMS/CONCEPT/Types.h>
+
 namespace OpenMS
 {
   namespace Internal

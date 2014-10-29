@@ -35,13 +35,15 @@
 #include <OpenMS/CONCEPT/FuzzyStringComparator.h>
 #include <OpenMS/SYSTEM/File.h>
 #include <QDir>
-#include <sstream>
-#include <cstdlib> // for strtod()
-#include <cctype> // for isspace()
-#include <limits> // for NaN
+
+#include <cstdio>
+#include <cctype>
+#include <cstdlib>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+#include <limits>
+#include <sstream>
 
 namespace OpenMS
 {

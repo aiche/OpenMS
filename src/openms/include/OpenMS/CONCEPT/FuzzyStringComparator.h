@@ -35,12 +35,13 @@
 #ifndef OPENMS_CONCEPT_FUZZYSTRINGCOMPARATOR_H
 #define OPENMS_CONCEPT_FUZZYSTRINGCOMPARATOR_H
 
-#include <OpenMS/CONCEPT/Types.h>
 #include <OpenMS/DATASTRUCTURES/String.h>
-#include <OpenMS/DATASTRUCTURES/StringListUtils.h>
-
+#include <OpenMS/DATASTRUCTURES/ListUtils.h>
 #include <iosfwd>
 #include <map>
+
+#include <OpenMS/OpenMSConfig.h>
+#include <OpenMS/config.h>
 
 #ifdef OPENMS_HAS_STREAM_EXTRACTION_BUG
 #include <boost/lexical_cast.hpp>

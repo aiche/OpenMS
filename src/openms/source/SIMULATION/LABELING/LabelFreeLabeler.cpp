@@ -37,6 +37,7 @@
 
 #include <OpenMS/SIMULATION/LABELING/LabelFreeLabeler.h>
 #include <OpenMS/METADATA/ProteinHit.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 
 using std::map;
 using std::vector;

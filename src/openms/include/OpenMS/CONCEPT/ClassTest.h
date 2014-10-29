@@ -35,6 +35,12 @@
 #ifndef OPENMS_CONCEPT_CLASSTEST_H
 #define OPENMS_CONCEPT_CLASSTEST_H
 
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/CONCEPT/UniqueIdGenerator.h>
+#include <OpenMS/DATASTRUCTURES/DataValue.h>
+#include <OpenMS/SYSTEM/File.h>
+#include <OpenMS/OpenMSConfig.h>
+
 // Avoid OpenMS includes here at all costs
 // When the included headers are changed, *all* tests have to be recompiled!
 // Use the ClassTest class if you need add high-level functionality.
@@ -48,14 +54,6 @@
 #include <list>
 #include <string>
 #include <vector>
-
-#include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/DATASTRUCTURES/DataValue.h>
-#include <OpenMS/CONCEPT/UniqueIdGenerator.h>
-#include <OpenMS/DATASTRUCTURES/DateTime.h>
-#include <OpenMS/SYSTEM/File.h>
-#include <OpenMS/OpenMSConfig.h>
-#include <OpenMS/config.h>
 
 // Empty declaration to avoid problems in case the namespace is not
 // yet defined (e.g. TEST/ClassTest_test.cpp)

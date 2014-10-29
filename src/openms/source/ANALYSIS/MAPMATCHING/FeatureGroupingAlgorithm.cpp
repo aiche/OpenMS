@@ -42,6 +42,7 @@
 #include <OpenMS/KERNEL/ConversionHelper.h>
 
 #include <OpenMS/CONCEPT/Factory.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 
 using namespace std;
 

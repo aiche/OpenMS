@@ -40,6 +40,7 @@
 #include <OpenMS/FORMAT/ConsensusXMLFile.h>
 #include <OpenMS/FORMAT/IdXMLFile.h>
 #include <OpenMS/FORMAT/MzDataFile.h>
+#include <OpenMS/CONCEPT/LogStream.h>
 ///////////////////////////
 
 //#include <OpenMS/DATASTRUCTURES/Matrix.h>

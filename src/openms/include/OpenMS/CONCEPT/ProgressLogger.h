@@ -35,6 +35,7 @@
 #ifndef OPENMS_CONCEPT_PROGRESSLOGGER_H
 #define OPENMS_CONCEPT_PROGRESSLOGGER_H
 
+#include <OpenMS/OpenMSConfig.h>
 #include <OpenMS/CONCEPT/Types.h>
 
 #include <map>

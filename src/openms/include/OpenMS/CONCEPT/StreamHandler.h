@@ -35,7 +35,9 @@
 #ifndef OPENMS_CONCEPT_STREAMHANDLER_H
 #define OPENMS_CONCEPT_STREAMHANDLER_H
 
-#include <OpenMS/DATASTRUCTURES/String.h>
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
+
 #include <map>
 #include <ostream>
 
@@ -44,6 +46,8 @@ using std::map;
 
 namespace OpenMS
 {
+  class String;
+
   /**
    * @brief Provides a central class to register globally used output streams. Currently supported streams are
    *

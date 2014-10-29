@@ -35,6 +35,7 @@
 #include <OpenMS/ANALYSIS/OPENSWATH/MRMRTNormalizer.h>
 #include <OpenMS/MATH/STATISTICS/LinearRegression.h>
 #include <OpenMS/CONCEPT/LogStream.h> // LOG_DEBUG
+#include <OpenMS/DATASTRUCTURES/String.h>
 
 #include <numeric>
 #include <boost/math/special_functions/erf.hpp>

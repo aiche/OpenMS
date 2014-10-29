@@ -35,18 +35,13 @@
 #ifndef OPENMS_CONCEPT_UNIQUEIDGENERATOR_H
 #define OPENMS_CONCEPT_UNIQUEIDGENERATOR_H
 
+#include <OpenMS/OpenMSConfig.h>
 #include <OpenMS/CONCEPT/Types.h>
-#include <OpenMS/DATASTRUCTURES/Param.h>
-
 #include <boost/random/mersenne_twister.hpp>
-#include <boost/random/variate_generator.hpp>
 #include <boost/random/uniform_int.hpp>
-
 
 namespace OpenMS
 {
-
-  class DateTime;
 
   /**
     @brief  A generator for unique ids.

@@ -35,15 +35,16 @@
 #ifndef OPENMS_CONCEPT_LOGSTREAM_H
 #define OPENMS_CONCEPT_LOGSTREAM_H
 
-#include <OpenMS/DATASTRUCTURES/String.h>
-
-
-#include <sstream>
+#include <ctime>
 #include <iostream>
 #include <list>
-#include <vector>
-#include <ctime>
 #include <map>
+#include <string>
+#include <sstream>
+#include <vector>
+
+#include <OpenMS/CONCEPT/Types.h>
+#include <OpenMS/OpenMSConfig.h>
 
 namespace OpenMS
 {

@@ -32,17 +32,17 @@
 // $Authors: Marc Sturm, Stephan Aiche$
 // --------------------------------------------------------------------------
 
+#include <OpenMS/CONCEPT/Factory.h> // for Factory
+#include <OpenMS/CONCEPT/Macros.h> // for OPENMS_PRECONDITION
 #include <OpenMS/CONCEPT/ProgressLogger.h>
-#include <OpenMS/CONCEPT/Macros.h>
-#include <OpenMS/CONCEPT/Factory.h>
-
-#include <OpenMS/DATASTRUCTURES/String.h>
-
-#include <OpenMS/SYSTEM/StopWatch.h>
-
-#include <QtCore/QString>
-
+#include <OpenMS/DATASTRUCTURES/String.h> // for String
+#include <OpenMS/SYSTEM/StopWatch.h> // for StopWatch
+#include <cstddef> // for NULL
 #include <iostream>
+
+#include <QString>
+
+#include <OpenMS/CONCEPT/Types.h> // for SignedSize
 
 using namespace std;
 
