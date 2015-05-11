@@ -38,6 +38,11 @@ include(GenerateExportHeader)
 include(CheckLibArchitecture)
 
 #------------------------------------------------------------------------------
+# we use the visibility hidden feature, so we need to add the corresponding
+# compiler flags
+add_compiler_export_flags()
+
+#------------------------------------------------------------------------------
 ## export a single option indicating if libraries should be build as unity
 ## build
 option(ENABLE_UNITYBUILD "Enables unity builds for all libraries." OFF)
