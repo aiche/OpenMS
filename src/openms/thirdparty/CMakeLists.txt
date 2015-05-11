@@ -33,7 +33,7 @@
 # --------------------------------------------------------------------------
 
 project("OpenMS-3rd-party-libs")
-cmake_minimum_required(VERSION 2.8.3 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8.6 FATAL_ERROR)
 
 # eol-bspline lib .. note this library will not be compiled
 # but we only expose the sources
